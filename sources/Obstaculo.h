@@ -1,8 +1,8 @@
 #ifndef GAME_OBSTACULO_H
 #define GAME_OBSTACULO_H
 
-#include "Personagem.h"
 #include "Entidade.h"
+#include "Personagem.h"
 
 class Obstaculo : public Entidade {
 

@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "Personagem.h"
+#include "Projetil.h"
 
 class Fase;
 

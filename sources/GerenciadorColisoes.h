@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "Entidade.h"
 #include "Personagem.h"
+#include "Plataforma.h"
 #include "Jogador.h"
 #include "Inimigo.h"
 #include "Obstaculo.h"

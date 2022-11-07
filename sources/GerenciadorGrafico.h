@@ -2,7 +2,8 @@
 #define LAGGANDOGAME_GERENCIADORGRAFICO_H
 
 #include "stdafx.h"
-//#include "Jogo.h"
+#include "Entidade.h"
+#include "Texto.h"
 
 class Jogo;
 

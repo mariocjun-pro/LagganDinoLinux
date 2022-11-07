@@ -3,6 +3,9 @@
 
 #include "stdafx.h"
 #include "GerenciadorGrafico.h"
+#include "Menu.h"
+#include "Fase.h"
+#include "Jogador.h"
 
 class Jogo {
 private:
