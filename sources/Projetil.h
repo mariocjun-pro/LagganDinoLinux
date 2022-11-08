@@ -1,8 +1,6 @@
 #ifndef GAME_PROJETIL_H
 #define GAME_PROJETIL_H
 
-class Fase;
-
 #include "Entidade.h"
 #include "Personagem.h"
 

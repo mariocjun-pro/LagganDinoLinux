@@ -5,6 +5,7 @@
 #include "Ente.h"
 #include "GerenciadorGrafico.h"
 #include "CorpoGrafico.h"
+#include "GerenciadorColisoes.h"
 
 namespace Auxiliares {
     class Plataforma;
@@ -13,6 +14,7 @@ namespace Auxiliares {
 using namespace Auxiliares;
 using namespace Controladoras;
 using namespace GerenciadoresEntidades;
+using namespace GerenciadorFases;
 
 namespace Abstratas {
     class Entidade : public Ente {
@@ -82,8 +84,10 @@ namespace Abstratas {
 
         bool getMorto() const { return morto; }
 
-        pair<Entidade*, int> gravar() {
-            pair<Entidade*, int> p;
+        float getEmpurrao() const { return empurrao; }
+
+        pair<Entidade *, int> gravar() {
+            pair<Entidade *, int> p;
             p.first = this;
             p.second = id;
             return p;

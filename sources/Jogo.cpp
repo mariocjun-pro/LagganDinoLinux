@@ -1,4 +1,5 @@
 #include "Jogo.h"
+#include "MenuPrincipal.h"
 
 using namespace Controladoras;
 
@@ -7,7 +8,10 @@ Jogo *Jogo::CriarJogo() {
     return jogoUnico;
 }
 
-Jogo::Jogo() { srand((unsigned) time(NULL)); }
+Jogo::Jogo() {
+    srand((unsigned) time(NULL));
+    pilha.colocarEstado(reinterpret_cast<Estado *>(new MenuPrincipal(this)));
+}
 
 Jogo::~Jogo() { delete jogoUnico; }
 
@@ -23,6 +27,9 @@ void Jogo::executar() {
         GG.setDT(dT);
         GG.limpar();
         GG.leEventos();
+
+        if (not pilha.executar()) { GG.getJanela()->close(); }
+
         GG.getJanela()->display();
     }
 }

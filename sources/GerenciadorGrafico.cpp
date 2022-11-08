@@ -34,7 +34,7 @@ void GerenciadorGrafico::leEventos() {
 }
 
 void GerenciadorGrafico::limpar() {
-    janela.clear(sf::Color::Black);
+    janela.clear(sf::Color::White);
     janela.setView(visao);
 }
 

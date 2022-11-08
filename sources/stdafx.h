@@ -3,6 +3,9 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <math.h>
+#include <vector>
+#include <stack>
 
 using namespace std;
 
