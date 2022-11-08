@@ -3,21 +3,26 @@
 
 #include "stdafx.h"
 #include "GerenciadorGrafico.h"
-#include "Menu.h"
-#include "Fase.h"
-#include "Jogador.h"
 
-class Jogo {
-private:
-    GerenciadorGrafico gerenciador_grafico;
-public:
-    Jogo();
+// Singleton
+namespace Controladoras {
+    class Jogo {
+    public:
+        static Jogo *CriarJogo();
 
-    ~Jogo();
+        ~Jogo();
 
-    void Executar();
+        void executar();
 
-    void Loop();
-};
+        GerenciadorGrafico *getGerenciador() { return &GG; }
+
+    private:
+        Jogo();
+
+        static Jogo *jogoUnico;
+
+        GerenciadorGrafico GG;
+    };
+}
 
 #endif //LAGGANDOGAME_JOGO_H

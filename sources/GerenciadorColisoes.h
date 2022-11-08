@@ -8,7 +8,7 @@
 #include "Jogador.h"
 #include "Inimigo.h"
 #include "Obstaculo.h"
-#include "ListaEntidades.h"
+#include "ListaEntidade.h"
 #include "ListaPersonagens.h"
 
 class GerenciadorColisoes {

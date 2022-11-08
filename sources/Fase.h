@@ -7,7 +7,7 @@
 #include "GerenciadorColisoes.h"
 #include "Obstaculo.h"
 #include "Inimigo.h"
-#include "ListaEntidades.h"
+#include "ListaEntidade.h"
 #include "ListaPersonagens.h"
 #include "Projetil.h"
 

@@ -4,8 +4,31 @@
 #include "stdafx.h"
 #include "Entidade.h"
 
-class Personagem : public Entidade {
+using namespace Abstratas;
+using namespace Auxiliares;
 
-};
+namespace Personagens {
+    class Personagem : public Entidade {
+    protected:
+        float velocidade;
+        bool atacando;
+        float totalT;
+        bool aDireita;
+        short int lado;
+        bool tomarDano;
+        bool ferido;
+        bool ataquePronto;
+    public:
+        Personagem(GerenciadorGrafico *gerenciadorGrafico = nullptr);
+
+        virtual ~Personagem();
+
+        virtual void imprimir();
+
+        virtual void executar();
+
+        virtual void animar(sf::Vector2f movimento);
+    };
+}
 
 #endif //GAME_PERSONAGEM_H

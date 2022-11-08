@@ -3,50 +3,93 @@
 
 #include "stdafx.h"
 #include "Ente.h"
+#include "GerenciadorGrafico.h"
+#include "CorpoGrafico.h"
 
-class Entidade
-        : public Ente {
-protected:
-    float movimento_x;
-    float movimento_y;
+namespace Auxiliares {
+    class Plataforma;
+}
 
-    int idObjeto;
-    static int idObjetoAtual;
+using namespace Auxiliares;
+using namespace Controladoras;
+using namespace GerenciadoresEntidades;
 
-public:
-    Entidade();
+namespace Abstratas {
+    class Entidade : public Ente {
+    protected:
+        int id;
+        CorpoGrafico corpoGrafico;
+        GerenciadorGrafico *gerenciadorGrafico;
+        Plataforma *plataforma;
+        sf::Vector2f movimentacao;
+        int vida;
+        float empurrao;
+        bool noChao;
+        bool podeMatar;
+        bool podeMorrer;
+        bool morto;
+    public:
+        explicit Entidade(GerenciadorGrafico *gerenciadorGrafico = nullptr);
 
-    virtual ~Entidade();
+        virtual ~Entidade();
 
-    void setDimensoes(float x, float y);
+        virtual void executar() = 0;
 
-    float getDimensoesX() const;
+        virtual void mover() {}
 
-    float getDimensoesY() const;
+        virtual void imprimir();
 
-    void setPosicao(float x, float y);
+        virtual bool tomarDano();
 
-    float getPosicaoX() const;
+        int getId() const { return id; }
 
-    float getPosicaoY() const;
+        sf::Vector2f getPosicao() { return corpoGrafico.getPosicao(); }
 
-    void setMovimento(float x, float y);
+        void setPosicao(sf::Vector2f posicao) { corpoGrafico.setPosicao(posicao); }
 
-    float getMovimentoX() const;
+        sf::Vector2f getTamanho() { return corpoGrafico.getTamanho(); }
 
-    float getMovimentoY() const;
+        CorpoGrafico *getCorpoGrafico() { return &corpoGrafico; }
 
-    void setIdObjeto(int id);
+        Plataforma *getPlataforma() { return plataforma; }
 
-    int getIdObjeto() const;
+        void setPlataforma(Plataforma *pPlataforma) { this->plataforma = pPlataforma; }
 
-    void incrementarIdObjetoAtual();
+        void setGerenciadorGrafico(
+                GerenciadorGrafico *pGerenciadorGrafico) { this->gerenciadorGrafico = pGerenciadorGrafico; }
 
-    int getIdObjetoAtual() const;
+        void setMovimentacao(sf::Vector2f f) { this->movimentacao = f; }
 
-    void mover(float movimento_x, float movimento_y);
+        sf::Vector2f getMovimentacao() { return movimentacao; }
 
-    void desenhar();
-};
+        void setVida(int i) { this->vida = i; }
+
+        int getVida() const { return vida; }
+
+        void setNoChao(bool chao) { this->noChao = chao; }
+
+        bool getNoChao() const { return noChao; }
+
+        void setPodeMatar(bool matar) { this->podeMatar = matar; }
+
+        bool getPodeMatar() const { return podeMatar; }
+
+        void setPodeMorrer(bool morrer) { this->podeMorrer = morrer; }
+
+        bool getPodeMorrer() const { return podeMorrer; }
+
+        void setMorto(bool mort) { this->morto = mort; }
+
+        bool getMorto() const { return morto; }
+
+        pair<Entidade*, int> gravar() {
+            pair<Entidade*, int> p;
+            p.first = this;
+            p.second = id;
+            return p;
+        }
+    };
+
+}
 
 #endif //LAGGANDOGAME_ENTIDADE_H
