@@ -3,9 +3,12 @@
 using namespace Controladoras;
 
 GerenciadorGrafico::GerenciadorGrafico()
-        : janela(sf::VideoMode(1280, 720), "Laggando the Game", sf::Style::Default),
+        : janela(sf::VideoMode(1280, 960), "Laggando the Game", sf::Style::Default),
           visao(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(1280, 960)),
-          dT(0.0f), caracter(0), leitura(false), fonte(), texto() { instaciaTexto(); }
+          dT(0.0f), caracter(0), leitura(false), fonte(), texto() {
+    instaciaTexto();
+    leitura = false;
+}
 
 GerenciadorGrafico::~GerenciadorGrafico() {}
 
@@ -39,13 +42,11 @@ void GerenciadorGrafico::limpar() {
 }
 
 void GerenciadorGrafico::instaciaTexto() {
-    if (!fonte.loadFromFile("../assets//fonts//Pixel.ttf")) {
-        cout << "Erro ao carregar fonte" << endl;
-    }
+    if (!fonte.loadFromFile("../assets//fonts//Pixel.ttf")) { cout << "Erro ao carregar fonte" << endl; }
     texto.setFont(fonte);
-    texto.setCharacterSize(24);
-    texto.setOutlineThickness(0.25f);
-    texto.setFillColor(sf::Color::White);
+    texto.setCharacterSize(50);
+    texto.setOutlineThickness(0.5f);
+    texto.setFillColor(sf::Color::Green);
     texto.setOutlineColor(sf::Color::Yellow);
 }
 

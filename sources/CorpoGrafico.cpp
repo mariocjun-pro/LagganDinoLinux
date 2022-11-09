@@ -11,25 +11,22 @@ CorpoGrafico::~CorpoGrafico() {
     delete animacao;
 }
 
-void CorpoGrafico::inicializa(sf::Vector2f tamanho, sf::Texture *pTexture, sf::Vector2f posicao,
-                              sf::Vector2f margemHitbox) {
+void CorpoGrafico::inicializa(sf::Vector2f tamanho, sf::Texture *pTexture, sf::Vector2f margemHitbox) {
     corpo = new sf::RectangleShape(tamanho);
     corpo->setOrigin(tamanho / 2.0f);
-    corpo->setFillColor(sf::Color::White);
+    corpo->setFillColor(sf::Color::Blue);
 
-    if (margemHitbox == sf::Vector2f(0.0f, 0.0f))
-        margemHitbox = tamanho;
+    //if (margemHitbox == sf::Vector2f(0.0f, 0.0f)) { margemHitbox = tamanho; }
 
     hitbox = new sf::RectangleShape(margemHitbox);
     hitbox->setOrigin(margemHitbox / 2.0f);
     hitbox->setPosition(corpo->getPosition());
 
     corpo->setTexture(pTexture);
-
-    pTexture = new sf::Texture();
+    textura = new sf::Texture();
     animacao = new Animadora(this);
 
-    corpo->setTexture(pTexture);
+    corpo->setTexture(textura);
 }
 
 void

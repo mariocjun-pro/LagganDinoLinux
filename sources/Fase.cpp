@@ -7,9 +7,6 @@ Fase::Fase(Jogo *pJogo) : jogador1(nullptr), jogo(pJogo) {
     id = -1;
 }
 
-Fase::~Fase() {
-    delete listaEntidade;
-    delete jogador1;
-}
+Fase::~Fase() { delete jogador1; }
 
 void Fase::executar() {}

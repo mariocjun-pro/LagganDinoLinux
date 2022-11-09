@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "Menu.h"
 #include "Estado.h"
+#include "Fase1.h"
 #include "FabricaFase1.h"
 
 using namespace Fabricas;

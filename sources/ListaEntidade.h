@@ -8,8 +8,8 @@
 
 using namespace Listas;
 using namespace Abstratas;
-//using namespace Jogadores;
-//using namespace GerenciadoresFases;
+using namespace Jogadores;
+using namespace GerenciadorFases;
 
 namespace Listas {
     class ListaEntidade {
@@ -29,7 +29,7 @@ namespace Listas {
     private:
         Lista<Entidade> LEs;
 
-        static void excluir(Lista<Entidade>::Elemento<Entidade> *no);
+        void excluir(Lista<Entidade>::Elemento<Entidade> *no);
 
     };
 }

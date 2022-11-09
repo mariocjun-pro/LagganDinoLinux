@@ -26,7 +26,7 @@ namespace Fabricas {
 
         Jogo *pJogo;
 
-        short id;
+        short idFase;
 
         Jogador1 *pJogador1;
 
@@ -38,7 +38,7 @@ namespace Fabricas {
 
         virtual Fase *criarFase() = 0;
 
-        void setJogador1(Jogador1 *pJ1) { this->pJogador1 = pJ1; }
+        void setJogador1(Jogador1 *pJ1);
     };
 }
 

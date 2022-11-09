@@ -23,7 +23,7 @@ using namespace Estados;
 namespace Fases {
     class Fase : FaseEstado {
     protected:
-        ListaEntidade *listaEntidade;
+        ListaEntidade listaEntidade;
         Jogador1 *jogador1;
         GerenciadorGrafico *gerenciadorGrafico;
         Jogo *jogo;
@@ -35,7 +35,7 @@ namespace Fases {
 
         virtual void executar();
 
-        void incluirEntidade(Entidade *entidade) { listaEntidade->incluir(entidade); }
+        void incluirEntidade(Entidade *entidade) { listaEntidade.incluir(entidade); }
 
         Jogador1 *getJogador1() { return jogador1; }
 

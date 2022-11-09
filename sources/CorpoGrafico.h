@@ -2,13 +2,14 @@
 #define GAME_CORPOGRAFICO_H
 
 #include "stdafx.h"
+#include "GerenciadorColisoes.h"
 
 namespace GerenciadoresEntidades {
     class Animadora;
 }
 
 using namespace GerenciadoresEntidades;
-//using namespace GerenciadoresFases;
+using namespace GerenciadoresEntidades;
 
 namespace GerenciadoresEntidades {
     class CorpoGrafico {
@@ -22,7 +23,7 @@ namespace GerenciadoresEntidades {
 
         virtual ~CorpoGrafico();
 
-        void inicializa(sf::Vector2f tamanho, sf::Texture *pTexture, sf::Vector2f posicao,
+        void inicializa(sf::Vector2f tamanho, sf::Texture *pTexture,
                         sf::Vector2f margemHitbox = sf::Vector2f(0.0f, 0.0f));
 
         void operator=(const sf::Vector2f posicao) { setPosicao(posicao); }

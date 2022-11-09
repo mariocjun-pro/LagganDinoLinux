@@ -12,14 +12,12 @@ namespace Listas {
         class Elemento {
         public:
             Elemento() {
-                atual = NULL;
-                pProx = NULL;
-                pAnt = NULL;
+                atual = nullptr;
+                pProx = nullptr;
+                pAnt = nullptr;
             }
 
             ~Elemento() {}
-
-            //Sets e Gets
 
             void setAtual(TE *elem) { atual = elem; }
 
@@ -47,8 +45,6 @@ namespace Listas {
 
         void limpar();
 
-        //Sets e Gets
-
         void setPrimeiro(Elemento<TL> *primeiro) { pPrimeiro = primeiro; }
 
         Elemento<TL> *getPrimeiro() const { return pPrimeiro; }
@@ -63,19 +59,17 @@ namespace Listas {
         int tamanho;
         Elemento<TL> *pPrimeiro;
         Elemento<TL> *pUltimo;
-
     };
 
     template<class TL>
     Lista<TL>::Lista() {
-        pPrimeiro = NULL;
-        pUltimo = NULL;
+        pPrimeiro = nullptr;
+        pUltimo = nullptr;
         tamanho = 0;
     }
 
     template<class TL>
-    Lista<TL>::~Lista() {
-    }
+    Lista<TL>::~Lista() {}
 
     template<class TL>
     void Lista<TL>::incluir(TL *elemento) {
@@ -96,18 +90,15 @@ namespace Listas {
 
     template<class TL>
     void Lista<TL>::limpar() {
-        Elemento<TL> *itr = pPrimeiro, *aux = NULL;
+        Elemento<TL> *itr = pPrimeiro, *aux = nullptr;
 
         while (itr) {
-
             aux = itr->getProx();
             delete itr->getAtual();
             delete itr;
             itr = aux;
         }
     }
-
 }
-
 
 #endif //GAME_LISTA_H

@@ -4,7 +4,6 @@ using namespace Jogadores;
 
 Jogador::Jogador(GerenciadorGrafico *gerenciador) :
         Personagem(gerenciador), ataquePronto(true), ladoAtaque(1), pontos(000), pulo(700), vJog(0) {
-    hitbox = nullptr;
     vida = 10;
     lado = 1;
     aDireita = true;
@@ -12,31 +11,6 @@ Jogador::Jogador(GerenciadorGrafico *gerenciador) :
     podeMatar = false;
 }
 
-Jogador::~Jogador() {
+Jogador::~Jogador() {}
 
-}
-
-void Jogador::morrer() {
-    pontos -= 12;
-    vida--;
-    if (vida >= 0) {
-        corpoGrafico = (posInicial);
-    }
-}
-
-void Jogador::morrer(sf::Vector2f pos) {
-    pontos -= 12;
-    vida--;
-    if (vida >= 0) {
-        corpoGrafico = (pos);
-    }
-}
-
-void Jogador::imprimir() {
-
-    if (atacando)
-        gerenciadorGrafico->desenhar(hitbox->getCorpoGrafico()->getCorpo());
-
-    gerenciadorGrafico->desenhar(corpoGrafico.getCorpo());
-
-}
+void Jogador::imprimir() { gerenciadorGrafico->desenhar(corpoGrafico.getCorpo()); }

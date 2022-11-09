@@ -13,7 +13,7 @@ using namespace GerenciadoresEntidades;
 namespace GerenciadoresEntidades {
     class Animadora {
     private:
-        ::CorpoGrafico *pCorpoGrafico;
+        CorpoGrafico *pCorpoGrafico;
 
         sf::IntRect quadro;
         sf::Texture *textura;
@@ -25,7 +25,7 @@ namespace GerenciadoresEntidades {
         float tempoTroca;
         float tempoTotal;
     public:
-        Animadora(::CorpoGrafico *corpoGrafico = nullptr);
+        Animadora(CorpoGrafico *pCorpo = nullptr);
 
         ~Animadora();
 

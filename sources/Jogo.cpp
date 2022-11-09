@@ -9,11 +9,11 @@ Jogo *Jogo::CriarJogo() {
 }
 
 Jogo::Jogo() {
-    srand((unsigned) time(NULL));
+    srand((unsigned) time(nullptr));
     pilha.colocarEstado(reinterpret_cast<Estado *>(new MenuPrincipal(this)));
 }
 
-Jogo::~Jogo() { delete jogoUnico; }
+Jogo::~Jogo() {}
 
 void Jogo::executar() {
 

@@ -22,9 +22,16 @@ void MenuPrincipal::executar() {
         case 0:
             pJogo->colocarEstado(reinterpret_cast<Estado *>(fabricaFase1.criarFase()));
             pressionar = false;
-            totalT = 0.0f;
-            //Um jogador
+            totalT = 0;
+            // Um jogador
             break;
+        case 1:
+            pJogo->tirarEstado();
+            pGG->getJanela()->close();
+            pressionar = false;
+            totalT = 0;
+            break;
+            // Sair
         default:
             break;
 

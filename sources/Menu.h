@@ -14,23 +14,6 @@ using namespace Fases;
 
 namespace Controladoras {
     class Menu : public MenuEstado {
-    public:
-        Menu(Jogo *jogo = NULL);
-
-        ~Menu();
-
-        void executar();
-
-        void leEntradas();
-
-        void posicionarTexto();
-
-        void setPressionar(const bool press) { pressionar = press; }
-
-        void setJogo(Jogo *jogo) { pJogo = jogo; }
-
-        void setPontos(const int p) { pontos = p; }
-
     protected:
         Jogo *pJogo;
         GerenciadorGrafico *pGG;
@@ -55,6 +38,28 @@ namespace Controladoras {
 
         vector<pair<string, int>> rank;
         vector<sf::Text> textoRank;
+    public:
+        Menu(Jogo *jogo = nullptr);
+
+        ~Menu();
+
+        void executar();
+
+        void leEntradas();
+
+        void leTexto();
+
+        void posicionarTexto();
+
+        void limparEstados();
+
+        void setPressionar(const bool press) { pressionar = press; }
+
+        void setJogo(Jogo *jogo) { pJogo = jogo; }
+
+        void setPontos(const int p) { pontos = p; }
+
+        void setLendoTexto(const bool l);
     };
 
 }

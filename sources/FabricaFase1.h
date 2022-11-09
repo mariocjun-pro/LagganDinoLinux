@@ -2,18 +2,19 @@
 #define GAME_FABRICAFASE1_H
 
 #include "stdafx.h"
+#include "FabricaFase.h"
 #include "Fase.h"
 #include "Fase1.h"
-#include "FabricaFase.h"
 #include "Entidade.h"
 #include "ListaEntidade.h"
 #include "Jogador1.h"
 #include "Jogo.h"
 
+
 using namespace Abstratas;
 using namespace Listas;
 using namespace Jogadores;
-//using namespace GerenciadoresFases;
+using namespace GerenciadorFases;
 //using namespace Inimigos;
 using namespace Personagens;
 //using namespace Obstaculos;
@@ -28,9 +29,9 @@ namespace Fabricas {
     public:
         FabricaFase1(Jogo *jogo = nullptr);
 
-        virtual ~FabricaFase1();
+        ~FabricaFase1();
 
-        virtual Fase *criarFase();
+        Fase *criarFase();
     };
 }
 

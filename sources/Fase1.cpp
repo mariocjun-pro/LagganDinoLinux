@@ -1,5 +1,6 @@
 #include "Fase1.h"
 #include "Jogo.h"
+#include "Menu.h"
 
 using namespace Fases;
 
@@ -8,11 +9,9 @@ Fase1::Fase1(Controladoras::Jogo *pJogo) : Fase(pJogo) {
     srand(unsigned(time(nullptr)));
 }
 
-Fase1::~Fase1() {
-    delete gerenciadorGrafico;
-}
+Fase1::~Fase1() { delete gerenciadorGrafico; }
 
 void Fase1::executar() {
-    listaEntidade->executar();
-    listaEntidade->imprimir();
+    listaEntidade.executar();
+    listaEntidade.imprimir();
 }

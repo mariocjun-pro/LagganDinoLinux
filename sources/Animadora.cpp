@@ -5,13 +5,11 @@ GerenciadoresEntidades::Animadora::Animadora(::CorpoGrafico *corpoGrafico) : pCo
     inicializa(sf::Vector2f(0.0f, 0.0f), sf::Vector2u(0, 0), sf::Vector2u(1, 1));
 }
 
-GerenciadoresEntidades::Animadora::~Animadora() {
-    delete textura;
-}
+GerenciadoresEntidades::Animadora::~Animadora() {}
 
 void GerenciadoresEntidades::Animadora::inicializa(sf::Vector2f margemErro, sf::Vector2u quantidadeQuadros,
                                                    sf::Vector2u totalQuadros) {
-    quantidadeQuadros = qtsQuadros;
+    qtsQuadros = quantidadeQuadros;
     tempoTroca = 0.3f;
     tempoTotal = 0.0f;
     inicio = 0;
@@ -19,10 +17,10 @@ void GerenciadoresEntidades::Animadora::inicializa(sf::Vector2f margemErro, sf::
     quadrosAtuais.y = 0;
     margem = margemErro;
 
-    if (pCorpoGrafico) textura = pCorpoGrafico->getTextura();
+    if (pCorpoGrafico) { textura = pCorpoGrafico->getTextura(); }
 
-    quadro.width = textura->getSize().x / totalQuadros.x;
-    quadro.height = textura->getSize().y / totalQuadros.y;
+    quadro.width = textura->getSize().x / (float) totalQuadros.x;
+    quadro.height = textura->getSize().y / (float) totalQuadros.y;
 }
 
 void GerenciadoresEntidades::Animadora::atualizar(float dT, bool aDireita, unsigned int comecoP,
@@ -35,20 +33,17 @@ void GerenciadoresEntidades::Animadora::atualizar(float dT, bool aDireita, unsig
 
     if (inicio != comecoP) {
         inicio = comecoP;
-        quadrosAtuais.x = 0;
+        quadrosAtuais.x = comecoP;
     }
 
     if (tempoTotal >= tempoTroca) {
         tempoTotal -= tempoTroca;
         quadrosAtuais.x++;
-
-        if (quadrosAtuais.x >= qtsQuadros.x) {
-            quadrosAtuais.x = 0;
-        }
+        if (quadrosAtuais.x >= (qtsQuadros.x + comecoP)) { quadrosAtuais.x = comecoP; }
     }
 
     if (aDireita) {
-        quadro.left = (quadro.width * quadrosAtuais.x) + inicio;
+        quadro.left = quadro.width * quadrosAtuais.x;
         quadro.width = abs(quadro.width);
     } else {
         quadro.left = ((quadro.width * quadrosAtuais.x) + inicio) + quadro.width;
@@ -71,7 +66,8 @@ void GerenciadoresEntidades::Animadora::atualizarLinhasSequencial(float dT, bool
                                                                   sf::Vector2u quantidadeQuadros,
                                                                   unsigned int quadrosUltimaLinha,
                                                                   float troca) {
-    qtsQuadros = quantidadeQuadros;
+    qtsQuadros.x = quantidadeQuadros.x;
+    qtsQuadros.y = quantidadeQuadros.y;
     tempoTotal += dT;
     tempoTroca = troca;
 
@@ -80,12 +76,10 @@ void GerenciadoresEntidades::Animadora::atualizarLinhasSequencial(float dT, bool
         quadrosAtuais.x++;
 
         if (quadrosAtuais.x >= qtsQuadros.x) {
-            quadrosAtuais.x = 0;
             quadrosAtuais.y++;
+            quadrosAtuais.x = 0;
 
-            if (quadrosAtuais.y >= qtsQuadros.y) {
-                quadrosAtuais.y = 0;
-            }
+            if (quadrosAtuais.y >= qtsQuadros.y - 1) { quadrosAtuais.y = 0; }
         }
     }
 
@@ -93,7 +87,7 @@ void GerenciadoresEntidades::Animadora::atualizarLinhasSequencial(float dT, bool
         quadro.left = quadro.width * quadrosAtuais.x;
         quadro.width = abs(quadro.width);
     } else {
-        quadro.left = (quadro.width * quadrosAtuais.x) + quadro.width;
+        quadro.left = (quadrosAtuais.x + 1) * abs(quadro.width);
         quadro.width = -abs(quadro.width);
     }
 
