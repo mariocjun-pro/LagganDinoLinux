@@ -16,5 +16,6 @@ Fase *FabricaFase1::criarFase() {
 void FabricaFase1::instanciaJogador() {
     if (not pJogador1) { pJogador1 = new Jogador1(pJogo->getGerenciador()); }
     pFase->incluirEntidade(static_cast<Entidade *>(pJogador1));
+    pFase->incluirEntidade(static_cast<Entidade *>(pJogador1));
     pFase->setJogador1(pJogador1);
 }

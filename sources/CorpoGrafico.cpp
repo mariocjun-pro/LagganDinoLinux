@@ -5,7 +5,14 @@ using namespace GerenciadoresEntidades;
 
 CorpoGrafico::CorpoGrafico() : corpo(nullptr), textura(nullptr), animacao(nullptr) {}
 
-CorpoGrafico::~CorpoGrafico() {}
+CorpoGrafico::~CorpoGrafico() {
+    if (corpo) { delete corpo; }
+    if (textura) { delete textura; }
+    if (animacao) { delete animacao; }
+    corpo = nullptr;
+    textura = nullptr;
+    animacao = nullptr;
+}
 
 void CorpoGrafico::inicializa(sf::Vector2f tamanho, sf::Texture *pTexture, sf::Vector2f margemHitbox) {
     corpo = new sf::RectangleShape(tamanho);
