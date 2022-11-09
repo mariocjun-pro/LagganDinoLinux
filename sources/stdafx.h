@@ -3,9 +3,18 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <math.h>
+#include <fstream>
 #include <vector>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+#include <string>
+#include <random>
 #include <stack>
+#include <utility>
+#include <cctype>
+#include <map>
+#include <pthread.h>
 
 using namespace std;
 

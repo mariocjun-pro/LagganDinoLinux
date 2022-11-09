@@ -21,10 +21,7 @@ namespace Controladoras {
         int opcao;
         int selecionado;
         bool pressionar;
-
         bool lendoTexto;
-        bool ranking;
-        bool lido;
 
         sf::Font fonte;
         vector<sf::Text> texto;
@@ -33,8 +30,6 @@ namespace Controladoras {
         string sleitura;
 
         float totalT;
-
-        int pontos;
 
         vector<pair<string, int>> rank;
         vector<sf::Text> textoRank;
@@ -56,8 +51,6 @@ namespace Controladoras {
         void setPressionar(const bool press) { pressionar = press; }
 
         void setJogo(Jogo *jogo) { pJogo = jogo; }
-
-        void setPontos(const int p) { pontos = p; }
 
         void setLendoTexto(const bool l);
     };

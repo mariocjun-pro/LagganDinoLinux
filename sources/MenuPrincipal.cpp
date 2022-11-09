@@ -18,11 +18,12 @@ void MenuPrincipal::executar() {
     opcao = -1;
 
     leEntradas();
+    //leTexto();
     switch (opcao) {
         case 0:
             pJogo->colocarEstado(reinterpret_cast<Estado *>(fabricaFase1.criarFase()));
             pressionar = false;
-            totalT = 0;
+            totalT = 0.0f;
             // Um jogador
             break;
         case 1:
