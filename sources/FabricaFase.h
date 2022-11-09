@@ -31,6 +31,8 @@ namespace Fabricas {
         Jogador1 *pJogador1;
 
         Fase *pFase;
+
+        bool carrega;
     public:
         FabricaFase(Jogo *pJogo = nullptr);
 

@@ -2,6 +2,6 @@
 
 using namespace Estados;
 
-FaseEstado::FaseEstado() = default;
+FaseEstado::FaseEstado() {}
 
-FaseEstado::~FaseEstado() = default;
+FaseEstado::~FaseEstado() {}

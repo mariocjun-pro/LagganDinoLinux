@@ -21,7 +21,6 @@ namespace Controladoras {
         int opcao;
         int selecionado;
         bool pressionar;
-        bool lendoTexto;
 
         sf::Font fonte;
         vector<sf::Text> texto;
@@ -42,17 +41,7 @@ namespace Controladoras {
 
         void leEntradas();
 
-        void leTexto();
-
         void posicionarTexto();
-
-        void limparEstados();
-
-        void setPressionar(const bool press) { pressionar = press; }
-
-        void setJogo(Jogo *jogo) { pJogo = jogo; }
-
-        void setLendoTexto(const bool l);
     };
 
 }

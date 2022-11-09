@@ -17,22 +17,17 @@ Jogador1::~Jogador1() {}
 void Jogador1::executar() { mover(); }
 
 void Jogador1::mover() {
-    sf::Vector2u animacao(0, 0);
-    float tempoTrocaAnimacao = 0.3f;
     float DT = gerenciadorGrafico->getDT();
     movimentacao.x = 0.0f;
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
         movimentacao.x -= velocidade;
-        lado = -1;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         movimentacao.x += velocidade;
-        lado = 1;
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && noChao) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
         movimentacao.y = -sqrtf(2.0f * 981.0f * pulo);
-        noChao = false;
     }
 
     movimentacao.y += 981.0f * DT * 2.5f;

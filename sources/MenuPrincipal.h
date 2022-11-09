@@ -21,11 +21,7 @@ namespace Controladoras {
 
         void executar();
 
-        void setSelecionado(const int s) { selecionado = s; }
-
     private:
-        Fase1 *fase1;
-
         FabricaFase1 fabricaFase1;
     };
 }

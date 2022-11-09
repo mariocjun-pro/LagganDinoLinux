@@ -3,15 +3,13 @@
 using namespace Controladoras;
 
 Menu::Menu(Jogo *jogo) : pJogo(jogo) {
-    lendoTexto = false;
-    texto.resize(5);
+    texto.resize(2);
     pGG = pJogo->getGerenciador();
 
     pressionar = false;
 
     selecionado = 0;
-
-    fonte.loadFromFile("../assets//fonts//Pixel.ttf");
+    fonte.loadFromFile("../assets//fonts//Pixel.TTF");
     int i;
     for (i = 0; i < 2; i++) {
         texto[i].setFont(fonte);
@@ -30,15 +28,13 @@ Menu::Menu(Jogo *jogo) : pJogo(jogo) {
     leitura.setFillColor(sf::Color::Black);
     leitura.setPosition(pGG->getVisao()->getCenter().x - 600.0f, pGG->getVisao()->getCenter().y - 300.0f);
 
-    texto[0].setString("Um Jogador");
+    texto[0].setString("Um Jogador!!!");
     texto[1].setString("Sair");
 
     totalT = 0;
 }
 
-Menu::~Menu() {
-
-}
+Menu::~Menu() {}
 
 void Menu::executar() {}
 
@@ -57,7 +53,7 @@ void Menu::leEntradas() {
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
             selecionado++;
-            if (selecionado >= 2) { selecionado = 0; }
+            if (selecionado >= 3) { selecionado = 0; }
             pressionar = false;
         }
 

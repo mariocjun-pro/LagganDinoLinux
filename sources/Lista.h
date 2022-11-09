@@ -45,15 +45,7 @@ namespace Listas {
 
         void limpar();
 
-        void setPrimeiro(Elemento<TL> *primeiro) { pPrimeiro = primeiro; }
-
         Elemento<TL> *getPrimeiro() const { return pPrimeiro; }
-
-        void setUltimo(Elemento<TL> *ultimo) { pUltimo = ultimo; }
-
-        Elemento<TL> *getUltimo() const { return pUltimo; }
-
-        int getTamanho() const { return tamanho; }
 
     private:
         int tamanho;
@@ -90,7 +82,7 @@ namespace Listas {
 
     template<class TL>
     void Lista<TL>::limpar() {
-        Elemento<TL> *itr = pPrimeiro, *aux = nullptr;
+        Elemento<TL> *itr = pPrimeiro, *aux;
 
         while (itr) {
             aux = itr->getProx();

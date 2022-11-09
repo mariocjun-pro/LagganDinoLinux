@@ -27,23 +27,6 @@ void ListaEntidade::incluir(Entidade *ent) { LEs.incluir(ent); }
 
 void ListaEntidade::limpar() { LEs.limpar(); }
 
-void ListaEntidade::excluir(Lista<Entidade>::Elemento<Entidade> *no) {
-    Lista<Entidade>::Elemento<Entidade> *aux = nullptr;
-
-    if (no->getProx()) {
-        if (no->getAnt()) {
-            no->getAnt()->setProx(no->getProx());
-            no->getProx()->setAnt(no->getAnt());
-        } else {
-            no->getProx()->setAnt(nullptr);
-        }
-    } else {
-        no->getAnt()->setProx(nullptr);
-    }
-    delete no->getAtual();
-    delete no;
-}
-
 
 
 

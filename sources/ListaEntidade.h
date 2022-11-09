@@ -28,9 +28,6 @@ namespace Listas {
 
     private:
         Lista<Entidade> LEs;
-
-        void excluir(Lista<Entidade>::Elemento<Entidade> *no);
-
     };
 }
 

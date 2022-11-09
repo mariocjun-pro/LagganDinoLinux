@@ -3,7 +3,6 @@
 
 #include "stdafx.h"
 #include "Personagem.h"
-#include "Projetil.h"
 
 using namespace Personagens;
 using namespace Auxiliares;
@@ -22,14 +21,7 @@ namespace Jogadores {
     protected:
         sf::Vector2f posInicial;
 
-        bool ataquePronto;
-        short ladoAtaque;
-
-        int pontos;
         float pulo;
-
-        //Auxiliares
-        float vJog;
     };
 }
 

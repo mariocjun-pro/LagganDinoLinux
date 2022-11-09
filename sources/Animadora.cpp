@@ -61,37 +61,3 @@ void GerenciadoresEntidades::Animadora::atualizar(float dT, bool aDireita, unsig
     quadro.width = aux.x;
     quadro.height = aux.y;
 }
-
-void GerenciadoresEntidades::Animadora::atualizarLinhasSequencial(float dT, bool aDireita,
-                                                                  sf::Vector2u quantidadeQuadros,
-                                                                  unsigned int quadrosUltimaLinha,
-                                                                  float troca) {
-    qtsQuadros.x = quantidadeQuadros.x;
-    qtsQuadros.y = quantidadeQuadros.y;
-    tempoTotal += dT;
-    tempoTroca = troca;
-
-    if (tempoTotal >= tempoTroca) {
-        tempoTotal -= tempoTroca;
-        quadrosAtuais.x++;
-
-        if (quadrosAtuais.x >= qtsQuadros.x) {
-            quadrosAtuais.y++;
-            quadrosAtuais.x = 0;
-
-            if (quadrosAtuais.y >= qtsQuadros.y - 1) { quadrosAtuais.y = 0; }
-        }
-    }
-
-    if (aDireita) {
-        quadro.left = quadro.width * quadrosAtuais.x;
-        quadro.width = abs(quadro.width);
-    } else {
-        quadro.left = (quadrosAtuais.x + 1) * abs(quadro.width);
-        quadro.width = -abs(quadro.width);
-    }
-
-    quadro.top = quadro.height * quadrosAtuais.y;
-
-    pCorpoGrafico->getCorpo()->setTextureRect(quadro);
-}

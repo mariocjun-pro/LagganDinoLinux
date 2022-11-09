@@ -2,11 +2,11 @@
 
 using namespace Fabricas;
 
-FabricaFase::FabricaFase(Jogo *pJogo) : pJogo(pJogo), pJogador1(nullptr), pFase(nullptr), idFase(0) {}
+FabricaFase::FabricaFase(Jogo *pJogo) : pJogo(pJogo), pJogador1(nullptr), pFase(nullptr), idFase(0), carrega(false) {}
 
 FabricaFase::~FabricaFase() { limpar(); }
 
-void FabricaFase::limpar() { delete pJogador1; }
+void FabricaFase::limpar() { }
 
 void FabricaFase::setJogador1(Jogador1 *pJ1) {
     pJogador1 = new Jogador1(pJogo->getGerenciador());

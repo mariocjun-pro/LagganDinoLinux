@@ -8,7 +8,7 @@
 #include "GerenciadorColisoes.h"
 
 namespace Auxiliares {
-    class Plataforma;
+    class __attribute__((unused)) Plataforma;
 }
 
 using namespace Auxiliares;
@@ -22,11 +22,6 @@ namespace Abstratas {
         CorpoGrafico corpoGrafico;
         GerenciadorGrafico *gerenciadorGrafico;
         sf::Vector2f movimentacao;
-        int vida;
-        float empurrao;
-        bool noChao;
-        bool podeMatar;
-        bool podeMorrer;
     public:
         explicit Entidade(GerenciadorGrafico *gerenciadorGrafico = nullptr);
 
@@ -47,14 +42,6 @@ namespace Abstratas {
         void setMovimentacao(sf::Vector2f f) { this->movimentacao = f; }
 
         sf::Vector2f getMovimentacao() { return movimentacao; }
-
-        void setNoChao(bool chao) { this->noChao = chao; }
-
-        bool getPodeMatar() const { return podeMatar; }
-
-        bool getPodeMorrer() const { return podeMorrer; }
-
-        float getEmpurrao() const { return empurrao; }
     };
 
 }

@@ -15,7 +15,6 @@ namespace GerenciadoresEntidades {
     class CorpoGrafico {
     private:
         sf::RectangleShape *corpo;
-        sf::RectangleShape *hitbox;
         sf::Texture *textura;
         Animadora *animacao;
     public:
@@ -30,12 +29,10 @@ namespace GerenciadoresEntidades {
 
         void mover(sf::Vector2f incr) {
             corpo->move(incr);
-            hitbox->move(incr);
         }
 
         void mover(float x, float y) {
             corpo->move(x, y);
-            hitbox->move(x, y);
         }
 
         void inicializaAnimadora(sf::Vector2f margem, sf::Vector2u quantidadeQuadros, sf::Vector2u TotalDeQuadros);
@@ -45,11 +42,7 @@ namespace GerenciadoresEntidades {
 
         sf::RectangleShape *getCorpo() { return corpo; }
 
-        sf::RectangleShape *getHitbox() { return hitbox; }
-
         sf::Vector2f getPosicao() { return corpo->getPosition(); }
-
-        sf::Vector2f getTamanho() { return corpo->getSize(); }
 
         sf::Texture *getTextura() { return textura; }
 
@@ -57,15 +50,7 @@ namespace GerenciadoresEntidades {
 
         void setPosicao(sf::Vector2f pos) {
             corpo->setPosition(pos);
-            hitbox->setPosition(pos);
         }
-
-        void setPosicao(float x, float y) {
-            corpo->setPosition(x, y);
-            hitbox->setPosition(x, y);
-        }
-
-        Animadora *getAnimadora() { return animacao; }
     };
 }
 

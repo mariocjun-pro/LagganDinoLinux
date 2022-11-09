@@ -13,5 +13,4 @@ public:
     virtual void executar();
 };
 
-
 #endif //GAME_MENUPRINCIPALESTADO_H

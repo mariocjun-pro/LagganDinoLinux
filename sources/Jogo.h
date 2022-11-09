@@ -20,12 +20,6 @@ namespace Controladoras {
 
         void colocarEstado(Estado *est) { pilha.colocarEstado(est); }
 
-        const bool pilhaVazia() { return pilha.pilhaVazia(); }
-
-        const unsigned int pilhaTam() const { return pilha.pilhaTam(); }
-
-        Estado *getTopo() const { return pilha.getTopo(); }
-
         PilhaEstados operator--() {
             this->tirarEstado(true);
             return PilhaEstados();

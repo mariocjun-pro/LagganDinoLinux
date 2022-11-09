@@ -5,22 +5,12 @@ using namespace GerenciadoresEntidades;
 
 CorpoGrafico::CorpoGrafico() : corpo(nullptr), textura(nullptr), animacao(nullptr) {}
 
-CorpoGrafico::~CorpoGrafico() {
-    delete corpo;
-    delete textura;
-    delete animacao;
-}
+CorpoGrafico::~CorpoGrafico() {}
 
 void CorpoGrafico::inicializa(sf::Vector2f tamanho, sf::Texture *pTexture, sf::Vector2f margemHitbox) {
     corpo = new sf::RectangleShape(tamanho);
     corpo->setOrigin(tamanho / 2.0f);
     corpo->setFillColor(sf::Color::Blue);
-
-    //if (margemHitbox == sf::Vector2f(0.0f, 0.0f)) { margemHitbox = tamanho; }
-
-    hitbox = new sf::RectangleShape(margemHitbox);
-    hitbox->setOrigin(margemHitbox / 2.0f);
-    hitbox->setPosition(corpo->getPosition());
 
     corpo->setTexture(pTexture);
     textura = new sf::Texture();

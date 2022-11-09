@@ -14,11 +14,11 @@ void MenuPrincipal::executar() {
 
     texto[selecionado].setFillColor(sf::Color::Cyan);
     for (i = 0; i < 2; i++) { pGG->getJanela()->draw(texto[i]); }
+
     texto[selecionado].setFillColor(sf::Color::Black);
     opcao = -1;
 
     leEntradas();
-    //leTexto();
     switch (opcao) {
         case 0:
             pJogo->colocarEstado(reinterpret_cast<Estado *>(fabricaFase1.criarFase()));

@@ -37,20 +37,7 @@ namespace Controladoras {
 
         void instaciaTexto();
 
-        void imprimePontuacao(int p, int v);
-
-        void imprimePontuacao(int p, int v, int p2, int v2);
-
-        char getCaracter() const { return caracter; }
-
-        void setLeitura(const bool l) { this->leitura = l; }
-
         void entraString(char c);
-
-        void limpaTextoDigitado() { textoDigitado = ""; }
-
-        string getTextoDigitado() const { return textoDigitado; }
-
     };
 }
 

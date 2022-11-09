@@ -17,12 +17,6 @@ namespace Controladoras {
 
         void colocarEstado(Estado *est) { estados.push(est); }
 
-        const bool pilhaVazia() { return estados.empty(); }
-
-        const unsigned int pilhaTam() const { return estados.size(); }
-
-        Estado *getTopo() const { if (not estados.empty()) return estados.top(); }
-
         bool executar();
 
     private:

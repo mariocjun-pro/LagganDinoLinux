@@ -11,13 +11,7 @@ namespace Personagens {
     class Personagem : public Entidade {
     protected:
         float velocidade;
-        bool atacando;
-        float totalT;
         bool aDireita;
-        short int lado;
-        bool tomarDano;
-        bool ferido;
-        bool ataquePronto;
     public:
         Personagem(GerenciadorGrafico *gerenciadorGrafico = nullptr);
 
