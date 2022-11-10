@@ -1,27 +1,23 @@
 #include "Fase.h"
 #include "Jogo.h"
 
-Fase::Fase(Jogo* jooj) :
-		Ent()
-{
-	pJogo = jooj;
+Fase::Fase(Jogo *jooj) :
+        Ent() {
+    pJogo = jooj;
 }
 
-Fase::~Fase()
-{
+Fase::~Fase() {
 }
 
-void Fase::executar()
-{
-
-}
-void Fase::gerenciar_colisoes()
-{
+void Fase::executar() {
 
 }
 
-void Fase::reiniciar()
-{
+void Fase::gerenciar_colisoes() {
+
+}
+
+void Fase::reiniciar() {
 
 }
 

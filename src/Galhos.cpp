@@ -1,10 +1,8 @@
 #include "Galhos.h"
 
-Galhos::Galhos()
-{
+Galhos::Galhos() {
 }
 
-Galhos::~Galhos()
-{
+Galhos::~Galhos() {
 }
 

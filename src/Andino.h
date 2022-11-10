@@ -1,24 +1,26 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Inimigo.h"
 
 class Andino
-		: public Inimigo {
+        : public Inimigo {
 public:
-	Andino(Gerenciador_Grafico* g = NULL, Vector3f f = Vector3f(0.0f, 0.0f, 0.0f));
-	~Andino();
+    Andino(Gerenciador_Grafico *g = NULL, Vector3f f = Vector3f(0.0f, 0.0f, 0.0f));
 
-	void mover();
-	//void morrer();
+    ~Andino();
 
-	void randomiza()
-	{
-		srand(time(NULL));
+    void mover();
+    //void morrer();
 
-	}
+    void randomiza() {
+        srand(time(NULL));
+
+    }
+
 private:
-	Vector3f fronteira;
-	float pulo;
-	float posicaoInicial;
+    Vector3f fronteira;
+    float pulo;
+    float posicaoInicial;
 };
 

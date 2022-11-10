@@ -1,17 +1,19 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Jogador.h"
 
 class Huatli
-		: public Jogador {
+        : public Jogador {
 public:
-	Huatli(Gerenciador_Grafico* g = NULL);
-	~Huatli();
+    Huatli(Gerenciador_Grafico *g = NULL);
 
-	void mover();
+    ~Huatli();
+
+    void mover();
 
 private:
 
-	float pulo;
+    float pulo;
 
 };

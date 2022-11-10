@@ -1,156 +1,153 @@
 #include "Montanha.h"
 #include "Jogo.h"
 
-Montanha::Montanha(Jogo* jooj) :
-		Fase(jooj)
-{
+Montanha::Montanha(Jogo *jooj) :
+        Fase(jooj) {
 
-	texturaFundo[0].loadFromFile("../Texturas//Montanha//parallax-mountain-bg.png");
-	texturaFundo[1].loadFromFile("../Texturas//Montanha//parallax-mountain-montain-far.png");
-	texturaFundo[2].loadFromFile("../Texturas//Montanha//parallax-mountain-mountains.png");
-	texturaFundo[3].loadFromFile("../Texturas//Montanha//parallax-mountain-trees.png");
-	texturaFundo[4].loadFromFile("../Texturas//Montanha//parallax-mountain-foreground-trees.png");
+    texturaFundo[0].loadFromFile("../Texturas//Montanha//parallax-mountain-bg.png");
+    texturaFundo[1].loadFromFile("../Texturas//Montanha//parallax-mountain-montain-far.png");
+    texturaFundo[2].loadFromFile("../Texturas//Montanha//parallax-mountain-mountains.png");
+    texturaFundo[3].loadFromFile("../Texturas//Montanha//parallax-mountain-trees.png");
+    texturaFundo[4].loadFromFile("../Texturas//Montanha//parallax-mountain-foreground-trees.png");
 
-	int i;
-	for (i = 0; i<5; i++) {
-		fundo[i].setSize(Vector2f(1280.0f, 960.0f));
-		fundo[i].setOrigin(Vector2f(1280.0f/2.0f, 960.0f/2.0f));
-		fundo[i].setTexture(&(texturaFundo[i]));
-	}
-
-
-	/*ifstream plats ("Plataformas.txt", ios::in);
-	char c;
-	Vector2f pos, tam;*/
-
-	float aux, aux2;
-
-	//Instanciar jogador
-
-	jogador = new Huatli(pJogo->getGerenciador());
-	pJogo->setJogador1(jogador);
-	entidades.incluir(static_cast<Entidade*>(jogador));
+    int i;
+    for (i = 0; i < 5; i++) {
+        fundo[i].setSize(Vector2f(1280.0f, 960.0f));
+        fundo[i].setOrigin(Vector2f(1280.0f / 2.0f, 960.0f / 2.0f));
+        fundo[i].setTexture(&(texturaFundo[i]));
+    }
 
 
-	/*if (!plats)
-	{
-		cout << "AA";
-	}
+    /*ifstream plats ("Plataformas.txt", ios::in);
+    char c;
+    Vector2f pos, tam;*/
 
-	plats >> contPlat;
+    float aux, aux2;
 
-	//Instancia a plataforma do jogador
+    //Instanciar jogador
 
-	plats >> tam.x >> tam.y;
-	plats >> pos.x >> pos.y;
-	plats >> c;
+    jogador = new Huatli(pJogo->getGerenciador());
+    pJogo->setJogador1(jogador);
+    entidades.incluir(static_cast<Entidade *>(jogador));
 
-	plat = new Plataforma(tam);
-	plat->setGerenciador(pJogo->getGerenciador());
-	plat->getCorpoGraf()->getCorpo()->setPosition(pos);
-	entidades.incluir(static_cast<Entidade*>(plat));
 
-	//Instancia as outras plataformas
+    /*if (!plats)
+    {
+        cout << "AA";
+    }
 
-	for (int i = 1; i < contPlat; i++)
-	{
-		plats >> tam.x >> tam.y;
-		plats >> pos.x >> pos.y;
-		plats >> c;
+    plats >> contPlat;
 
-		plat = new Plataforma(tam);
-		plat->setGerenciador(pJogo->getGerenciador());
-		plat->getCorpoGraf()->getCorpo()->setPosition(pos);
-		entidades.incluir(static_cast<Entidade*>(plat));
+    //Instancia a plataforma do jogador
 
-		aux = (plat->getTamanho().x / 2.0f) - 50.0f;
-		aux2 = (plat->getTamanho().y / 2.0f) + 50.0f;
-		andi = new Andino(pJogo->getGerenciador(), Vector3f(plat->getPosicao().x - aux, plat->getPosicao().x + aux, plat->getPosicao().y - aux2));
-		andi->setPlataforma(plat);
-		entidades.incluir(static_cast<Entidade*>(andi));
-	}
+    plats >> tam.x >> tam.y;
+    plats >> pos.x >> pos.y;
+    plats >> c;
 
-	plats.close();*/
+    plat = new Plataforma(tam);
+    plat->setGerenciador(pJogo->getGerenciador());
+    plat->getCorpoGraf()->getCorpo()->setPosition(pos);
+    entidades.incluir(static_cast<Entidade*>(plat));
 
-	// Instanciar plataformas
+    //Instancia as outras plataformas
 
-	//Posicao em y da plataforma:
-	//Tamanho da janela (960) - (plat->getTamanho().y / 2.0f) == mais baixo possivel
+    for (int i = 1; i < contPlat; i++)
+    {
+        plats >> tam.x >> tam.y;
+        plats >> pos.x >> pos.y;
+        plats >> c;
 
-	plat = new Plataforma(Vector2f(500.0f, 60.0f));
-	plat->setGerenciador(pJogo->getGerenciador());
-	plat->getCorpoGraf()->getCorpo()->setPosition(Vector2f(0, 830));
-	entidades.incluir(static_cast<Entidade*>(plat));
+        plat = new Plataforma(tam);
+        plat->setGerenciador(pJogo->getGerenciador());
+        plat->getCorpoGraf()->getCorpo()->setPosition(pos);
+        entidades.incluir(static_cast<Entidade*>(plat));
 
-	plat = new Plataforma(Vector2f(500.0f, 100.0f));
-	plat->setGerenciador(pJogo->getGerenciador());
-	plat->getCorpoGraf()->getCorpo()->setPosition(Vector2f(900, 830));
-	plat->getCorpoGraf()->getCorpo()->setFillColor(sf::Color::White);
-	entidades.incluir(static_cast<Entidade*>(plat));
+        aux = (plat->getTamanho().x / 2.0f) - 50.0f;
+        aux2 = (plat->getTamanho().y / 2.0f) + 50.0f;
+        andi = new Andino(pJogo->getGerenciador(), Vector3f(plat->getPosicao().x - aux, plat->getPosicao().x + aux, plat->getPosicao().y - aux2));
+        andi->setPlataforma(plat);
+        entidades.incluir(static_cast<Entidade*>(andi));
+    }
 
-	//cout << plat->getPosicao().x << " " << plat->getPosicao().y << endl;
+    plats.close();*/
 
-	aux = (plat->getTamanho().x/2.0f)-50.0f;
-	aux2 = (plat->getTamanho().y/2.0f)+50.0f;
-	andi = new Andino(pJogo->getGerenciador(),
-			Vector3f(plat->getPosicao().x-aux, plat->getPosicao().x+aux, plat->getPosicao().y-aux2));
-	andi->setPlataforma(plat);
-	entidades.incluir(static_cast<Entidade*>(andi));
+    // Instanciar plataformas
 
-	plat = new Plataforma(Vector2f(500.0f, 100.0f));
-	plat->setGerenciador(pJogo->getGerenciador());
-	plat->getCorpoGraf()->getCorpo()->setPosition(Vector2f(1700, 630));
-	plat->getCorpoGraf()->getCorpo()->setFillColor(sf::Color::White);
-	entidades.incluir(static_cast<Entidade*>(plat));
+    //Posicao em y da plataforma:
+    //Tamanho da janela (960) - (plat->getTamanho().y / 2.0f) == mais baixo possivel
 
-	aux = (plat->getTamanho().x/2.0f)-50.0f;
-	aux2 = (plat->getTamanho().y/2.0f)+50.0f;
-	andi = new Andino(pJogo->getGerenciador(),
-			Vector3f(plat->getPosicao().x-aux, plat->getPosicao().x+aux, plat->getPosicao().y-aux2));
-	andi->setPlataforma(plat);
-	entidades.incluir(static_cast<Entidade*>(andi));
+    plat = new Plataforma(Vector2f(500.0f, 60.0f));
+    plat->setGerenciador(pJogo->getGerenciador());
+    plat->getCorpoGraf()->getCorpo()->setPosition(Vector2f(0, 830));
+    entidades.incluir(static_cast<Entidade *>(plat));
 
-	plat = new Plataforma(Vector2f(500.0f, 100.0f));
-	plat->setGerenciador(pJogo->getGerenciador());
-	plat->getCorpoGraf()->getCorpo()->setPosition(Vector2f(900, 380));
-	plat->getCorpoGraf()->getCorpo()->setFillColor(sf::Color::White);
-	entidades.incluir(static_cast<Entidade*>(plat));
+    plat = new Plataforma(Vector2f(500.0f, 100.0f));
+    plat->setGerenciador(pJogo->getGerenciador());
+    plat->getCorpoGraf()->getCorpo()->setPosition(Vector2f(900, 830));
+    plat->getCorpoGraf()->getCorpo()->setFillColor(sf::Color::White);
+    entidades.incluir(static_cast<Entidade *>(plat));
 
-	aux = (plat->getTamanho().x/2.0f)-50.0f;
-	aux2 = (plat->getTamanho().y/2.0f)+50.0f;
-	andi = new Andino(pJogo->getGerenciador(),
-			Vector3f(plat->getPosicao().x-aux, plat->getPosicao().x+aux, plat->getPosicao().y-aux2));
-	andi->setPlataforma(plat);
-	entidades.incluir(static_cast<Entidade*>(andi));
+    //cout << plat->getPosicao().x << " " << plat->getPosicao().y << endl;
+
+    aux = (plat->getTamanho().x / 2.0f) - 50.0f;
+    aux2 = (plat->getTamanho().y / 2.0f) + 50.0f;
+    andi = new Andino(pJogo->getGerenciador(),
+                      Vector3f(plat->getPosicao().x - aux, plat->getPosicao().x + aux, plat->getPosicao().y - aux2));
+    andi->setPlataforma(plat);
+    entidades.incluir(static_cast<Entidade *>(andi));
+
+    plat = new Plataforma(Vector2f(500.0f, 100.0f));
+    plat->setGerenciador(pJogo->getGerenciador());
+    plat->getCorpoGraf()->getCorpo()->setPosition(Vector2f(1700, 630));
+    plat->getCorpoGraf()->getCorpo()->setFillColor(sf::Color::White);
+    entidades.incluir(static_cast<Entidade *>(plat));
+
+    aux = (plat->getTamanho().x / 2.0f) - 50.0f;
+    aux2 = (plat->getTamanho().y / 2.0f) + 50.0f;
+    andi = new Andino(pJogo->getGerenciador(),
+                      Vector3f(plat->getPosicao().x - aux, plat->getPosicao().x + aux, plat->getPosicao().y - aux2));
+    andi->setPlataforma(plat);
+    entidades.incluir(static_cast<Entidade *>(andi));
+
+    plat = new Plataforma(Vector2f(500.0f, 100.0f));
+    plat->setGerenciador(pJogo->getGerenciador());
+    plat->getCorpoGraf()->getCorpo()->setPosition(Vector2f(900, 380));
+    plat->getCorpoGraf()->getCorpo()->setFillColor(sf::Color::White);
+    entidades.incluir(static_cast<Entidade *>(plat));
+
+    aux = (plat->getTamanho().x / 2.0f) - 50.0f;
+    aux2 = (plat->getTamanho().y / 2.0f) + 50.0f;
+    andi = new Andino(pJogo->getGerenciador(),
+                      Vector3f(plat->getPosicao().x - aux, plat->getPosicao().x + aux, plat->getPosicao().y - aux2));
+    andi->setPlataforma(plat);
+    entidades.incluir(static_cast<Entidade *>(andi));
 }
 
-Montanha::~Montanha()
-{
+Montanha::~Montanha() {
 
 }
 
-void Montanha::executar()
-{
+void Montanha::executar() {
 
-	for (i = 0; i<5; i++) {
-		fundo[i].setPosition(pJogo->getGerenciador()->getVisao()->getCenter());
-		pJogo->getGerenciador()->desenhar(&fundo[i]);
-	}
-	entidades.executar();
-	entidades.imprimir();
-	entidades.colidir(jogador);
+    for (i = 0; i < 5; i++) {
+        fundo[i].setPosition(pJogo->getGerenciador()->getVisao()->getCenter());
+        pJogo->getGerenciador()->desenhar(&fundo[i]);
+    }
+    entidades.executar();
+    entidades.imprimir();
+    entidades.colidir(jogador);
 
 
-	/*plat->executar();
-	if(andi)
-		andi->mover();
-	jogador->executar();
-	gerenciar_colisoes();
-	if(andi)
-		andi->imprimir();
-	jogador->imprimir();
-	plat->imprimir();
-	plat2->imprimir();*/
+    /*plat->executar();
+    if(andi)
+        andi->mover();
+    jogador->executar();
+    gerenciar_colisoes();
+    if(andi)
+        andi->imprimir();
+    jogador->imprimir();
+    plat->imprimir();
+    plat2->imprimir();*/
 
 }
 

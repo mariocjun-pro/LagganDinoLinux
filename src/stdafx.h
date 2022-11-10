@@ -3,6 +3,7 @@
 /* ----- BIBLIOTECAS ----- */
 
 #include <SFML/Graphics.hpp>
+
 using namespace sf;
 
 #include <iostream>
@@ -12,4 +13,5 @@ using namespace sf;
 #include <cstdlib>
 #include <ctime>
 #include <string>
+
 using namespace std;

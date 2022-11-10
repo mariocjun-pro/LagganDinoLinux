@@ -1,12 +1,15 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Entidade.h"
 
 class Projetil
-		: public Entidade {
+        : public Entidade {
 public:
-	Projetil();
-	~Projetil();
+    Projetil();
+
+    ~Projetil();
+
 private:
 
 };

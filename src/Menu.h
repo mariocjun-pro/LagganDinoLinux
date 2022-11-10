@@ -1,12 +1,15 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Ent.h"
 
 class Menu
-		: public Ent {
+        : public Ent {
 public:
-	Menu();
-	~Menu();
+    Menu();
+
+    ~Menu();
+
 private:
 
 };

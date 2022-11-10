@@ -1,29 +1,34 @@
 #pragma once
+
 #include "stdafx.h"
 
 class Corpo_Grafico;
 
 class Animadora {
 public:
-	Animadora(Corpo_Grafico* corpo = NULL);
-	~Animadora();
+    Animadora(Corpo_Grafico *corpo = NULL);
 
-	void inicializa(Vector2f margemErro, Vector2u quantidadeQuadros, Vector2u TotalDeQuadros);
-	void atualizar(float dT, bool aDireita, unsigned int comecoP, unsigned int quantidadeQuadrosX, float troca,
-			unsigned int linha);
-	void atualizarLinhasSequencial(float dT, bool aDireita, Vector2u quantidadeQuadros, unsigned int quadrosUltimaLinha,
-			float troca);
+    ~Animadora();
+
+    void inicializa(Vector2f margemErro, Vector2u quantidadeQuadros, Vector2u TotalDeQuadros);
+
+    void atualizar(float dT, bool aDireita, unsigned int comecoP, unsigned int quantidadeQuadrosX, float troca,
+                   unsigned int linha);
+
+    void atualizarLinhasSequencial(float dT, bool aDireita, Vector2u quantidadeQuadros, unsigned int quadrosUltimaLinha,
+                                   float troca);
+
 private:
-	Corpo_Grafico* pCorpo;
+    Corpo_Grafico *pCorpo;
 
-	sf::IntRect quadro;
-	Texture* textura;
+    sf::IntRect quadro;
+    Texture *textura;
 
-	int comeco;
-	Vector2u quadrosAtuais;
-	Vector2u qtdQuadros;
-	Vector2f margem;
-	float tempoTroca;
-	float tempoTotal;
+    int comeco;
+    Vector2u quadrosAtuais;
+    Vector2u qtdQuadros;
+    Vector2f margem;
+    float tempoTroca;
+    float tempoTotal;
 };
 

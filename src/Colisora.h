@@ -1,20 +1,24 @@
 #pragma once
+
 #include "stdafx.h"
 
 class Colisora {
 public:
-	Colisora(RectangleShape* crp);
-	~Colisora();
+    Colisora(RectangleShape *crp);
 
-	bool verificarColisao(Colisora* outro, Vector2f& direcao, float f);
+    ~Colisora();
 
-	void mover(float dx, float dy) { corpo->move(dx, dy); }
+    bool verificarColisao(Colisora *outro, Vector2f &direcao, float f);
 
-	//Sets e Gets
+    void mover(float dx, float dy) { corpo->move(dx, dy); }
 
-	Vector2f getPosicao() { return corpo->getPosition(); }
-	Vector2f getTamanhoMetade() { return corpo->getSize()/2.0f; }
+    //Sets e Gets
+
+    Vector2f getPosicao() { return corpo->getPosition(); }
+
+    Vector2f getTamanhoMetade() { return corpo->getSize() / 2.0f; }
+
 private:
-	RectangleShape* corpo;
+    RectangleShape *corpo;
 };
 

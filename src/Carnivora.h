@@ -1,12 +1,15 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Obstaculo.h"
 
 class Carnivora
-		: public Obstaculo {
+        : public Obstaculo {
 public:
-	Carnivora();
-	~Carnivora();
+    Carnivora();
+
+    ~Carnivora();
+
 private:
 
 };

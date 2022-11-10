@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Fase.h"
 #include "Jogador.h"
@@ -11,28 +12,31 @@
 
 class Jogo {
 public:
-	Jogo();
-	~Jogo();
+    Jogo();
 
-	void executar();
+    ~Jogo();
 
-	//Sets e Gets
+    void executar();
 
-	Gerenciador_Grafico* getGerenciador() { return &GG; }
+    //Sets e Gets
 
-	void setJogador1(Huatli* jogador1) { j1 = jogador1; }
-	void setJogador2(Angrath* jogador2) { j2 = jogador2; }
+    Gerenciador_Grafico *getGerenciador() { return &GG; }
+
+    void setJogador1(Huatli *jogador1) { j1 = jogador1; }
+
+    void setJogador2(Angrath *jogador2) { j2 = jogador2; }
+
 private:
-	Huatli* j1;
-	Angrath* j2;
+    Huatli *j1;
+    Angrath *j2;
 
-	Menu m1;
+    Menu m1;
 
-	Montanha* montanha;
-	Floresta* f2;
+    Montanha *montanha;
+    Floresta *f2;
 
-	Gerenciador_Grafico GG;
+    Gerenciador_Grafico GG;
 
-	float dT;
-	Clock clock;
+    float dT;
+    Clock clock;
 };

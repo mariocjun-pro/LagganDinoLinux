@@ -1,10 +1,9 @@
 #include "stdafx.h"
 #include "Jogo.h"
 
-int main(void)
-{
-	Jogo jogo;
-	jogo.executar();
+int main(void) {
+    Jogo jogo;
+    jogo.executar();
 
-	return 0;
+    return 0;
 }

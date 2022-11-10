@@ -1,29 +1,33 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Personagem.h"
 #include "Inimigo.h"
 
 class Jogador
-		: public Personagem {
+        : public Personagem {
 public:
-	Jogador(Gerenciador_Grafico* gerenciador = NULL);
-	virtual ~Jogador();
+    Jogador(Gerenciador_Grafico *gerenciador = NULL);
 
-	virtual void morrer();
-	bool atacar(Inimigo* inim);
+    virtual ~Jogador();
 
-	void imprimir();
+    virtual void morrer();
 
-	void executar();
+    bool atacar(Inimigo *inim);
 
-	//Sets e Gets
+    void imprimir();
 
-	const bool getAtacando() const { return atacando; }
-	Corpo_Grafico* getHitbox() { return &hitbox; }
+    void executar();
+
+    //Sets e Gets
+
+    const bool getAtacando() const { return atacando; }
+
+    Corpo_Grafico *getHitbox() { return &hitbox; }
 
 protected:
-	Vector2f posInicial;
-	Corpo_Grafico hitbox;
+    Vector2f posInicial;
+    Corpo_Grafico hitbox;
 
 };
 

@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Fase.h"
 #include "Plataforma.h"
@@ -7,28 +8,29 @@
 #include "Andino.h"
 
 class Montanha
-		: public Fase {
+        : public Fase {
 public:
-	Montanha(Jogo* jooj = NULL);
-	~Montanha();
+    Montanha(Jogo *jooj = NULL);
 
-	void executar();
-	//void gerenciar_colisoes();
+    ~Montanha();
+
+    void executar();
+    //void gerenciar_colisoes();
 
 private:
 
-	Plataforma* plat;
-	//Plataforma* plat2;
-	Andino* andi;
+    Plataforma *plat;
+    //Plataforma* plat2;
+    Andino *andi;
 
-	RectangleShape fundo[5];
-	Texture texturaFundo[5];
+    RectangleShape fundo[5];
+    Texture texturaFundo[5];
 
-	int i;
+    int i;
 
-	unsigned short int contPlat;
-	unsigned short int contInim;
-	unsigned short int contObs;
-	unsigned short int contJog;
+    unsigned short int contPlat;
+    unsigned short int contInim;
+    unsigned short int contObs;
+    unsigned short int contJog;
 };
 

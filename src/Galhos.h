@@ -1,12 +1,15 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Obstaculo.h"
 
 class Galhos
-		: public Obstaculo {
+        : public Obstaculo {
 public:
-	Galhos();
-	~Galhos();
+    Galhos();
+
+    ~Galhos();
+
 private:
 
 };

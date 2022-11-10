@@ -1,14 +1,16 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Entidade.h"
 
 class Obstaculo
-		: public Entidade {
+        : public Entidade {
 public:
-	Obstaculo();
-	virtual ~Obstaculo();
+    Obstaculo();
 
-	void Colidindo(Vector2f direcao) { };
+    virtual ~Obstaculo();
+
+    void Colidindo(Vector2f direcao) {};
 
 protected:
 
