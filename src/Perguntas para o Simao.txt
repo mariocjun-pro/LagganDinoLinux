@@ -1,0 +1,20 @@
+*Pode alterar o diagrama de classes no site?
+R: Desde que seja para melhor
+
+*Atributos de uma clase aninhada privada podem ser publicos?
+R: Não, esta deve ter os respectivos sets e gets
+
+*Pode usar templates prontos da STL?
+R: Sim, mas também deve utilizar a lista própria
+
+*Por que todo mundo deriva da entidade que tem x e y?
+R: Fazer uma solução com uma classe que a Entidade deriva
+
+*Fazer sets e gets inline no .h?
+R: Pode, porém será consumido mais memória
+
+*É indicado escrever valores assim: "0.0f"?
+R: É bem indicado
+
+*num_vidas é até dar game over?
+R: SIM

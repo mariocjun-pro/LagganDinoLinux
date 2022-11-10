@@ -1,0 +1,4 @@
+Tamanho do pulo do jogador
+
+Horizontal: 40
+Vertical:
