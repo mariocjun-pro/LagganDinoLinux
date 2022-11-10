@@ -6,7 +6,7 @@
 class Personagem
         : public Entidade {
 public:
-    Personagem(Gerenciador_Grafico *gerenciador = NULL);
+    explicit Personagem(Gerenciador_Grafico *gerenciador = NULL);
 
     virtual ~Personagem();
 
@@ -19,18 +19,19 @@ public:
     //virtual void morrer() = 0;
     virtual bool verificarColisao(Colisora *outro, Vector2f &direcao, float f);
 
-    //Gerenciadoras de colis�o
+    //Gerenciadoras de colisão
 
-    virtual bool verificarAtacando(Colisora *outro, Vector2f &direcao) {}
-    //Retorna true se est� havendo colisao e o outro est� sobrevivendo � colis�o
+    virtual bool verificarAtacando(Colisora *outro, Vector2f &direcao) { return false; }
+    //Retorna true se está havendo colisao e o outro está sobrevivendo à colisão
 
     virtual bool verificarColisao(Colisora *outro, Vector2f &direcao) {
         return corpo.getColisora()->verificarColisao(outro, direcao, 0.0f);
     }
-    //Retorna true se est� havendo colis�o
+    //Retorna true se está havendo colisão
 
-    virtual bool verificarAtaque(Colisora *outro) {}
-    //Retorna true se est� havendo colis�o e se o jogador pode matar quem esta entidade
+    virtual bool verificarAtaque(Colisora *outro) { return false; }
+    //Retorna true se está havendo colisão e se o jogador pode matar quem esta entidade
+
 
     virtual void animar(Vector2f movimento);
 

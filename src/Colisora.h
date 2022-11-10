@@ -4,7 +4,7 @@
 
 class Colisora {
 public:
-    Colisora(RectangleShape *crp);
+    explicit Colisora(RectangleShape *crp);
 
     ~Colisora();
 

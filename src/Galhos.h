@@ -3,7 +3,7 @@
 #include "stdafx.h"
 #include "Obstaculo.h"
 
-class Galhos
+class __attribute__((unused)) Galhos
         : public Obstaculo {
 public:
     Galhos();

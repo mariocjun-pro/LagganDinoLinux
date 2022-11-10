@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 
-class Persistidora {
+class __attribute__((unused)) Persistidora {
 public:
     Persistidora();
 

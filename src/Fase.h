@@ -11,7 +11,7 @@ class Jogo;
 class Fase
         : public Ent {
 public:
-    Fase(Jogo *jooj = NULL);
+    explicit Fase(Jogo *jooj = NULL);
 
     virtual ~Fase();
 

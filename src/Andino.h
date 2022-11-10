@@ -6,7 +6,7 @@
 class Andino
         : public Inimigo {
 public:
-    Andino(Gerenciador_Grafico *g = NULL, Vector3f f = Vector3f(0.0f, 0.0f, 0.0f));
+    explicit Andino(Gerenciador_Grafico *g = NULL, Vector3f f = Vector3f(0.0f, 0.0f, 0.0f));
 
     ~Andino();
 

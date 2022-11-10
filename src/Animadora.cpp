@@ -14,7 +14,6 @@ Animadora::~Animadora() {
 
 void Animadora::inicializa(Vector2f margemErro, Vector2u quantidadeQuadros, Vector2u TotalDeQuadros) {
     qtdQuadros = quantidadeQuadros;
-    tempoTroca = 0.3f;
     tempoTotal = 0;
     comeco = 0;
     quadrosAtuais.x = 0;

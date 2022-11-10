@@ -10,7 +10,7 @@
 class Montanha
         : public Fase {
 public:
-    Montanha(Jogo *jooj = NULL);
+    explicit Montanha(Jogo *jooj = NULL);
 
     ~Montanha();
 

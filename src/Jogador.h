@@ -7,7 +7,7 @@
 class Jogador
         : public Personagem {
 public:
-    Jogador(Gerenciador_Grafico *gerenciador = NULL);
+    explicit Jogador(Gerenciador_Grafico *gerenciador = NULL);
 
     virtual ~Jogador();
 
@@ -21,7 +21,7 @@ public:
 
     //Sets e Gets
 
-    const bool getAtacando() const { return atacando; }
+    bool getAtacando() const { return atacando; }
 
     Corpo_Grafico *getHitbox() { return &hitbox; }
 

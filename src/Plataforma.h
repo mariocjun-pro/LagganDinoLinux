@@ -7,7 +7,7 @@
 class Plataforma
         : public Entidade {
 public:
-    Plataforma(Vector2f tam = Vector2f(100.0f, 100.0f), Texture *tex = NULL);
+    explicit Plataforma(Vector2f tam = Vector2f(100.0f, 100.0f), Texture *tex = NULL);
 
     ~Plataforma();
 
@@ -15,16 +15,16 @@ public:
 
     void Colidindo(Vector2f direcao) {};
 
-    //Gerenciadoras de colis�o
+    //Gerenciadoras de colisão
     bool verificarAtacando(Colisora *outro, Vector2f &direcao)
-    //Retorna true se est� havendo colisao e o outro est� sobrevivendo � colis�o
+    //Retorna true se está havendo colisao e o outro está sobrevivendo à colisão
     { return true; }
 
     bool verificarColisao(Colisora *outro, Vector2f &direcao);
-    //Retorna true se est� havendo colis�o
+    //Retorna true se está havendo colisão
 
     bool verificarAtaque(Colisora *outro, Vector2f &direcao)
-    //Retorna true se est� havendo colis�o e se o jogador pode matar quem esta entidade
+    //Retorna true se está havendo colisão e se o jogador pode matar quem esta entidade
     { return false; }
 
 private:

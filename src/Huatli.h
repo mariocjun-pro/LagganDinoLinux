@@ -6,7 +6,7 @@
 class Huatli
         : public Jogador {
 public:
-    Huatli(Gerenciador_Grafico *g = NULL);
+    explicit Huatli(Gerenciador_Grafico *g = NULL);
 
     ~Huatli();
 

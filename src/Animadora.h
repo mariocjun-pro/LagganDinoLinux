@@ -6,7 +6,7 @@ class Corpo_Grafico;
 
 class Animadora {
 public:
-    Animadora(Corpo_Grafico *corpo = NULL);
+    explicit Animadora(Corpo_Grafico *corpo = NULL);
 
     ~Animadora();
 

@@ -62,22 +62,20 @@ void ListaEntidade::limpar() {
 }
 
 void ListaEntidade::excluir(Lista<Entidade>::Elemento<Entidade> *no) {
-    Lista<Entidade>::Elemento<Entidade> *aux = NULL;
+            NULL;
 
-    if (no) {
-        if (no->getProx()) {
-            if (no->getAnt()) {
-                no->getAnt()->setProx(no->getProx());
-                no->getProx()->setAnt(no->getAnt());
-            } else {
-                no->getProx()->setAnt(NULL);
-            }
+    if (no->getProx()) {
+        if (no->getAnt()) {
+            no->getAnt()->setProx(no->getProx());
+            no->getProx()->setAnt(no->getAnt());
         } else {
-            no->getAnt()->setProx(NULL);
+            no->getProx()->setAnt(NULL);
         }
-        delete no->getAtual();
-        delete no;
+    } else {
+        no->getAnt()->setProx(NULL);
     }
+    delete no->getAtual();
+    delete no;
 }
 
 /*void ListaEntidade::excluir(int id) {

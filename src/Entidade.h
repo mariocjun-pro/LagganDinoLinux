@@ -11,7 +11,7 @@ class Plataforma;
 class Entidade
         : public Ent {
 public:
-    Entidade(Gerenciador_Grafico *gerenciador = NULL);
+    explicit Entidade(Gerenciador_Grafico *gerenciador = NULL);
 
     virtual ~Entidade();
 
@@ -40,18 +40,18 @@ public:
     //virtual bool verificarColisao(Colisora* outro, Vector2f& direcao) { return corpo.getColisora()->verificarColisao(outro, direcao, f); }
 
 
-    //Gerenciadoras de colis�o
+    //Gerenciadoras de colisão
 
     virtual bool verificarAtacando(Colisora *outro, Vector2f &direcao) { return true; }
-    //Retorna true se est� havendo colisao e o outro est� sobrevivendo � colis�o
+    //Retorna true se está havendo colisão e o outro está sobrevivendo à colisão
 
     virtual bool verificarColisao(Colisora *outro, Vector2f &direcao) {
         return corpo.getColisora()->verificarColisao(outro, direcao, 1.0f);
     }
-    //Retorna true se est� havendo colis�o
+    //Retorna true se está havendo colisão
 
     virtual bool verificarAtaque(Colisora *outro, Vector2f &direcao) { return false; }
-    //Retorna true se est� havendo colis�o e se o jogador pode matar quem esta entidade
+    //Retorna true se está havendo colisão e se o jogador pode matar quem esta entidade
 
     void setGerenciador(Gerenciador_Grafico *gerenciador) { pGG = gerenciador; }
 

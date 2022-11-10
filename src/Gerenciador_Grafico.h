@@ -22,7 +22,7 @@ public:
 
     void setDt(float delta) { dT = delta; }
 
-    const float getDt() const { return dT; }
+    float getDt() const { return dT; }
 
 private:
     RenderWindow janela;

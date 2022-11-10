@@ -3,7 +3,7 @@
 #include "stdafx.h"
 #include "Entidade.h"
 
-class Projetil
+class __attribute__((unused)) Projetil
         : public Entidade {
 public:
     Projetil();

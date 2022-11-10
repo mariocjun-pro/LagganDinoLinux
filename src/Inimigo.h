@@ -6,7 +6,7 @@
 class Inimigo
         : public Personagem {
 public:
-    Inimigo(Gerenciador_Grafico *g = NULL);
+    explicit Inimigo(Gerenciador_Grafico *g = NULL);
 
     virtual ~Inimigo();
 
@@ -17,12 +17,12 @@ public:
     //Gerenciadoras de colis�o
 
     virtual bool verificarAtacando(Colisora *outro, Vector2f &direcao);
-    //Retorna true se est� havendo colisao e o outro est� sobrevivendo � colis�o
+    //Retorna true se está havendo colisao e o outro está sobrevivendo à colisão
 
     virtual bool verificarAtaque(Colisora *outro, Vector2f &direcao) {
         return corpo.getColisora()->verificarColisao(outro, direcao, 1.0f);
     }
-    //Retorna true se est� havendo colis�o e se o jogador pode matar quem esta entidade
+    //Retorna true se está havendo colisão e se o jogador pode matar quem esta entidade
 
 protected:
     bool morto;
