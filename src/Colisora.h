@@ -1,24 +1,35 @@
 #pragma once
-
 #include "stdafx.h"
 
-class Colisora {
-public:
-    explicit Colisora(RectangleShape *crp);
+namespace GerenciadoresEntidades {
+    class Corpo_Grafico;
+}
+using namespace GerenciadoresEntidades;
 
-    ~Colisora();
+namespace Abstratas {
+    class Entidade;
+}
 
-    bool verificarColisao(Colisora *outro, Vector2f &direcao, float f);
+using namespace Abstratas;
 
-    void mover(float dx, float dy) { corpo->move(dx, dy); }
+namespace GerenciadoresFases {
+    class Colisora {
+    public:
+        Colisora();
+        ~Colisora();
 
-    //Sets e Gets
+        bool verificarColisao(Corpo_Grafico* c1, Corpo_Grafico* c2, Vector2f& direcao, float f);
 
-    Vector2f getPosicao() { return corpo->getPosition(); }
+        void colidindo(Entidade* e1, Vector2f direcao);
 
-    Vector2f getTamanhoMetade() { return corpo->getSize() / 2.0f; }
+        bool atacando(Entidade* e1, Entidade* e2, Vector2f& direcao);
+        bool colidir(Entidade* e1, Entidade* e2, Vector2f& direcao);
+        bool ataque(Entidade* e1, Entidade* e2, Vector2f& direcao);
 
-private:
-    RectangleShape *corpo;
-};
 
+        //Sets e Gets
+
+    private:
+    };
+
+}

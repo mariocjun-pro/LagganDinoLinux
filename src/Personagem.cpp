@@ -1,13 +1,26 @@
 #include "Personagem.h"
 
-Personagem::Personagem(Gerenciador_Grafico *gerenciador) :
-        Entidade(gerenciador), lado(-1), aDireita(false) {
-    atacando = false;
-    totalT = 0;
-    vidas = 3;
+using namespace Personagens;
+
+Personagem::Personagem(Gerenciador_Grafico* g):
+Entidade(g)
+{
+    hitbox = NULL;
+    ataquePronto = false;
     velocidade = 500.0f;
+
+    atacando = false;
+    totalT = 0.0f;
+
     noChao = true;
-    movimento = Vector2f(0.0f, 0.0f);
+
+    aDireita = false;
+    lado = 1;
+
+    podeMorrer = true;
+    
+    tomaDano = true;
+    ferido = false;
 }
 
 Personagem::~Personagem() {
@@ -17,58 +30,39 @@ void Personagem::executar() {
     mover();
 }
 
-void Personagem::imprimir() {
+void Personagem::imprimir(){
     pGG->desenhar(corpo.getCorpo());
 }
 
-void Personagem::Colidindo(Vector2f direcao) {
-    if (direcao.x < 0) //Colidindo na esquerda
-        movimento.x = 0;
-
-    else if (direcao.x > 0) //Colidindo na direita
-        movimento.x = 0;
-
-    if (direcao.y > 0) //Colidindo em cima
-    {
-        movimento.y = 0;
-    } else if (direcao.y < 0) //Colidindo em baixo
-    {
-        movimento.y = 0;
-        noChao = true;
-    }
-}
-
-bool Personagem::verificarColisao(Colisora *outro, Vector2f &direcao, float f) {
-    bool colidiu;
-    colidiu = corpo.getColisora()->verificarColisao(outro, direcao, f);
-    if (colidiu)
-        Colidindo(direcao);
-
-    return colidiu;
-}
-
-void Personagem::animar(Vector2f f) {
+void Personagem::animar(Vector2f movimento) {
     Vector2u animacao(0, 4);
     float tempoTrocaAnimacao = 0.3f;
-    if (f.x == 0.0f) {
+    if(ferido) {
+        animacao.x = 14;
+        animacao.y = 3;
+    }
+    else if (movimento.x == 0.0f) {
         //Animação parado
-        if (atacando) {
+        if(atacando) {
             animacao.x = 17;
             animacao.y = 1;
         }
-    } else {
+    }
+    else {
         tempoTrocaAnimacao = 0.2f;
-        if (atacando) {
+        if(atacando) {
             animacao.x = 18;
             animacao.y = 5;
-        } else {
+        }
+        else {
             animacao.x = 4;
             animacao.y = 5;
         }
-        if (f.x > 0.0f) {
+        if (movimento.x > 0.0f) {
             //Animação de andar para a direita
             aDireita = true;
-        } else {
+        }
+        else {
             //Animação de andar para a esquerda
             aDireita = false;
         }

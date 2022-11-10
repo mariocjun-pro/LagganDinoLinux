@@ -1,42 +1,38 @@
 #pragma once
-
 #include "stdafx.h"
-#include "Fase.h"
-#include "Jogador.h"
-#include "Menu.h"
 #include "Gerenciador_Grafico.h"
-#include "Montanha.h"
-#include "Floresta.h"
-#include "Huatli.h"
-#include "Angrath.h"
+#include "Estado.h"
+#include "PilhaEstados.h"
 
-class Jogo {
-public:
-    Jogo();
+using namespace Estados;
+// Singleton
+namespace Controladoras {
+    class Jogo {        
+    public:
+        static Jogo* CriarJogo();
+        ~Jogo();
 
-    ~Jogo();
+        
+        void executar();
 
-    void executar();
+        void tirarEstado(bool excluir = true) { pilha.tirarEstado(excluir); }
+        void colocarEstado(Estado* est) { pilha.colocarEstado(est); }
+        const bool pilhaVazia() { return pilha.pilhaVazia(); }
+        const unsigned int pilhaTam() const { return pilha.pilhaTam(); }
+        Estado* getTopo() const { return pilha.getTopo(); }
 
-    //Sets e Gets
+        PilhaEstados operator--() {
+            this->tirarEstado(true);
+        }
+        //Sets e Gets
 
-    Gerenciador_Grafico *getGerenciador() { return &GG; }
+        Gerenciador_Grafico* getGerenciador() { return &GG; }
+    private:
+        Jogo();
+        static Jogo* jogoUnico;
 
-    void setJogador1(Huatli *jogador1) { j1 = jogador1; }
+        PilhaEstados pilha;
 
-    __attribute__((unused)) void setJogador2(Angrath *jogador2) { j2 = jogador2; }
-
-private:
-    Huatli *j1;
-    __attribute__((unused)) Angrath *j2{};
-
-    Menu m1;
-
-    __attribute__((unused)) Montanha *montanha;
-    __attribute__((unused)) Floresta *f2{};
-
-    Gerenciador_Grafico GG;
-
-    float dT{};
-    Clock clock;
-};
+        Gerenciador_Grafico GG;
+    };
+}

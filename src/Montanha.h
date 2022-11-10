@@ -1,36 +1,41 @@
 #pragma once
-
 #include "stdafx.h"
 #include "Fase.h"
 #include "Plataforma.h"
 #include "Jogador.h"
-#include "Huatli.h"
+#include "Guigo.h"
 #include "Andino.h"
+#include "Espinho.h"
+#include "Colisora.h"
+#include "Pedra.h"
+#include "Fundo.h"
+#include "Gerenciador_Grafico.h"
+#include "Atiradino.h"
+#include "Floresta.h"
+#include "FabricaFloresta.h"
 
-class Montanha
-        : public Fase {
-public:
-    explicit Montanha(Jogo *jooj = NULL);
+using namespace Abstratas;
+using namespace Listas;
+using namespace Jogadores;
+using namespace GerenciadoresFases;
+using namespace Inimigos;
+using namespace Personagens;
+using namespace Obstaculos;
+using namespace Estados;
+using namespace Fabricas;
 
-    ~Montanha();
+namespace Fases {
+    class Montanha : public Fase {
+    public:
+        Montanha(Jogo* jooAj = NULL, bool dois = false);
+        ~Montanha();
 
-    void executar();
-    //void gerenciar_colisoes();
+        void executar();
+        void trocaFase();
 
-private:
-
-    Plataforma *plat;
-    //platform* plat2;
-    Andino *andi;
-
-    RectangleShape fundo[5];
-    Texture texturaFundo[5];
-
-    __attribute__((unused)) int i{};
-
-    __attribute__((unused)) unsigned short int contPlat{};
-    __attribute__((unused)) unsigned short int contInim{};
-    __attribute__((unused)) unsigned short int contObs{};
-    __attribute__((unused)) unsigned short int contJog{};
-};
+    private:
+        FabricaFloresta fab;
+        
+    };
+}
 

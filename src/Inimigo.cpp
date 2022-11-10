@@ -1,31 +1,52 @@
 #include "Inimigo.h"
 #include "Plataforma.h"
+using namespace Inimigos;
 
-Inimigo::Inimigo(Gerenciador_Grafico *g) :
-        Personagem(g) {
-    vidas = 1;
-    morto = false;
+Inimigo::Inimigo(Gerenciador_Grafico* g):
+Personagem(g)
+{
+    podeMatar = true;
+    podeMorrer = true;
+    empurrao = 1.0f;
+
+    noChao = true;
+    aDireita = false;
+    
+    danoT = 0.0f;
 }
 
 Inimigo::~Inimigo() {
 }
 
-void Inimigo::executar() {
-    mover();
+void Inimigo::executar()
+{
+    if(tomaDano == false) {
+        danoT += pGG->getDt();
+        if(danoT >= 0.5f) {
+            danoT -= 0.5f;
+            tomaDano = true;
+            ferido = false;
+        }
+    }
+    
+    if(not ferido)
+        mover();
+    animar(movimento);
 }
 
-void Inimigo::imprimir() {
+void Inimigo::imprimir(){
     pGG->desenhar(corpo.getCorpo());
 }
 
-bool Inimigo::verificarAtacando(Colisora *outro, Vector2f &direcao) {
-    if (corpo.getColisora()->verificarColisao(plat->getColisora(), direcao, 0.0f)) {
-        noChao = true;
-        Colidindo(direcao);
+bool Inimigo::tomarDano() {
+    if(tomaDano) {
+        vidas--;
+        ferido = true;
+        tomaDano = false;
+        if(vidas < 0)
+            return true;
     }
-
-    if (verificarColisao(outro, direcao))
-        return false;
-    else
-        return true;
+    
+    
+    return false;
 }

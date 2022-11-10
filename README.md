@@ -7,5 +7,5 @@
 ### Para rodar no linux a unica coisa a se fazer é instalar o SFML (caso nao esteja instalado) com o comando:
 
 ```bash
-sudo apt-get install -y build-essential libsfml-dev
+sudo apt-get install -y build-essential libsfml-dev libpthread-stubs0-dev
 ```

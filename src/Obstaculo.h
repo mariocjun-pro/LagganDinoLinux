@@ -1,19 +1,19 @@
 #pragma once
-
 #include "stdafx.h"
 #include "Entidade.h"
 
-class Obstaculo
-        : public Entidade {
-public:
-    Obstaculo();
+using namespace Abstratas;
 
-    virtual ~Obstaculo();
+namespace Obstaculos {
+    class Obstaculo : public Entidade {
+    public:
+        Obstaculo(Gerenciador_Grafico* g);
+        virtual ~Obstaculo();
 
-    void Colidindo(Vector2f direcao) {};
+        virtual void executar() {}
+    protected:
 
-protected:
-
-};
+    };
+}
 
 

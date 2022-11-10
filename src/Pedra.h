@@ -1,17 +1,22 @@
 #pragma once
-
 #include "stdafx.h"
 #include "Obstaculo.h"
+#include "Plataforma.h"
 
-class __attribute__((unused)) Pedra
-        : public Obstaculo {
-public:
-    Pedra();
+using namespace Obstaculos;
+using namespace Auxiliares;
 
-    ~Pedra();
+namespace Obstaculos {
+    class Pedra : public Obstaculo {
+    public:
+        Pedra(Plataforma* plat);
+        ~Pedra();
 
-private:
+        void executar();
 
-};
+    private:
+
+    };
+}
 
 

@@ -1,16 +1,19 @@
 #pragma once
-
 #include "stdafx.h"
 #include "Entidade.h"
 
-class __attribute__((unused)) Projetil
-        : public Entidade {
-public:
-    Projetil();
+using namespace Abstratas;
+using namespace Auxiliares;
 
-    ~Projetil();
+namespace Auxiliares {
+    class Projetil : public Entidade {
+    public:
+        Projetil(Gerenciador_Grafico* GG = NULL);
+        ~Projetil();
 
-private:
+        void executar() { }
 
-};
+    private:
 
+    };
+}
