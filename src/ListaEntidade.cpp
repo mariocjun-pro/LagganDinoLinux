@@ -62,7 +62,6 @@ void ListaEntidade::limpar() {
 }
 
 void ListaEntidade::excluir(Lista<Entidade>::Elemento<Entidade> *no) {
-    NULL;
 
     if (no->getProx()) {
         if (no->getAnt()) {

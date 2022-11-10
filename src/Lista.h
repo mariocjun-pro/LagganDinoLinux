@@ -41,7 +41,7 @@ public:
 
     ~Lista();
 
-    void incluir(TL *elemento);
+    __attribute__((unused)) void incluir(TL *elemento);
 
     void limpar();
 
@@ -77,7 +77,7 @@ Lista<TL>::~Lista() {
 }
 
 template<class TL>
-void Lista<TL>::incluir(TL *elemento) {
+__attribute__((unused)) void Lista<TL>::incluir(TL *elemento) {
     if (!pPrimeiro) {
         pPrimeiro = new Elemento<TL>;
         pPrimeiro->setAtual(elemento);
