@@ -29,10 +29,10 @@ private:
     View visao;
     float dT;
 
-    float AJ;
-    float LJ;
-    float LP;
-    float AP;
+    __attribute__((unused)) float AJ;
+    __attribute__((unused)) float LJ;
+    __attribute__((unused)) float LP;
+    __attribute__((unused)) float AP;
 
 };
 

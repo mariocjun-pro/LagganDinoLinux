@@ -3,12 +3,13 @@
 Jogo::Jogo() {
     montanha = new Montanha(this);
     j1 = montanha->getJogador();
-    srand(time(NULL));
+    srand((unsigned)time(nullptr));
 }
 
 Jogo::~Jogo() {
 
 }
+
 
 void Jogo::executar() {
     while (GG.getAberto()) {

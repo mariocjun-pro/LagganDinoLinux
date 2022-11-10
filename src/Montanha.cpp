@@ -10,11 +10,10 @@ Montanha::Montanha(Jogo *jooj) :
     texturaFundo[3].loadFromFile("../Texturas//Montanha//parallax-mountain-trees.png");
     texturaFundo[4].loadFromFile("../Texturas//Montanha//parallax-mountain-foreground-trees.png");
 
-    int i;
-    for (i = 0; i < 5; i++) {
-        fundo[i].setSize(Vector2f(1280.0f, 960.0f));
-        fundo[i].setOrigin(Vector2f(1280.0f / 2.0f, 960.0f / 2.0f));
-        fundo[i].setTexture(&(texturaFundo[i]));
+    for (int j = 0; j < 5; j++) {
+        fundo[j].setSize(Vector2f(1280.0f, 960.0f));
+        fundo[j].setOrigin(Vector2f(1280.0f / 2.0f, 960.0f / 2.0f));
+        fundo[j].setTexture(&(texturaFundo[j]));
     }
 
 

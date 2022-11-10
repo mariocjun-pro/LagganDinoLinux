@@ -25,7 +25,7 @@ public:
     //Retorna true se está havendo colisão e se o jogador pode matar quem esta entidade
 
 protected:
-    bool morto;
+    __attribute__((unused)) bool morto;
 
 };
 

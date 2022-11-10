@@ -13,7 +13,7 @@ public:
 
     virtual void morrer();
 
-    bool atacar(Inimigo *inim);
+    __attribute__((unused)) bool atacar(Inimigo *inim);
 
     void imprimir();
 

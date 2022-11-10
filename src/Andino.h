@@ -13,7 +13,7 @@ public:
     void mover();
     //void morrer();
 
-    void randomiza() {
+    static __attribute__((unused)) void randomiza() {
         srand(time(NULL));
 
     }

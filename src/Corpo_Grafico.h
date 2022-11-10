@@ -20,11 +20,11 @@ public:
 
     Vector2f getPosicao() { return corpo->getPosition(); }
 
-    Vector2f getTamanho() { return corpo->getSize(); }
+    __attribute__((unused)) Vector2f getTamanho() { return corpo->getSize(); }
 
     Texture *getTextura() { return textura; }
 
-    void setTextura(string arquivo) { if (textura->loadFromFile(arquivo)) cout << "pass"; }
+    void setTextura(const string &arquivo) { if (textura->loadFromFile(arquivo)) cout << "pass"; }
 
     void inicializaAnimadora(Vector2f margem, Vector2u quantidadeQuadros, Vector2u TotalDeQuadros);
 

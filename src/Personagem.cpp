@@ -47,10 +47,10 @@ bool Personagem::verificarColisao(Colisora *outro, Vector2f &direcao, float f) {
     return colidiu;
 }
 
-void Personagem::animar(Vector2f movimento) {
+void Personagem::animar(Vector2f f) {
     Vector2u animacao(0, 4);
     float tempoTrocaAnimacao = 0.3f;
-    if (movimento.x == 0.0f) {
+    if (f.x == 0.0f) {
         //Animação parado
         if (atacando) {
             animacao.x = 17;
@@ -65,7 +65,7 @@ void Personagem::animar(Vector2f movimento) {
             animacao.x = 4;
             animacao.y = 5;
         }
-        if (movimento.x > 0.0f) {
+        if (f.x > 0.0f) {
             //Animação de andar para a direita
             aDireita = true;
         } else {

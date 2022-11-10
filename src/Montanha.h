@@ -26,11 +26,11 @@ private:
     RectangleShape fundo[5];
     Texture texturaFundo[5];
 
-    int i;
+    __attribute__((unused)) int i{};
 
-    unsigned short int contPlat;
-    unsigned short int contInim;
-    unsigned short int contObs;
-    unsigned short int contJog;
+    __attribute__((unused)) unsigned short int contPlat{};
+    __attribute__((unused)) unsigned short int contInim{};
+    __attribute__((unused)) unsigned short int contObs{};
+    __attribute__((unused)) unsigned short int contJog{};
 };
 

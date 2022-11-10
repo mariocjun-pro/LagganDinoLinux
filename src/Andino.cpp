@@ -1,7 +1,7 @@
 #include "Andino.h"
 
 Andino::Andino(Gerenciador_Grafico *g, Vector3f f) :
-        Inimigo(g), pulo(300), fronteira(f) {
+        Inimigo(g), fronteira(f), pulo(300) {
     noChao = true;
     velocidade = 200.0f;
 

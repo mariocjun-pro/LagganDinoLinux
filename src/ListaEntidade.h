@@ -25,7 +25,7 @@ public:
 private:
     Lista<Entidade> LEs;
 
-    void excluir(Lista<Entidade>::Elemento<Entidade> *no);
+    static void excluir(Lista<Entidade>::Elemento<Entidade> *no);
 };
 
 

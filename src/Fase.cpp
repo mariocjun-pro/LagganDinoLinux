@@ -13,11 +13,11 @@ void Fase::executar() {
 
 }
 
-void Fase::gerenciar_colisoes() {
+__attribute__((unused)) void Fase::gerenciar_colisoes() {
 
 }
 
-void Fase::reiniciar() {
+__attribute__((unused)) void Fase::reiniciar() {
 
 }
 

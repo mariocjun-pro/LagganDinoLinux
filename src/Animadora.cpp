@@ -67,8 +67,7 @@ void Animadora::atualizar(float dT, bool aDireita, unsigned int comecoP, unsigne
     quadro.height = aux.y;
 }
 
-void Animadora::atualizarLinhasSequencial(float dT, bool aDireita, Vector2u quantidadeQuadros,
-                                          unsigned int quadrosUltimaLinha, float troca) {
+void Animadora::atualizarLinhasSequencial(float dT, bool aDireita, Vector2u quantidadeQuadros, float troca) {
     qtdQuadros.x = quantidadeQuadros.x;
     qtdQuadros.y = quantidadeQuadros.y;
     tempoTotal += dT;

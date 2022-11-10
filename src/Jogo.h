@@ -24,19 +24,19 @@ public:
 
     void setJogador1(Huatli *jogador1) { j1 = jogador1; }
 
-    void setJogador2(Angrath *jogador2) { j2 = jogador2; }
+    __attribute__((unused)) void setJogador2(Angrath *jogador2) { j2 = jogador2; }
 
 private:
     Huatli *j1;
-    Angrath *j2;
+    __attribute__((unused)) Angrath *j2{};
 
     Menu m1;
 
-    Montanha *montanha;
-    Floresta *f2;
+    __attribute__((unused)) Montanha *montanha;
+    __attribute__((unused)) Floresta *f2{};
 
     Gerenciador_Grafico GG;
 
-    float dT;
+    float dT{};
     Clock clock;
 };

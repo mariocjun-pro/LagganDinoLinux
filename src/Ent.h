@@ -8,7 +8,7 @@ public:
 
     virtual ~Ent();
 
-    int getId() const { return id; }
+    __attribute__((unused)) int getId() const { return id; }
 
 protected:
     int id;

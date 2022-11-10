@@ -18,7 +18,7 @@ void Jogador::executar() {
     if (Keyboard::isKeyPressed(Keyboard::F) && totalT >= 0.5f) {
         atacando = true;
         totalT -= 0.5f;
-        hitbox.getCorpo()->setPosition(corpo.getPosicao().x + (100.0f * lado), corpo.getPosicao().y);
+        hitbox.getCorpo()->setPosition(corpo.getPosicao().x + (100.0f * (float) lado), corpo.getPosicao().y);
     }
     if (atacando && totalT >= 0.5f) {
         atacando = false;
@@ -26,7 +26,7 @@ void Jogador::executar() {
     }
 
     if (atacando)
-        hitbox.getAnimadora()->atualizarLinhasSequencial(pGG->getDt(), aDireita, Vector2u(8, 8), 5, 0.1f);
+        hitbox.getAnimadora()->atualizarLinhasSequencial(pGG->getDt(), aDireita, Vector2u(8, 8), 0.1f);
 
     if (corpo.getPosicao().y > 2000.0f)
         morrer();
@@ -41,7 +41,7 @@ void Jogador::morrer() {
     }
 }
 
-bool Jogador::atacar(Inimigo *inim) {
+__attribute__((unused)) bool Jogador::atacar(Inimigo *inim) {
 
     if (atacando) {
         Vector2f direcao(0.0f, 0.0f);

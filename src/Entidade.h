@@ -33,7 +33,7 @@ public:
 
     Corpo_Grafico *getCorpoGraf() { return &corpo; }
 
-    Plataforma *getPlataforma() { return plat; }
+    __attribute__((unused)) Plataforma *getPlataforma() { return plat; }
 
     void setPlataforma(Plataforma *p) { plat = p; }
 

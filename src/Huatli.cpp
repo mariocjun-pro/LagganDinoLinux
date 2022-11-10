@@ -20,7 +20,6 @@ Huatli::~Huatli() {
 
 void Huatli::mover() {
     (Vector2u(0, 0));
-    0.3f;
     float dT = pGG->getDt();
     movimento.x = 0;
 

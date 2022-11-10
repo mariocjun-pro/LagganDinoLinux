@@ -17,20 +17,20 @@ public:
 
     virtual void executar();
 
-    virtual void gerenciar_colisoes();
+    __attribute__((unused)) virtual void gerenciar_colisoes();
 
-    virtual void reiniciar();
+    __attribute__((unused)) virtual void reiniciar();
 
     //Sets e Gets
     Huatli *getJogador() { return jogador; }
 
-    void setJogo(Jogo *jooj) { pJogo = jooj; }
+    __attribute__((unused)) void setJogo(Jogo *jooj) { pJogo = jooj; }
 
 protected:
     ListaEntidade entidades;
 
     Jogo *pJogo;
-    Huatli *jogador;
+    Huatli *jogador{};
 
 };
 

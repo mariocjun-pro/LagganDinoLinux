@@ -29,11 +29,11 @@ public:
     }
     //Retorna true se está havendo colisão
 
-    virtual bool verificarAtaque(Colisora *outro) { return false; }
+    __attribute__((unused)) virtual bool verificarAtaque(Colisora *outro) { return false; }
     //Retorna true se está havendo colisão e se o jogador pode matar quem esta entidade
 
 
-    virtual void animar(Vector2f movimento);
+    virtual void animar(Vector2f f);
 
 protected:
     int vidas;

@@ -47,15 +47,15 @@ public:
 
     //Sets e Gets
 
-    void setPrimeiro(Elemento<TL> *primeiro) { pPrimeiro = primeiro; }
+    __attribute__((unused)) void setPrimeiro(Elemento<TL> *primeiro) { pPrimeiro = primeiro; }
 
     Elemento<TL> *getPrimeiro() const { return pPrimeiro; }
 
-    void setUltimo(Elemento<TL> *ultimo) { pUltimo = ultimo; }
+    __attribute__((unused)) void setUltimo(Elemento<TL> *ultimo) { pUltimo = ultimo; }
 
-    Elemento<TL> *getUltimo() const { return pUltimo; }
+    __attribute__((unused)) Elemento<TL> *getUltimo() const { return pUltimo; }
 
-    int getTamanho() const { return tamanho; }
+    __attribute__((unused)) int getTamanho() const { return tamanho; }
 
 private:
     int tamanho;
