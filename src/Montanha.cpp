@@ -4,11 +4,11 @@
 Montanha::Montanha(Jogo *jooj) :
         Fase(jooj) {
 
-    texturaFundo[0].loadFromFile("../Texturas//Montanha//parallax-mountain-bg.png");
-    texturaFundo[1].loadFromFile("../Texturas//Montanha//parallax-mountain-montain-far.png");
-    texturaFundo[2].loadFromFile("../Texturas//Montanha//parallax-mountain-mountains.png");
-    texturaFundo[3].loadFromFile("../Texturas//Montanha//parallax-mountain-trees.png");
-    texturaFundo[4].loadFromFile("../Texturas//Montanha//parallax-mountain-foreground-trees.png");
+    texturaFundo[0].loadFromFile("../assets//background//parallax-mountain-background.png");
+    texturaFundo[1].loadFromFile("../assets//background//parallax-mountain-montain-far.png");
+    texturaFundo[2].loadFromFile("../assets//background//parallax-mountain-mountains.png");
+    texturaFundo[3].loadFromFile("../assets//background//parallax-mountain-trees.png");
+    texturaFundo[4].loadFromFile("../assets//background//parallax-mountain-foreground-trees.png");
 
     for (int j = 0; j < 5; j++) {
         fundo[j].setSize(Vector2f(1280.0f, 960.0f));
@@ -37,13 +37,13 @@ Montanha::Montanha(Jogo *jooj) :
 
     plats >> contPlat;
 
-    //Instancia a plataforma do jogador
+    //Instancia a platform do jogador
 
     plats >> tam.x >> tam.y;
     plats >> pos.x >> pos.y;
     plats >> c;
 
-    plat = new Plataforma(tam);
+    plat = new platform(tam);
     plat->setGerenciador(pJogo->getGerenciador());
     plat->getCorpoGraf()->getCorpo()->setPosition(pos);
     entidades.incluir(static_cast<Entidade*>(plat));
@@ -56,7 +56,7 @@ Montanha::Montanha(Jogo *jooj) :
         plats >> pos.x >> pos.y;
         plats >> c;
 
-        plat = new Plataforma(tam);
+        plat = new platform(tam);
         plat->setGerenciador(pJogo->getGerenciador());
         plat->getCorpoGraf()->getCorpo()->setPosition(pos);
         entidades.incluir(static_cast<Entidade*>(plat));
@@ -72,7 +72,7 @@ Montanha::Montanha(Jogo *jooj) :
 
     // Instanciar plataformas
 
-    //Posicao em y da plataforma:
+    //Posicao em y da platform:
     //Tamanho da janela (960) - (plat->getTamanho().y / 2.0f) == mais baixo possivel
 
     plat = new Plataforma(Vector2f(500.0f, 60.0f));
@@ -150,7 +150,7 @@ void Montanha::executar() {
 
 }
 
-/*void Montanha::gerenciar_colisoes() {
+/*void background::gerenciar_colisoes() {
     Vector2f direcao;
 
     if(plat->verificarColisao(jogador->getColisora(), direcao, 1.0f))

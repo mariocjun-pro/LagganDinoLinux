@@ -20,7 +20,7 @@ public:
 private:
 
     Plataforma *plat;
-    //Plataforma* plat2;
+    //platform* plat2;
     Andino *andi;
 
     RectangleShape fundo[5];
