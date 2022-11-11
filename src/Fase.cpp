@@ -6,13 +6,13 @@
 using namespace Fases;
 
 Fase::Fase(Jogo *jooj, bool dois) :
-        jogador1(NULL), jogador2(NULL) {
+        jogador1(nullptr), jogador2(nullptr) {
     Plataforma::setContIdPlat(0);
     doisJogadores = dois;
     pJogo = jooj;
     id = -1;
     colisora = new Colisora();
-    fundo = NULL;
+    fundo = nullptr;
 
     pGG = pJogo->getGerenciador();
 }
@@ -24,21 +24,11 @@ Fase::~Fase() {
     delete fundo;
 }
 
-void Fase::executar() {
-
-}
-
-void Fase::gerenciar_colisoes() {
-
-}
+void Fase::executar() {}
 
 void Fase::reiniciar() {
-    if (doisJogadores) {
-        if (jogador2->getVidas() <= 0)
-            pJogo->tirarEstado();
-    }
-    if (jogador1->getVidas() <= 0)
-        pJogo->tirarEstado();
+    if (doisJogadores) { if (jogador2->getVidas() <= 0) { pJogo->tirarEstado(); }}
+    if (jogador1->getVidas() <= 0) { pJogo->tirarEstado(); }
 }
 
 void Fase::menuPause() {

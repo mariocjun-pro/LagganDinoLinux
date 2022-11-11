@@ -4,9 +4,9 @@
 using namespace GerenciadoresEntidades;
 
 Corpo_Grafico::Corpo_Grafico() {
-    corpo = NULL;
-    animacao = NULL;
-    textura = NULL;
+    corpo = nullptr;
+    animacao = nullptr;
+    textura = nullptr;
 }
 
 Corpo_Grafico::~Corpo_Grafico() {

@@ -6,7 +6,7 @@ pthread_mutex_t PThread::mutex;
 using namespace GerenciadoresEntidades;
 
 PThread::PThread() {
-    pthread_mutex_init(&PThread::mutex, NULL);
+    pthread_mutex_init(&PThread::mutex, nullptr);
 }
 
 PThread::~PThread() {
@@ -25,7 +25,7 @@ void PThread::iniciarThread() {
 }
 
 void PThread::juntarThread() const {
-    int status = pthread_join(threadId, NULL);
+    int status = pthread_join(threadId, nullptr);
     if (status) { cerr << "Comando join falhou" << endl; }
 }
 

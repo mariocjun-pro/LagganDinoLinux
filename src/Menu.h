@@ -18,7 +18,7 @@ using namespace Fases;
 namespace Controladoras {
     class Menu : public MenuEstado {
     public:
-        explicit Menu(Jogo *jogo = NULL);
+        explicit Menu(Jogo *jogo = nullptr);
 
         ~Menu();
 
@@ -40,8 +40,6 @@ namespace Controladoras {
 
         //Sets e gets
         void setPressionar(const bool press) { pressionar = press; }
-
-        void setJogo(Jogo *jogo) { pJogo = jogo; }
 
         void setPontos(const int p) { pontos = p; }
 

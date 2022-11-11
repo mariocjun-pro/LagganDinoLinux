@@ -17,7 +17,7 @@ ChefeDino::ChefeDino(Plataforma *p) :
 
     velocidade = 350.0f;
 
-    corpo.inicializa(Vector2f(200.0f, 260.0f), NULL);
+    corpo.inicializa(Vector2f(200.0f, 260.0f), nullptr);
     corpo.setTextura("../Texturas/Dinos/mort.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -2.5f), Vector2u(4, 1), Vector2u(24, 1));
 
@@ -31,7 +31,7 @@ ChefeDino::ChefeDino(Plataforma *p) :
     totalT = 0;
 
     hitbox = new Projetil(plat->getGerenciador());
-    hitbox->getCorpoGraf()->inicializa(Vector2f(100.0f, 100.0f), NULL);
+    hitbox->getCorpoGraf()->inicializa(Vector2f(100.0f, 100.0f), nullptr);
     hitbox->getCorpoGraf()->setTextura("../Texturas/Efeitos/sunburn.png");
     hitbox->getCorpoGraf()->inicializaAnimadora(Vector2f(0.0f, 0.0f), Vector2u(8, 8), Vector2u(8, 8));
 
@@ -46,17 +46,17 @@ void ChefeDino::mover() {
     int chancePulo;
     float dT = pGG->getDt();
     totalT += dT;
-    movimento.x = velocidade * lado;
+    movimento.x = (velocidade * static_cast<float>(lado));
 
     chancePulo = rand() % 700;
 
     if (!chancePulo && noChao) {
         noChao = false;
 
-        movimento.y = -sqrtf(2.0 * 981.0 * pulo);
+        movimento.y = -sqrtf(static_cast<float>(2.0 * 981.0 * pulo));
     }
 
-    movimento.y += 981.0 * dT;
+    movimento.y += static_cast<float>(981.0 * dT);
 
     float tempoTroca = 0.2f;
 

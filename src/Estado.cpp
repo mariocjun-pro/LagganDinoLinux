@@ -1,5 +1,4 @@
 #include "Estado.h"
-#include "FabricaFase.h"
 
 using namespace Estados;
 

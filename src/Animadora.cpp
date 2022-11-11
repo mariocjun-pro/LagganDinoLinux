@@ -3,7 +3,7 @@
 
 GerenciadoresEntidades::Animadora::Animadora(Corpo_Grafico *corpo) {
     pCorpo = corpo;
-    textura = NULL;
+    textura = nullptr;
 
     inicializa(Vector2f(0, 0), Vector2u(0, 0), Vector2u(1, 1));
 }
@@ -21,11 +21,10 @@ void GerenciadoresEntidades::Animadora::inicializa(Vector2f margemErro, Vector2u
     quadrosAtuais.y = 0;
     margem = margemErro;
 
-    if (pCorpo)
-        textura = pCorpo->getTextura();
+    if (pCorpo) { textura = pCorpo->getTextura(); }
 
-    quadro.width = textura->getSize().x / (float) (TotalDeQuadros.x);
-    quadro.height = (textura->getSize().y / (float) (TotalDeQuadros.y));
+    quadro.width = static_cast<int>(textura->getSize().x / (TotalDeQuadros.x));
+    quadro.height = static_cast<int>(textura->getSize().y / (TotalDeQuadros.y));
 }
 
 void GerenciadoresEntidades::Animadora::atualizar(float dT, bool aDireita, unsigned int comecoP,
@@ -34,8 +33,8 @@ void GerenciadoresEntidades::Animadora::atualizar(float dT, bool aDireita, unsig
     qtdQuadros.x = quantidadeQuadrosX;
     tempoTotal += dT;
     tempoTroca = troca;
-    if (comeco != comecoP) {
-        comeco = comecoP;
+    if (comeco != static_cast<int>(comecoP)) {
+        comeco = static_cast<int>(comecoP);
         quadrosAtuais.x = comeco;
     }
 
@@ -50,23 +49,23 @@ void GerenciadoresEntidades::Animadora::atualizar(float dT, bool aDireita, unsig
     }
 
     if (aDireita) {
-        quadro.left = quadrosAtuais.x * quadro.width;
+        quadro.left = static_cast<int>(quadrosAtuais.x * quadro.width);
         quadro.width = abs(quadro.width);
     } else {
-        quadro.left = (quadrosAtuais.x + 1) * abs(quadro.width);
+        quadro.left = static_cast<int>((quadrosAtuais.x + 1) * abs(quadro.width));
         quadro.width = -abs(quadro.width);
     }
 
-    quadro.top = quadrosAtuais.y * quadro.height;
+    quadro.top = static_cast<int>(quadrosAtuais.y * quadro.height);
 
-    Vector2f aux(quadro.width, quadro.height);
-    quadro.width += margem.x;
-    quadro.height += margem.y;
+    Vector2f aux(static_cast<float>(quadro.width), static_cast<float>(quadro.height));
+    quadro.width += static_cast<int>(margem.x);
+    quadro.height += static_cast<int>(margem.y);
 
     pCorpo->getCorpo()->setTextureRect(quadro);
 
-    quadro.width = aux.x;
-    quadro.height = aux.y;
+    quadro.width = static_cast<int>(aux.x);
+    quadro.height = static_cast<int>(aux.y);
 }
 
 void GerenciadoresEntidades::Animadora::atualizarLinhasSequencial(float dT, bool aDireita, Vector2u quantidadeQuadros,
@@ -92,14 +91,14 @@ void GerenciadoresEntidades::Animadora::atualizarLinhasSequencial(float dT, bool
 
 
     if (aDireita) {
-        quadro.left = quadrosAtuais.x * quadro.width;
+        quadro.left = static_cast<int>(quadrosAtuais.x) * quadro.width;
         quadro.width = abs(quadro.width);
     } else {
-        quadro.left = (quadrosAtuais.x + 1) * abs(quadro.width);
+        quadro.left = static_cast<int>(quadrosAtuais.x + 1) * abs(quadro.width);
         quadro.width = -abs(quadro.width);
     }
 
-    quadro.top = quadrosAtuais.y * quadro.height;
+    quadro.top = static_cast<int>(quadrosAtuais.y * quadro.height);
 
     pCorpo->getCorpo()->setTextureRect(quadro);
 }

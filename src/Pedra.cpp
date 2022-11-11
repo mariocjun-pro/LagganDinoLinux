@@ -9,7 +9,7 @@ Pedra::Pedra(Plataforma *plataforma) :
     podeMorrer = false;
     empurrao = 0.5f;
 
-    corpo.inicializa(Vector2f(100.0f, 150.0f), NULL);
+    corpo.inicializa(Vector2f(100.0f, 150.0f), nullptr);
 
     corpo.setTextura("../Texturas/Obstaculos/Pedra.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, 0.0f), Vector2u(1, 1), Vector2u(1, 1));

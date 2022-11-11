@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 
-class FlorestaEstado {
+class __attribute__((unused)) FlorestaEstado {
 public:
     FlorestaEstado();
 

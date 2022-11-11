@@ -21,7 +21,7 @@ namespace Auxiliares {
         void executar() { corpo.atualizaAnimacao(0.1, true, 0, 0, 0, 0); }
 
         //Sets e Gets
-        void setTextura(string tex) { corpo.setTextura(std::move(tex)); }
+        void setTextura(const string& tex) { corpo.setTextura(tex); }
 
         int getIdPlataforma() const { return idPlataforma; }
 

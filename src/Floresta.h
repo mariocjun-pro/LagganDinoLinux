@@ -28,7 +28,7 @@ using namespace Controladoras;
 namespace Fases {
     class Floresta : public Fase {
     public:
-        explicit Floresta(Jogo *jooj = NULL, bool dois = false);
+        explicit Floresta(Jogo *jooj = nullptr, bool dois = false);
 
         ~Floresta();
 

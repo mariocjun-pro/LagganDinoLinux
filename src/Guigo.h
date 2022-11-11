@@ -10,7 +10,7 @@ using namespace GerenciadoresEntidades;
 namespace Jogadores {
     class Guigo : public Jogador {
     public:
-        explicit Guigo(Gerenciador_Grafico *g = NULL);
+        explicit Guigo(Gerenciador_Grafico *g = nullptr);
 
         ~Guigo();
 

@@ -1,6 +1,5 @@
 #include "Entidade.h"
 #include "Plataforma.h"
-#include "Projetil.h"
 
 using namespace Abstratas;
 
@@ -8,7 +7,7 @@ Entidade::Entidade(Gerenciador_Grafico *gerenciador) :
         movimento(0.0f, 0.0f), noChao(true), podeMatar(true), podeMorrer(true), empurrao(1.0f), morto(false) {
     id = -1;
     vidas = 10;
-    plat = NULL;
+    plat = nullptr;
     pGG = gerenciador;
 }
 

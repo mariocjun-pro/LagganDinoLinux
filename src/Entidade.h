@@ -18,7 +18,7 @@ using namespace GerenciadoresFases;
 namespace Abstratas {
     class Entidade {
     public:
-        explicit Entidade(Gerenciador_Grafico *gerenciador = NULL);
+        explicit Entidade(Gerenciador_Grafico *gerenciador = nullptr);
 
         virtual ~Entidade();
 
@@ -29,9 +29,6 @@ namespace Abstratas {
         virtual void imprimir();
 
         //Sets e gets
-
-        int getId() const { return id; }
-
         Vector2f getPosicao() { return corpo.getCorpo()->getPosition(); }
 
         void setPosicao(const Vector2f pos) { corpo = pos; }

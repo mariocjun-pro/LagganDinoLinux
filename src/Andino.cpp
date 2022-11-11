@@ -16,7 +16,7 @@ Andino::Andino(Plataforma *plataforma) :
 
     velocidade = 200.0f;
 
-    corpo.inicializa(Vector2f(100.0f, 130.0f), NULL);
+    corpo.inicializa(Vector2f(100.0f, 130.0f), nullptr);
     corpo.setTextura("../Texturas/Dinos/mort.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -2.5f), Vector2u(4, 1), Vector2u(24, 1));
 
@@ -41,17 +41,17 @@ void Andino::mover() {
     int chancePulo;
     float dT = pGG->getDt();
     totalT += dT;
-    movimento.x = velocidade * lado;
+    movimento.x = velocidade * static_cast<float>(lado);
 
     chancePulo = rand() % 700;
 
     if (!chancePulo && noChao) {
         noChao = false;
 
-        movimento.y = -sqrtf(2.0 * 981.0 * pulo);
+        movimento.y = -sqrtf(static_cast<float>(2 * 981.0 * pulo));
     }
 
-    movimento.y += 981.0 * dT;
+    movimento.y += static_cast<float>(981.0 * dT);
 
     float tempoTroca = 0.2f;
 

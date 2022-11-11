@@ -9,7 +9,7 @@ Jogo *Jogo::CriarJogo() {
 }
 
 Jogo::Jogo() {
-    srand(time(NULL));
+    srand(time(nullptr));
 
     pilha.colocarEstado(reinterpret_cast<Estado *>(new MenuPrincipal(this)));
 }
@@ -39,4 +39,4 @@ void Jogo::executar() {
     }
 }
 
-Jogo *Jogo::jogoUnico = NULL;
+Jogo *Jogo::jogoUnico = nullptr;

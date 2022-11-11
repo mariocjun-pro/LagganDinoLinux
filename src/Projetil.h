@@ -9,7 +9,7 @@ using namespace Auxiliares;
 namespace Auxiliares {
     class Projetil : public Entidade {
     public:
-        explicit Projetil(Gerenciador_Grafico *GG = NULL);
+        explicit Projetil(Gerenciador_Grafico *GG = nullptr);
 
         ~Projetil();
 

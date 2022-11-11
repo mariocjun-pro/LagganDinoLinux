@@ -7,7 +7,7 @@ using namespace Fases;
 Floresta::Floresta(Jogo *jooj, const bool dois) :
         Fase(jooj, dois) {
     id = 1;
-    srand(time(NULL));
+    srand(time(nullptr));
 
 }
 

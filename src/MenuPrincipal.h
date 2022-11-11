@@ -23,12 +23,7 @@ namespace Controladoras {
 
         void executar();
 
-        void setSelecionado(const int s) { selecionado = s; }
-
     private:
-        Montanha *montanha{};
-        Floresta *floresta{};
-
         FabricaMontanha fab1;
         FabricaFloresta fab2;
 

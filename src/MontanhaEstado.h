@@ -3,7 +3,7 @@
 #include "stdafx.h"
 #include "FaseEstado.h"
 
-class MontanhaEstado {
+class __attribute__((unused)) MontanhaEstado {
 public:
     MontanhaEstado();
 

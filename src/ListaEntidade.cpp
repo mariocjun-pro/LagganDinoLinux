@@ -26,7 +26,7 @@ void ListaEntidade::imprimir() {
 }
 
 void ListaEntidade::colidir(Jogador *j) {
-    Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux = NULL;
+    Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux;
     Vector2f direcao(0.0f, 0.0f);
     Entidade *jog = static_cast<Entidade *>(j);
 
@@ -67,7 +67,7 @@ void ListaEntidade::colidir(Jogador *j) {
 }
 
 void ListaEntidade::colidir(Jogador *j, Jogador *j2) {
-    Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux = NULL;
+    Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux;
     Vector2f direcao(0.0f, 0.0f);
 
     Entidade *jog = static_cast<Entidade *>(j);
@@ -84,7 +84,7 @@ void ListaEntidade::colidir(Jogador *j, Jogador *j2) {
         if (itr->getAtual()->getMorto()) {
             excluir(itr);
             itr = aux;
-            if (aux == NULL)
+            if (aux == nullptr)
                 break;
         }
 
@@ -103,7 +103,7 @@ void ListaEntidade::colidir(Jogador *j, Jogador *j2) {
                         j->setPontos(j->getPontos() + 15);
                         excluir(itr);
                         itr = aux;
-                        if (aux == NULL)
+                        if (aux == nullptr)
                             break;
                     }
                 }
@@ -147,10 +147,10 @@ void ListaEntidade::excluir(Lista<Entidade>::Elemento<Entidade> *no) {
             no->getAnt()->setProx(no->getProx());
             no->getProx()->setAnt(no->getAnt());
         } else {
-            no->getProx()->setAnt(NULL);
+            no->getProx()->setAnt(nullptr);
         }
     } else {
-        no->getAnt()->setProx(NULL);
+        no->getAnt()->setProx(nullptr);
     }
     delete no->getAtual();
     delete no;

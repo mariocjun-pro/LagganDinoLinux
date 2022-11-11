@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 
-class Ent {
+class __attribute__((unused)) Ent {
 public:
     Ent();
 

@@ -8,7 +8,7 @@ Montanha::Montanha(Jogo *jooj, bool dois) :
         Fase(jooj, dois), fab(pJogo) {
     id = 0;
     pGG = pJogo->getGerenciador();
-    srand(time(NULL));
+    srand(time(nullptr));
 }
 
 Montanha::~Montanha() {

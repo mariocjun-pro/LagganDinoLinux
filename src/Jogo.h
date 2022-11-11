@@ -21,8 +21,6 @@ namespace Controladoras {
 
         void colocarEstado(Estado *est) { pilha.colocarEstado(est); }
 
-        bool pilhaVazia() { return pilha.pilhaVazia(); }
-
         unsigned int pilhaTam() const { return pilha.pilhaTam(); }
 
         Estado *getTopo() const { return pilha.getTopo(); }

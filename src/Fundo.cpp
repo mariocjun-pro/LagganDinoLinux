@@ -15,7 +15,7 @@ Fundo::~Fundo() {
 
 void Fundo::imprimir() {
     int i;
-    for (i = 0; i < qtdFundos; i++) {
+    for (i = 0; i < static_cast<int>(qtdFundos); i++) {
         pGG->desenhar(&corpo[i]);
     }
 }
@@ -23,14 +23,14 @@ void Fundo::imprimir() {
 
 void Fundo::setPosicao(const Vector2f pos) {
     int i;
-    for (i = 0; i < qtdFundos; i++) {
+    for (i = 0; i < static_cast<int>(qtdFundos); i++) {
         corpo[i].setPosition(pos);
     }
 }
 
 void Fundo::setTamanho(const Vector2f tam) {
     int i;
-    for (i = 0; i < qtdFundos; i++) {
+    for (i = 0; i < static_cast<int>(qtdFundos); i++) {
         corpo[i].setSize(tam);
         corpo[i].setOrigin(tam / 2.0f);
     }

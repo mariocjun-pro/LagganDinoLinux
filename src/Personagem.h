@@ -10,7 +10,7 @@ using namespace Auxiliares;
 namespace Personagens {
     class Personagem : public Entidade {
     public:
-        explicit Personagem(Gerenciador_Grafico *gerenciador = NULL);
+        explicit Personagem(Gerenciador_Grafico *gerenciador = nullptr);
 
         virtual ~Personagem();
 

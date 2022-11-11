@@ -3,7 +3,7 @@
 #include "stdafx.h"
 #include "MenuEstado.h"
 
-class MenuPrincipalEstado : public MenuEstado {
+class __attribute__((unused)) MenuPrincipalEstado : public MenuEstado {
 public:
     MenuPrincipalEstado();
 

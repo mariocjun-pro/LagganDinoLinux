@@ -30,14 +30,12 @@ using namespace Estados;
 namespace Fases {
     class Fase : public FaseEstado {
     public:
-        explicit Fase(Jogo *jooj = NULL, bool dois = false);
+        explicit Fase(Jogo *jooj = nullptr, bool dois = false);
 
         virtual ~Fase();
 
         //virtual void instanciaFundo() = 0;
         virtual void executar();
-
-        virtual void gerenciar_colisoes();
 
         virtual void reiniciar();
 
@@ -50,17 +48,11 @@ namespace Fases {
         void incluirEntidade(Entidade *ent) { entidades.incluir(ent); }
 
         //Sets e Gets
-        Guigo *getJogador1() { return jogador1; }
-
-        Titi *getJogador2() { return jogador2; }
-
         void setJogador1(Guigo *j1) { jogador1 = j1; }
 
         void setJogador2(Titi *j2) { jogador2 = j2; }
 
         void setFundo(Fundo *f) { fundo = f; }
-
-        void setJogo(Jogo *jooj) { pJogo = jooj; }
 
     protected:
         ListaEntidade entidades;
