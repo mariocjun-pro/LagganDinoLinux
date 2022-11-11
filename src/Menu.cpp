@@ -149,7 +149,7 @@ void Menu::exibeRanking() {
                 textoRank[i].setOutlineThickness(0.5);
                 textoRank[i].setFillColor(Color::Black);
                 textoRank[i].setPosition(pGG->getVisao()->getCenter().x - 600.0f,
-                                         pGG->getVisao()->getCenter().y - 400.0f + i * 50.0f);
+                                         pGG->getVisao()->getCenter().y - 400.0f + static_cast<float>(i) * 50.0f);
                 textoRank[i].setString(rank[i].first + " " + std::to_string(rank[i].second));
             }
             rank.clear();
