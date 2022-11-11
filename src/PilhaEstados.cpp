@@ -9,26 +9,22 @@ PilhaEstados::~PilhaEstados() {
 }
 
 void PilhaEstados::tirarEstado(bool excluir) {
-    if(!estados.empty()) { 
-        if(excluir)
-            coletorLixo.push(estados.top());
-        
+    if (!estados.empty()) {
+        if (excluir) { coletorLixo.push(estados.top()); }
         estados.pop();
     }
 }
 
 bool PilhaEstados::executar() {
-
-    if(!coletorLixo.empty()) {
+    if (!coletorLixo.empty()) {
         delete coletorLixo.top();
         coletorLixo.pop();
     }
-    
-    if(!estados.empty()) {
+
+    if (!estados.empty()) {
         estados.top()->executar();
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }

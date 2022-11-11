@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Fase.h"
 #include "Plataforma.h"
@@ -27,15 +28,17 @@ using namespace Fabricas;
 namespace Fases {
     class Montanha : public Fase {
     public:
-        Montanha(Jogo* jooAj = NULL, bool dois = false);
+        explicit Montanha(Jogo *jooAj = NULL, bool dois = false);
+
         ~Montanha();
 
         void executar();
+
         void trocaFase();
 
     private:
         FabricaFloresta fab;
-        
+
     };
 }
 

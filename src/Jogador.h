@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Personagem.h"
 #include "Projetil.h"
@@ -9,10 +10,12 @@ using namespace Auxiliares;
 namespace Jogadores {
     class Jogador : public Personagem {
     public:
-        Jogador(Gerenciador_Grafico* gerenciador = NULL);
+        explicit Jogador(Gerenciador_Grafico *gerenciador = NULL);
+
         virtual ~Jogador();
 
         void morrer();
+
         void morrer(Vector2f pos);
 
         void imprimir();
@@ -21,18 +24,21 @@ namespace Jogadores {
 
         //Sets e Gets
 
-        void setAtacando(const bool atac) { atacando = atac; }
-        const bool getAtacando() const { return atacando; }
-        Corpo_Grafico* getHitbox() { return hitbox->getCorpoGraf(); }
+        __attribute__((unused)) void setAtacando(const bool atac) { atacando = atac; }
 
-        Projetil* getProjetil() { return hitbox; }
+        bool getAtacando() const { return atacando; }
 
-        void setPontos (const int p) { pontos = p; }
+        __attribute__((unused)) Corpo_Grafico *getHitbox() { return hitbox->getCorpoGraf(); }
+
+        Projetil *getProjetil() { return hitbox; }
+
+        void setPontos(const int p) { pontos = p; }
+
         int getPontos() const { return pontos; }
 
     protected:
         Vector2f posInicial;
-        Projetil* hitbox;
+        Projetil *hitbox;
         bool ataquePronto;
         short ladoAtaque;
 

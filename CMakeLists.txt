@@ -12,7 +12,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 list(APPEND FLAGS "-std=c++11")
 list(APPEND FLAGS "-Wall")
 list(APPEND FLAGS "-Wextra")
-list(APPEND FLAGS "-O3")
 list(JOIN FLAGS " " FLAGS)
 
 # Adiciona flags de compilação para o projeto

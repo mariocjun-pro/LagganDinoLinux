@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Fase.h"
 #include "Plataforma.h"
@@ -27,7 +28,8 @@ using namespace Controladoras;
 namespace Fases {
     class Floresta : public Fase {
     public:
-        Floresta(Jogo* jooj = NULL, const bool dois = false);
+        explicit Floresta(Jogo *jooj = NULL, bool dois = false);
+
         ~Floresta();
 
         void executar();

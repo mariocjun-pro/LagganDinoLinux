@@ -1,78 +1,90 @@
 #pragma once
+
 #include "stdafx.h"
 
 
 namespace Listas {
-    template <class TL>
+    template<class TL>
     class Lista {
     public:
 
-        template <class TE>
+        template<class TE>
         class Elemento {
-            public:
-                Elemento() { atual = NULL; pProx = NULL; pAnt = NULL; }
-                ~Elemento() { }
+        public:
+            Elemento() {
+                atual = NULL;
+                pProx = NULL;
+                pAnt = NULL;
+            }
 
-                //Sets e Gets
+            ~Elemento() {}
 
-                void setAtual(TE* elem) { atual = elem; }
-                TE* getAtual() const { return atual; }
+            //Sets e Gets
 
-                void setProx(Elemento<TE>* prox) { pProx = prox; }
-                Elemento<TE>* getProx() const { return pProx; }
+            void setAtual(TE *elem) { atual = elem; }
 
-                void setAnt(Elemento<TE>* ant) { pAnt = ant; }
-                Elemento<TE>* getAnt() const { return pAnt; }
+            TE *getAtual() const { return atual; }
 
-            private:
-                TE* atual;
-                Elemento<TE>* pProx;
-                Elemento<TE>* pAnt;
+            void setProx(Elemento<TE> *prox) { pProx = prox; }
+
+            Elemento<TE> *getProx() const { return pProx; }
+
+            void setAnt(Elemento<TE> *ant) { pAnt = ant; }
+
+            Elemento<TE> *getAnt() const { return pAnt; }
+
+        private:
+            TE *atual;
+            Elemento<TE> *pProx;
+            Elemento<TE> *pAnt;
         };
 
         Lista();
+
         ~Lista();
 
-        void incluir(TL* elemento);
+        void incluir(TL *elemento);
+
         void limpar();
 
         //Sets e Gets
 
-        void setPrimeiro(Elemento<TL>* primeiro) { pPrimeiro = primeiro; }
-        Elemento<TL>* getPrimeiro () const { return pPrimeiro; }
+        void setPrimeiro(Elemento<TL> *primeiro) { pPrimeiro = primeiro; }
 
-        void setUltimo(Elemento<TL>* ultimo) { pUltimo = ultimo; }
-        Elemento<TL>* getUltimo () const { return pUltimo; }
+        Elemento<TL> *getPrimeiro() const { return pPrimeiro; }
 
-        int getTamanho () const { return tamanho; }
+        void setUltimo(Elemento<TL> *ultimo) { pUltimo = ultimo; }
+
+        Elemento<TL> *getUltimo() const { return pUltimo; }
+
+        int getTamanho() const { return tamanho; }
 
     private:
         int tamanho;
-        Elemento<TL>* pPrimeiro;
-        Elemento<TL>* pUltimo;
+        Elemento<TL> *pPrimeiro;
+        Elemento<TL> *pUltimo;
 
     };
 
-    template <class TL>
+    template<class TL>
     Lista<TL>::Lista() {
         pPrimeiro = NULL;
         pUltimo = NULL;
         tamanho = 0;
     }
 
-    template <class TL>
+    template<class TL>
     Lista<TL>::~Lista() {
     }
 
-    template <class TL>
-    void Lista<TL>::incluir(TL* elemento) {
-        if(elemento) {
+    template<class TL>
+    void Lista<TL>::incluir(TL *elemento) {
+        if (elemento) {
             if (!pPrimeiro) {
                 pPrimeiro = new Elemento<TL>;
                 pPrimeiro->setAtual(elemento);
                 pUltimo = pPrimeiro;
-            }
-            else {
+            } else {
                 pUltimo->setProx(new Elemento<TL>);
                 pUltimo->getProx()->setAnt(pUltimo);
                 pUltimo = pUltimo->getProx();
@@ -82,11 +94,11 @@ namespace Listas {
         }
     }
 
-    template <class TL>
+    template<class TL>
     void Lista<TL>::limpar() {
         Elemento<TL> *itr = pPrimeiro, *aux = NULL;
 
-        while(itr) {
+        while (itr) {
 
             aux = itr->getProx();
             delete itr->getAtual();

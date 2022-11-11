@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Entidade.h"
 #include "Projetil.h"
@@ -9,10 +10,12 @@ using namespace Auxiliares;
 namespace Personagens {
     class Personagem : public Entidade {
     public:
-        Personagem(Gerenciador_Grafico* gerenciador = NULL);
+        explicit Personagem(Gerenciador_Grafico *gerenciador = NULL);
+
         virtual ~Personagem();
 
         virtual void imprimir();
+
         virtual void executar();
 
         virtual void animar(Vector2f movimento);
@@ -30,7 +33,7 @@ namespace Personagens {
         bool ferido;
 
         bool ataquePronto;
-        Projetil* hitbox;
+        Projetil *hitbox;
 
     };
 }

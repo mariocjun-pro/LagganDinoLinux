@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Estado.h"
 
@@ -8,7 +9,9 @@ namespace Estados {
     class MenuEstado : public Estado {
     public:
         MenuEstado();
+
         virtual ~MenuEstado();
+
     private:
 
     };

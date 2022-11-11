@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Inimigo.h"
 #include "Projetil.h"
@@ -8,19 +9,23 @@
 
 using namespace Auxiliares;
 using namespace GerenciadoresEntidades;
-        
+
 namespace Inimigos {
     class ChefeDino : public Inimigo {
     public:
-        ChefeDino(Plataforma* p);
+        explicit ChefeDino(Plataforma *p);
+
         ~ChefeDino();
 
         void executar();
+
         void mover();
+
         void imprimir();
 
         //Sets e Gets
-        Projetil* getProjetil() { return hitbox; }
+        Projetil *getProjetil() { return hitbox; }
+
     private:
         float pulo;
     };

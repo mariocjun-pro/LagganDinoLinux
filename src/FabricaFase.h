@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Entidade.h"
 #include "ListaEntidade.h"
@@ -28,34 +29,37 @@ using namespace Fases;
 namespace Fabricas {
     class FabricaFase {
     public:
-        FabricaFase(Jogo* jogo = NULL);
+        explicit FabricaFase(Jogo *jogo = NULL);
+
         virtual ~FabricaFase();
-        
-        virtual Fase* criar() = 0;
-        
-        
-        
+
+        virtual Fase *criar() = 0;
+
+
         //Sets e Gets
         void setCarregar(const bool c) { carrega = c; }
+
         void setDoisJogadores(const bool dois) { doisJogadores = dois; }
-        void setJogadores(Guigo* jog1, Titi* jog2);
-        
+
+        void setJogadores(Guigo *jog1, Titi *jog2);
+
     protected:
-        
+
         virtual void carregar();
+
         void limpar();
-        
-        Jogo* pJogo;
+
+        Jogo *pJogo;
         bool carrega;
         bool doisJogadores;
-        
+
         short idFase;
-        
-        Guigo* j1;
-        Titi* j2;
-        
-        
-        Fase* fase;
-        vector<Plataforma*> plataformas;
+
+        Guigo *j1;
+        Titi *j2;
+
+
+        Fase *fase{};
+        vector<Plataforma *> plataformas;
     };
 }

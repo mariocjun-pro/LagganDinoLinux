@@ -2,22 +2,20 @@
 
 using namespace Fabricas;
 
-FabricaMontanha::FabricaMontanha(Jogo* jogo):
-FabricaFase(jogo)
-{
+FabricaMontanha::FabricaMontanha(Jogo *jogo) :
+        FabricaFase(jogo) {
     idFase = 0;
 }
 
 FabricaMontanha::~FabricaMontanha() {
 }
 
-Fase* FabricaMontanha::criar() {
-    fase = static_cast<Fase*>(new Montanha(pJogo, doisJogadores));
+Fase *FabricaMontanha::criar() {
+    fase = static_cast<Fase *>(new Montanha(pJogo, doisJogadores));
 
-    if(carrega) {
+    if (carrega) {
         carregar();
-    }
-    else {
+    } else {
         instanciaJogadores();
         instanciaPlataformas();
     }
@@ -30,37 +28,34 @@ Fase* FabricaMontanha::criar() {
 
 void FabricaMontanha::instanciaJogadores() {
 
-    if(not j1) {
+    if (not j1) {
         j1 = new Guigo(pJogo->getGerenciador());
     }
-    if(not j2) {
-        if(doisJogadores) {
+    if (not j2) {
+        if (doisJogadores) {
             j2 = new Titi(pJogo->getGerenciador());
         }
     }
-    fase->incluirEntidade(static_cast<Entidade*>(j1));
-    fase->incluirEntidade(static_cast<Entidade*>(j2));
+    fase->incluirEntidade(static_cast<Entidade *>(j1));
+    fase->incluirEntidade(static_cast<Entidade *>(j2));
     fase->setJogador1(j1);
     fase->setJogador2(j2);
 }
 
 void FabricaMontanha::instanciaPlataformas() {
-    ifstream plats ("../Arquivos/PlataformasMontanha.txt", ios::in);
+    ifstream plats("../Arquivos/PlataformasMontanha.txt", ios::in);
     Vector2f pos, tam;
-    Plataforma* plat;
-    Atiradino* atr;
-    AtiradinoThread* atrT;
+    Plataforma *plat;
+    AtiradinoThread *atrT;
     int tipo;
 
-    if (!plats)
-    {
+    if (!plats) {
         cerr << "Erro ao carregar o arquivo";
     }
 
     //Instancia as outras plataformas
 
-    while(plats >> tam.x >> tam.y)
-    {
+    while (plats >> tam.x >> tam.y) {
         plats >> pos.x >> pos.y;
         plats >> tipo;
         //tipo = 0;
@@ -68,28 +63,24 @@ void FabricaMontanha::instanciaPlataformas() {
         plat = new Plataforma(tam);
         plat->setGerenciador(pJogo->getGerenciador());
         plat->getCorpoGraf()->setPosicao(pos);
-        fase->incluirEntidade(static_cast<Entidade*>(plat));
+        fase->incluirEntidade(static_cast<Entidade *>(plat));
 
 
-        int aleatorio = rand()%3;
+        int aleatorio = rand() % 3;
 
-        if(tipo == 1) {
-            if(aleatorio == 0) {
+        if (tipo == 1) {
+            if (aleatorio == 0) {
                 instanciaInimigos(plat);
                 instanciaObstaculos(plat);
-            }
-            else if (aleatorio == 1)
+            } else if (aleatorio == 1)
                 instanciaObstaculos(plat);
             else if (aleatorio == 2)
                 instanciaInimigos(plat);
-        }
-        else if(tipo == 2)
-        {
-            if(aleatorio)
-            {
+        } else if (tipo == 2) {
+            if (aleatorio) {
                 atrT = new AtiradinoThread(plat);
-                fase->incluirEntidade(static_cast<Entidade*>(atrT));
-                fase->incluirEntidade(static_cast<Entidade*>(atrT->getProjetil()));
+                fase->incluirEntidade(static_cast<Entidade *>(atrT));
+                fase->incluirEntidade(static_cast<Entidade *>(atrT->getProjetil()));
             }
         }
     }
@@ -97,95 +88,82 @@ void FabricaMontanha::instanciaPlataformas() {
     plats.close();
 }
 
-void FabricaMontanha::instanciaInimigos(Plataforma* plat) {
-    Andino* andi;
-    AtiradinoThread* atrT;
+void FabricaMontanha::instanciaInimigos(Plataforma *plat) {
+    Andino *andi;
+    AtiradinoThread *atrT;
 
     std::random_device dev;
-    std::mt19937 rng(dev());
-    std::uniform_int_distribution<uint32_t> distribuicao(0,1);
+    std::uniform_int_distribution<uint32_t> distribuicao(0, 1);
 
-    int aleatorio = distribuicao(rng);
-    aleatorio = rand()%2;
+    int aleatorio = rand() % 2;
 
-    if(aleatorio == 0)
-    {
+    if (aleatorio == 0) {
         andi = new Andino(plat);
-        fase->incluirEntidade(static_cast<Entidade*>(andi));
+        fase->incluirEntidade(static_cast<Entidade *>(andi));
 
         andi = new Andino(plat);
-        fase->incluirEntidade(static_cast<Entidade*>(andi));
-    }
-
-    else if(aleatorio == 1)
-    {
+        fase->incluirEntidade(static_cast<Entidade *>(andi));
+    } else if (aleatorio == 1) {
         atrT = new AtiradinoThread(plat);
-        fase->incluirEntidade(static_cast<Entidade*>(atrT));
-        fase->incluirEntidade(static_cast<Entidade*>(atrT->getProjetil()));
+        fase->incluirEntidade(static_cast<Entidade *>(atrT));
+        fase->incluirEntidade(static_cast<Entidade *>(atrT->getProjetil()));
 
         andi = new Andino(plat);
-        fase->incluirEntidade(static_cast<Entidade*>(andi));
+        fase->incluirEntidade(static_cast<Entidade *>(andi));
     }
 }
 
-void FabricaMontanha::instanciaObstaculos(Plataforma* plat) {
-    Espinho* carn;
-    Pedra* pedra;
+void FabricaMontanha::instanciaObstaculos(Plataforma *plat) {
+    Espinho *carn;
+    Pedra *pedra;
 
     std::random_device dev;
-    std::mt19937 rng(dev());
-    std::uniform_int_distribution<uint32_t> distribuicao(0,1);
+    std::uniform_int_distribution<uint32_t> distribuicao(0, 1);
 
-    int aleatorio = distribuicao(rng);
-    aleatorio = rand()%3;
+    int aleatorio = rand() % 3;
 
-    if(aleatorio == 0) {
+    if (aleatorio == 0) {
         carn = new Espinho(pJogo->getGerenciador());
         carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x - 200.0f, plat->getPosicao().y - 70.0f));
-        fase->incluirEntidade(static_cast<Entidade*>(carn));
+        fase->incluirEntidade(static_cast<Entidade *>(carn));
 
         carn = new Espinho(pJogo->getGerenciador());
         carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x + 200.0f, plat->getPosicao().y - 70.0f));
-        fase->incluirEntidade(static_cast<Entidade*>(carn));
+        fase->incluirEntidade(static_cast<Entidade *>(carn));
 
         carn = new Espinho(pJogo->getGerenciador());
         carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x, plat->getPosicao().y - 70.0f));
-        fase->incluirEntidade(static_cast<Entidade*>(carn));
-    }
-
-    else if (aleatorio == 1) {
+        fase->incluirEntidade(static_cast<Entidade *>(carn));
+    } else if (aleatorio == 1) {
         carn = new Espinho(pJogo->getGerenciador());
         carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x - 110.0f, plat->getPosicao().y - 70.0f));
-        fase->incluirEntidade(static_cast<Entidade*>(carn));
+        fase->incluirEntidade(static_cast<Entidade *>(carn));
 
         carn = new Espinho(pJogo->getGerenciador());
         carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x - 40.0f, plat->getPosicao().y - 70.0f));
-        fase->incluirEntidade(static_cast<Entidade*>(carn));
+        fase->incluirEntidade(static_cast<Entidade *>(carn));
 
         carn = new Espinho(pJogo->getGerenciador());
-        carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x + 30.0f , plat->getPosicao().y - 70.0f));
-        fase->incluirEntidade(static_cast<Entidade*>(carn));
+        carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x + 30.0f, plat->getPosicao().y - 70.0f));
+        fase->incluirEntidade(static_cast<Entidade *>(carn));
 
         carn = new Espinho(pJogo->getGerenciador());
-        carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x + 100.0f , plat->getPosicao().y - 70.0f));
-        fase->incluirEntidade(static_cast<Entidade*>(carn));
-    }
-
-    else if (aleatorio == 2)
-    {
+        carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x + 100.0f, plat->getPosicao().y - 70.0f));
+        fase->incluirEntidade(static_cast<Entidade *>(carn));
+    } else if (aleatorio == 2) {
         pedra = new Pedra(plat);
-        fase->incluirEntidade(static_cast<Entidade*>(pedra));
+        fase->incluirEntidade(static_cast<Entidade *>(pedra));
 
         pedra = new Pedra(plat);
-        fase->incluirEntidade(static_cast<Entidade*>(pedra));
+        fase->incluirEntidade(static_cast<Entidade *>(pedra));
 
         pedra = new Pedra(plat);
-        fase->incluirEntidade(static_cast<Entidade*>(pedra));
+        fase->incluirEntidade(static_cast<Entidade *>(pedra));
     }
 }
 
 void FabricaMontanha::instanciaFundo() {
-    Fundo* fundo = new Fundo(5, pJogo->getGerenciador());
+    Fundo *fundo = new Fundo(5, pJogo->getGerenciador());
 
     fundo->setTextura("../Texturas/Montanha/parallax-mountain-bg.png", 0);
     fundo->setTextura("../Texturas/Montanha/parallax-mountain-montain-far.png", 1);

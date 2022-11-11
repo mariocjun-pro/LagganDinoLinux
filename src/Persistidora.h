@@ -1,4 +1,7 @@
 #pragma once
+
+#include <utility>
+
 #include "stdafx.h"
 #include "Entidade.h"
 #include "Plataforma.h"
@@ -15,16 +18,24 @@ namespace Controladoras {
     class Persistidora {
     public:
         Persistidora();
+
         virtual ~Persistidora();
 
-        void gravar(pair<Entidade*, int> p);
-        void gravarFase(const unsigned int id);
+        void gravar(pair<Entidade *, int> p);
+
+        void gravarFase(unsigned int id);
 
         //Sets e gets
-        void setNome(string n) { nome = n; criarArquivos(); }
+        void setNome(string n) {
+            nome = std::move(n);
+            criarArquivos();
+        }
+
     private:
-        void gravarJogadores(Jogador* j, int id);
-        void gravarObjetos(Entidade* ent, int id);
+        void gravarJogadores(Jogador *j, int id);
+
+        void gravarObjetos(Entidade *ent, int id);
+
         void criarArquivos();
 
         int pontosTotais;

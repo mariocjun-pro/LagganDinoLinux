@@ -1,9 +1,8 @@
 #include "MenuPause.h"
 #include "Jogo.h"
 
-MenuPause::MenuPause(Jogo* jogo):
-Menu(jogo)
-{
+MenuPause::MenuPause(Jogo *jogo) :
+        Menu(jogo) {
     texto[0].setString("Voltar");
     texto[1].setString("Salvar");
     texto[2].setString("Ranking");
@@ -12,18 +11,18 @@ Menu(jogo)
 }
 
 MenuPause::~MenuPause() {
-    
+
 }
 
 void MenuPause::executar() {
-    int i, k;
+    int i;
     fundo.setPosicao(pGG->getVisao()->getCenter());
     fundo.imprimir();
-    
+
     posicionarTexto();
     exibeRanking();
     texto[selecionado].setFillColor(Color::Cyan);
-    for(i = 0; i < 5; i++) {
+    for (i = 0; i < 5; i++) {
         pGG->getJanela()->draw(texto[i]);
     }
     texto[selecionado].setFillColor(Color::Black);
@@ -38,12 +37,12 @@ void MenuPause::executar() {
         case 1:
             pressionar = false;
             pJogo->tirarEstado(false);
-            reinterpret_cast<Fase*>(pJogo->getTopo())->salvar();
-            pJogo->colocarEstado(reinterpret_cast<Estado*>(this));
+            reinterpret_cast<Fase *>(pJogo->getTopo())->salvar();
+            pJogo->colocarEstado(reinterpret_cast<Estado *>(this));
             //Salvar
             break;
         case 2:
-            if(ranking)
+            if (ranking)
                 ranking = false;
             else
                 ranking = true;
@@ -57,8 +56,8 @@ void MenuPause::executar() {
             break;
         case 4:
             limparEstados();
-            reinterpret_cast<MenuPrincipal*>(pJogo->getTopo())->setPressionar(false);
-            
+            reinterpret_cast<MenuPrincipal *>(pJogo->getTopo())->setPressionar(false);
+
             //Sair
             break;
         default:

@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Menu.h"
 #include "Estado.h"
@@ -16,16 +17,18 @@ using namespace Fases;
 namespace Controladoras {
     class MenuPrincipal : public Menu {
     public:
-        MenuPrincipal(Jogo* jogo);
+        explicit MenuPrincipal(Jogo *jogo);
+
         ~MenuPrincipal();
 
         void executar();
+
         void setSelecionado(const int s) { selecionado = s; }
 
     private:
-        Montanha* montanha;
-        Floresta* floresta;
-        
+        Montanha *montanha{};
+        Floresta *floresta{};
+
         FabricaMontanha fab1;
         FabricaFloresta fab2;
 

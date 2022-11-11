@@ -2,11 +2,10 @@
 
 using namespace Inimigos;
 
-Atiradino::Atiradino(Plataforma* plataforma):
-Inimigo(plataforma->getGerenciador())
-{
+Atiradino::Atiradino(Plataforma *plataforma) :
+        Inimigo(plataforma->getGerenciador()) {
     float aux, aux2;
-    
+
     vidas = 2;
 
     plat = plataforma;
@@ -18,7 +17,8 @@ Inimigo(plataforma->getGerenciador())
     aux2 = (plat->getTamanho().y / 2.0f) + 50.0f;
     fronteira = Vector3f(plat->getPosicao().x - aux, plat->getPosicao().x + aux, plat->getPosicao().y - aux2);
 
-    posicaoInicial = fronteira.x + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(fronteira.y-fronteira.x)));
+    posicaoInicial =
+            fronteira.x + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (fronteira.y - fronteira.x)));
 
     corpo.inicializa(Vector2f(100.0f, 130.0f), NULL);
     corpo.setTextura("../Texturas/Dinos/doux.png");
@@ -40,55 +40,53 @@ Atiradino::~Atiradino() {
     hitbox->setMorto();
 }
 
-void Atiradino::executar()
-{
-    if(tomaDano == false) {
+void Atiradino::executar() {
+    if (!tomaDano) {
         danoT += pGG->getDt();
-        if(danoT >= 0.5f) {
+        if (danoT >= 0.5f) {
             danoT -= 0.5f;
             tomaDano = true;
             ferido = false;
         }
     }
-  
-    if(ferido)
+
+    if (ferido)
         ataquePronto = false;
-    
+
     atirar();
-            
-            
+
+
     animar(movimento);
 }
 
-void Atiradino::imprimir()
-{
-    if(atacando)
+void Atiradino::imprimir() {
+    if (atacando)
         pGG->desenhar(hitbox->getCorpoGraf()->getCorpo());
 
     pGG->desenhar(corpo.getCorpo());
 }
 
 void Atiradino::atirar() {
-    if(ataquePronto == false)
+    if (!ataquePronto)
         totalT += pGG->getDt();
-    
-    if(ataquePronto && rand()%400 == 0) {
+
+    if (ataquePronto && rand() % 400 == 0) {
         atacando = true;
         totalT -= 0.5f;
         hitbox->getCorpoGraf()->setPosicao(corpo.getPosicao().x + (100.0f * -1), corpo.getPosicao().y);
         ataquePronto = false;
 
     }
-    
-    if(atacando && totalT >= 0.5f) {
+
+    if (atacando && totalT >= 0.5f) {
         atacando = false;
         totalT = 0.0f;
         ataquePronto = true;
         hitbox->getCorpoGraf()->setPosicao(corpo.getPosicao().x + (100.0f * -1), corpo.getPosicao().y);
     }
-    
-    hitbox->getCorpoGraf()->mover(298.0f  * pGG->getDt() * -1, 0.0f);
-    if(atacando)
-        hitbox->getCorpoGraf()->getAnimadora()->atualizarLinhasSequencial(pGG->getDt(), aDireita, Vector2u(8, 8), 5, 0.1f);
+
+    hitbox->getCorpoGraf()->mover(298.0f * pGG->getDt() * -1, 0.0f);
+    if (atacando)
+        hitbox->getCorpoGraf()->getAnimadora()->atualizarLinhasSequencial(pGG->getDt(), aDireita, Vector2u(8, 8), 0.1f);
 
 }

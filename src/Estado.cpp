@@ -3,9 +3,7 @@
 
 using namespace Estados;
 
-Estado::Estado() {
-}
+Estado::Estado() {}
 
-Estado::~Estado() {
-}
+Estado::~Estado() {}
 

@@ -2,9 +2,8 @@
 
 using namespace Inimigos;
 
-Andino::Andino(Plataforma* plataforma):
-Inimigo(plataforma->getGerenciador())
-{
+Andino::Andino(Plataforma *plataforma) :
+        Inimigo(plataforma->getGerenciador()) {
     float aux, aux2;
     plat = plataforma;
 
@@ -21,14 +20,15 @@ Inimigo(plataforma->getGerenciador())
     corpo.setTextura("../Texturas/Dinos/mort.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -2.5f), Vector2u(4, 1), Vector2u(24, 1));
 
-    posicaoInicial = fronteira.x + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(fronteira.y-fronteira.x)));
-    if(rand() % 2)
+    posicaoInicial =
+            fronteira.x + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (fronteira.y - fronteira.x)));
+    if (rand() % 2)
         lado = 1;
 
     corpo = Vector2f(posicaoInicial, fronteira.z);
     corpo.getCorpo()->setFillColor(Color::White);
     totalT = 0;
-    
+
     id = 1;
 }
 
@@ -45,8 +45,7 @@ void Andino::mover() {
 
     chancePulo = rand() % 700;
 
-    if(!chancePulo && noChao)
-    {
+    if (!chancePulo && noChao) {
         noChao = false;
 
         movimento.y = -sqrtf(2.0 * 981.0 * pulo);
@@ -56,11 +55,13 @@ void Andino::mover() {
 
     float tempoTroca = 0.2f;
 
-    if((corpo.getCorpo()->getPosition().x < fronteira.x || corpo.getCorpo()->getPosition().x > fronteira.y) && totalT >= tempoTroca) {
+    if ((corpo.getCorpo()->getPosition().x < fronteira.x || corpo.getCorpo()->getPosition().x > fronteira.y) &&
+        totalT >= tempoTroca) {
         lado *= -1;
         totalT -= tempoTroca;
     }
 
-    
+
     corpo.mover(movimento * dT);
 }
+

@@ -2,9 +2,8 @@
 
 using namespace Inimigos;
 
-ChefeDino::ChefeDino(Plataforma* p):
-Inimigo(p->getGerenciador())
-{
+ChefeDino::ChefeDino(Plataforma *p) :
+        Inimigo(p->getGerenciador()) {
     float aux, aux2;
 
     plat = p;
@@ -22,19 +21,20 @@ Inimigo(p->getGerenciador())
     corpo.setTextura("../Texturas/Dinos/mort.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -2.5f), Vector2u(4, 1), Vector2u(24, 1));
 
-    posicaoInicial = fronteira.x + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(fronteira.y-fronteira.x)));
-    if(rand() % 2)
+    posicaoInicial =
+            fronteira.x + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (fronteira.y - fronteira.x)));
+    if (rand() % 2)
         lado = 1;
 
     corpo = Vector2f(posicaoInicial, fronteira.z);
     corpo.getCorpo()->setFillColor(Color::White);
     totalT = 0;
-    
+
     hitbox = new Projetil(plat->getGerenciador());
     hitbox->getCorpoGraf()->inicializa(Vector2f(100.0f, 100.0f), NULL);
     hitbox->getCorpoGraf()->setTextura("../Texturas/Efeitos/sunburn.png");
     hitbox->getCorpoGraf()->inicializaAnimadora(Vector2f(0.0f, 0.0f), Vector2u(8, 8), Vector2u(8, 8));
-    
+
     id = 5;
 }
 
@@ -50,8 +50,7 @@ void ChefeDino::mover() {
 
     chancePulo = rand() % 700;
 
-    if(!chancePulo && noChao)
-    {
+    if (!chancePulo && noChao) {
         noChao = false;
 
         movimento.y = -sqrtf(2.0 * 981.0 * pulo);
@@ -61,7 +60,8 @@ void ChefeDino::mover() {
 
     float tempoTroca = 0.2f;
 
-    if((corpo.getCorpo()->getPosition().x < fronteira.x || corpo.getCorpo()->getPosition().x > fronteira.y) && totalT >= tempoTroca) {
+    if ((corpo.getCorpo()->getPosition().x < fronteira.x || corpo.getCorpo()->getPosition().x > fronteira.y) &&
+        totalT >= tempoTroca) {
         lado *= -1;
         totalT -= tempoTroca;
     }
@@ -71,45 +71,44 @@ void ChefeDino::mover() {
 }
 
 void ChefeDino::executar() {
-    if(ataquePronto == false)
+    if (!ataquePronto)
         totalT += pGG->getDt();
 
-    if(tomaDano == false) {
+    if (!tomaDano) {
         danoT += pGG->getDt();
-        if(danoT >= 0.5f) {
+        if (danoT >= 0.5f) {
             danoT -= 0.5f;
             tomaDano = true;
             ferido = false;
         }
     }
-    
-    
-    if(ataquePronto && rand()%400 == 0) {
+
+
+    if (ataquePronto && rand() % 400 == 0) {
         atacando = true;
         totalT -= 0.5f;
         hitbox->getCorpoGraf()->setPosicao(corpo.getPosicao().x + (300.0f * -1), corpo.getPosicao().y);
         ataquePronto = false;
 
     }
-    if(atacando && totalT >= 0.5f) {
+    if (atacando && totalT >= 0.5f) {
         atacando = false;
         totalT = 0.0f;
         ataquePronto = true;
         hitbox->getCorpoGraf()->setPosicao(corpo.getPosicao().x + (100.0f * -1), corpo.getPosicao().y);
     }
 
-    hitbox->getCorpoGraf()->mover(298.0f  * pGG->getDt() * -1, 0.0f);
-    if(atacando)
-        hitbox->getCorpoGraf()->getAnimadora()->atualizarLinhasSequencial(pGG->getDt(), aDireita, Vector2u(8, 8), 5, 0.1f);
+    hitbox->getCorpoGraf()->mover(298.0f * pGG->getDt() * -1, 0.0f);
+    if (atacando)
+        hitbox->getCorpoGraf()->getAnimadora()->atualizarLinhasSequencial(pGG->getDt(), aDireita, Vector2u(8, 8), 0.1f);
 
-    if(not ferido)
+    if (not ferido)
         mover();
     animar(movimento);
 }
 
-void ChefeDino::imprimir()
-{
-    if(atacando)
+void ChefeDino::imprimir() {
+    if (atacando)
         pGG->desenhar(hitbox->getCorpoGraf()->getCorpo());
 
     pGG->desenhar(corpo.getCorpo());

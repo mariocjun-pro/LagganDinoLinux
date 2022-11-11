@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.h"
 
 //Classe Thread adaptada dos slides 18C do Prof. Dr. Jean Marcelo Simão
@@ -8,20 +9,26 @@ namespace GerenciadoresEntidades {
     class PThread {
     public:
         PThread();
+
         virtual ~PThread();
-        
+
         void iniciarThread();
-        void juntarThread();
-        void liberarThread();
-        void fecharThread();
-        void abrirThread();
-        
+
+        void juntarThread() const;
+
+        static void liberarThread();
+
+        static void fecharThread();
+
+        static void abrirThread();
+
     protected:
-        pthread_t threadId;
-        pthread_attr_t tAtributo;
+        pthread_t threadId{};
+        pthread_attr_t tAtributo{};
         static pthread_mutex_t mutex;
-                
-        static void* executarThread(void* pThread);
+
+        static void *executarThread(void *pThread);
+
         virtual void funcaoThread() = 0;
 
     };

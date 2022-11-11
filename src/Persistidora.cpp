@@ -26,26 +26,26 @@ Persistidora::~Persistidora() {
 void Persistidora::criarArquivos() {
     ofstream arquivo;
     string aux;
-    
+
     arq[0] = ("../Arquivos/Jogos/" + ("Jogador" + nome)) + ".dino";
     arquivo.open(arq[0], ios::out | ios::trunc);
     arquivo.close();
-    
+
     arq[1] = ("../Arquivos/Jogos/" + ("Objetos" + nome)) + ".dino";
     arquivo.open(arq[1], ios::out | ios::trunc);
     arquivo.close();
-    
+
     arq[2] = ("../Arquivos/Jogos/" + ("Fase" + nome)) + ".dino";
     arquivo.open(arq[2], ios::out | ios::trunc);
     arquivo.close();
-    
+
     aux = "../Arquivos/Jogos/Salvos.dino";
     arquivo.open(aux, ios::app);
     arquivo << nome << endl;
     arquivo.close();
 }
 
-void Persistidora::gravar(pair<Entidade*,int> p) {
+void Persistidora::gravar(pair<Entidade *, int> p) {
     switch (p.second) {
         case 1:
         case 3:
@@ -57,34 +57,32 @@ void Persistidora::gravar(pair<Entidade*,int> p) {
             break;
         case 2:
         case 7:
-            gravarJogadores(reinterpret_cast<Jogador*>(p.first), p.second);
+            gravarJogadores(reinterpret_cast<Jogador *>(p.first), p.second);
             break;
         default:
             break;
     }
-    
+
 }
 
-void Persistidora::gravarObjetos(Entidade* ent, int id) {
+void Persistidora::gravarObjetos(Entidade *ent, int id) {
     ofstream gravador(arq[1], ios::app);
-    Inimigo* inim;
-    
+    Inimigo *inim;
+
     try {
-        if(!gravador) {
-            throw 10;
-        }
+        if (!gravador) { throw 10; }
 
         gravador << id << ' ';
 
-        if(ent->getPlataforma())
+        if (ent->getPlataforma())
             gravador << ent->getPlataforma()->getIdPlataforma() << ' ';
         else
             gravador << -1 << ' ';
 
         gravador << ent->getPosicao().x << ' ' << ent->getPosicao().y << ' ';
 
-        if(id == 1 || id == 3 || id == 5) {
-            inim = reinterpret_cast<Inimigo*>(ent);
+        if (id == 1 || id == 3 || id == 5) {
+            inim = reinterpret_cast<Inimigo *>(ent);
             gravador << inim->getVidas() << ' ';
         }
 
@@ -96,18 +94,18 @@ void Persistidora::gravarObjetos(Entidade* ent, int id) {
     gravador.close();
 }
 
-void Persistidora::gravarJogadores(Jogador* j, int id) {
+void Persistidora::gravarJogadores(Jogador *j, int id) {
     ofstream gravador(arq[0], ios::app);
-    
-    if(!gravador) {
+
+    if (!gravador) {
         cerr << "erro ao abrir o arquivo";
         return;
     }
-    if(id == 2)
+    if (id == 2)
         doisJogadores = 1;
-    
+
     pontosTotais += j->getPontos();
-    
+
     gravador << id << ' ';
     gravador << j->getPontos() << ' ';
     gravador << j->getVidas() << ' ';
@@ -118,7 +116,7 @@ void Persistidora::gravarJogadores(Jogador* j, int id) {
 
 void Persistidora::gravarFase(const unsigned int id) {
     ofstream gravador(arq[2], ios::app);
-    
+
     gravador << id << endl;
     gravador << doisJogadores << endl;
     gravador << pontosTotais << endl;

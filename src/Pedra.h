@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Obstaculo.h"
 #include "Plataforma.h"
@@ -9,7 +10,8 @@ using namespace Auxiliares;
 namespace Obstaculos {
     class Pedra : public Obstaculo {
     public:
-        Pedra(Plataforma* plat);
+        explicit Pedra(Plataforma *plat);
+
         ~Pedra();
 
         void executar();

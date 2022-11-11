@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.h"
 #include "FabricaFase.h"
 #include "Montanha.h"
@@ -30,16 +31,21 @@ using namespace Fases;
 namespace Fabricas {
     class FabricaMontanha : public FabricaFase {
     public:
-        FabricaMontanha(Jogo* jogo = NULL);
+        explicit FabricaMontanha(Jogo *jogo = NULL);
+
         ~FabricaMontanha();
-        
-        Fase* criar();
-        
+
+        Fase *criar();
+
     private:
         void instanciaJogadores();
+
         void instanciaPlataformas();
-        void instanciaInimigos(Plataforma* plat);
-        void instanciaObstaculos(Plataforma* plat);
+
+        void instanciaInimigos(Plataforma *plat);
+
+        void instanciaObstaculos(Plataforma *plat);
+
         void instanciaFundo();
 
     };

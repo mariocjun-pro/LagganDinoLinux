@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Inimigo.h"
 #include "Projetil.h"
@@ -12,17 +13,20 @@ using namespace GerenciadoresEntidades;
 namespace Inimigos {
     class Atiradino : public Inimigo {
     public:
-        Atiradino(Plataforma* plataforma = NULL);
+        explicit Atiradino(Plataforma *plataforma = NULL);
+
         virtual ~Atiradino();
 
         virtual void executar();
+
         void imprimir();
+
         virtual void atirar();
 
-        Projetil* getProjetil() { return hitbox; }
+        Projetil *getProjetil() { return hitbox; }
+
     protected:
 
-        
 
     };
 }

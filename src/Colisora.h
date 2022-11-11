@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.h"
 
 namespace GerenciadoresEntidades {
@@ -16,15 +17,18 @@ namespace GerenciadoresFases {
     class Colisora {
     public:
         Colisora();
+
         ~Colisora();
 
-        bool verificarColisao(Corpo_Grafico* c1, Corpo_Grafico* c2, Vector2f& direcao, float f);
+        static bool verificarColisao(Corpo_Grafico *c1, Corpo_Grafico *c2, Vector2f &direcao, float f);
 
-        void colidindo(Entidade* e1, Vector2f direcao);
+        static void colidindo(Entidade *e1, Vector2f direcao);
 
-        bool atacando(Entidade* e1, Entidade* e2, Vector2f& direcao);
-        bool colidir(Entidade* e1, Entidade* e2, Vector2f& direcao);
-        bool ataque(Entidade* e1, Entidade* e2, Vector2f& direcao);
+        static bool atacando(Entidade *e1, Entidade *e2, Vector2f &direcao);
+
+        static bool colidir(Entidade *e1, Entidade *e2, Vector2f &direcao);
+
+        static bool ataque(Entidade *e1, Entidade *e2, Vector2f &direcao);
 
 
         //Sets e Gets

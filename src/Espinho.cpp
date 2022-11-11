@@ -2,9 +2,8 @@
 
 using namespace Obstaculos;
 
-Espinho::Espinho(Gerenciador_Grafico* g):
-Obstaculo(g)
-{
+Espinho::Espinho(Gerenciador_Grafico *g) :
+        Obstaculo(g) {
     podeMatar = true;
     podeMorrer = false;
     empurrao = 1.0f;
@@ -14,7 +13,7 @@ Obstaculo(g)
     corpo.setTextura("../Texturas/Obstaculos/Espinho.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, 0.0f), Vector2u(1, 1), Vector2u(1, 1));
     corpo.atualizaAnimacao(0.0f, false, 0, 0, 1, 0);
-    
+
     id = 4;
 }
 

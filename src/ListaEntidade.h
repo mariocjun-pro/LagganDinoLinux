@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.h"
 #include "Entidade.h"
 #include "Lista.h"
@@ -14,20 +15,27 @@ namespace Listas {
     class ListaEntidade {
     public:
         ListaEntidade();
+
         ~ListaEntidade();
 
         void executar();
+
         void imprimir();
 
-        void colidir(Jogador* j, Colisora* colisora);
-        void colidir(Jogador* j, Jogador* j2, Colisora* colisora);
+        void colidir(Jogador *j);
 
-        void incluir(Entidade* ent);
-        void gravar(Persistidora* pers);
+        void colidir(Jogador *j, Jogador *j2);
+
+        void incluir(Entidade *ent);
+
+        void gravar(Persistidora *pers);
+
         void limpar();
+
     private:
         Lista<Entidade> LEs;
-        void excluir(Lista<Entidade>::Elemento<Entidade>* no);
+
+        static void excluir(Lista<Entidade>::Elemento<Entidade> *no);
 
     };
 }

@@ -3,11 +3,10 @@
 
 using namespace Controladoras;
 
-int main (void) 
-{
-    Jogo* jogo;
+int main(void) {
+    Jogo *jogo;
     jogo = Jogo::CriarJogo();
-    
+
     jogo->executar();
     return 0;
 }

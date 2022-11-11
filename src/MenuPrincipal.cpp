@@ -1,9 +1,8 @@
 #include "MenuPrincipal.h"
 #include "Jogo.h"
 
-MenuPrincipal::MenuPrincipal(Jogo* jogo):
-Menu(jogo), fab1(pJogo), fab2(pJogo)
-{
+MenuPrincipal::MenuPrincipal(Jogo *jogo) :
+        Menu(jogo), fab1(pJogo), fab2(pJogo) {
     texto[0].setString("Um Jogador");
     texto[1].setString("Dois Jogadores");
     texto[2].setString("Ranking");
@@ -11,8 +10,7 @@ Menu(jogo), fab1(pJogo), fab2(pJogo)
     texto[4].setString("Sair");
 }
 
-MenuPrincipal::~MenuPrincipal() {
-}
+MenuPrincipal::~MenuPrincipal() {}
 
 void MenuPrincipal::executar() {
     int i;
@@ -22,7 +20,7 @@ void MenuPrincipal::executar() {
     exibeRanking();
 
     texto[selecionado].setFillColor(Color::Cyan);
-    for(i = 0; i < 5; i++) {
+    for (i = 0; i < 5; i++) {
         pGG->getJanela()->draw(texto[i]);
     }
     texto[selecionado].setFillColor(Color::Black);
@@ -33,20 +31,20 @@ void MenuPrincipal::executar() {
     switch (opcao) {
         case 0:
             fab1.setDoisJogadores(false);
-            pJogo->colocarEstado( reinterpret_cast<Estado*>(fab1.criar()) );
+            pJogo->colocarEstado(reinterpret_cast<Estado *>(fab1.criar()));
             pressionar = false;
             totalT = 0.0f;
             //Um jogador
             break;
         case 1:
             fab1.setDoisJogadores(true);
-            pJogo->colocarEstado( reinterpret_cast<Estado*>(fab1.criar()) );
+            pJogo->colocarEstado(reinterpret_cast<Estado *>(fab1.criar()));
             pressionar = false;
             totalT = 0.0f;
             //Dois jogadores
             break;
         case 2:
-            if(ranking)
+            if (ranking)
                 ranking = false;
             else
                 ranking = true;
