@@ -155,7 +155,7 @@ void Menu::exibeRanking() {
             rank.clear();
         }
 
-        for (i = 0; i < static_cast<int>(rank.size()); i++) {
+        for (i = 0; i < static_cast<int>(textoRank.size()); i++) {
             pGG->getJanela()->draw(textoRank[i]);
         }
     }
