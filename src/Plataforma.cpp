@@ -6,7 +6,7 @@ Plataforma::Plataforma(Vector2f tam) {
     podeMorrer = false;
     empurrao = 1.0f;
 
-    corpo.inicializa(tam, NULL, Vector2f(tam.x - (tam.x / 9.5f), tam.y));
+    corpo.inicializa(tam, nullptr, Vector2f(tam.x - (tam.x / 9.5f), tam.y));
 
     if (tam.x < 500.0f)
         corpo.setTextura("../arquivos/texturas/plataformas/PlatGramaP.png");

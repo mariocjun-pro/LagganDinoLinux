@@ -12,9 +12,9 @@ namespace Listas {
         class Elemento {
         public:
             Elemento() {
-                atual = NULL;
-                pProx = NULL;
-                pAnt = NULL;
+                atual = nullptr;
+                pProx = nullptr;
+                pAnt = nullptr;
             }
 
             ~Elemento() {}
@@ -68,8 +68,8 @@ namespace Listas {
 
     template<class TL>
     Lista<TL>::Lista() {
-        pPrimeiro = NULL;
-        pUltimo = NULL;
+        pPrimeiro = nullptr;
+        pUltimo = nullptr;
         tamanho = 0;
     }
 
@@ -96,7 +96,7 @@ namespace Listas {
 
     template<class TL>
     void Lista<TL>::limpar() {
-        Elemento<TL> *itr = pPrimeiro, *aux = NULL;
+        Elemento<TL> *itr = pPrimeiro, *aux = nullptr;
 
         while (itr) {
 

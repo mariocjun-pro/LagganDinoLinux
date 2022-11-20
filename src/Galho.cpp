@@ -9,7 +9,7 @@ Galho::Galho(Plataforma *plataforma) :
     podeMorrer = true;
     empurrao = 1.0f;
 
-    corpo.inicializa(Vector2f(150.0f, 100.0f), NULL);
+    corpo.inicializa(Vector2f(150.0f, 100.0f), nullptr);
 
     corpo.setTextura("../arquivos/texturas/obstaculos/galhoss.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -50.0f), Vector2u(1, 1), Vector2u(1, 1));

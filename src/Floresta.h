@@ -28,7 +28,7 @@ using namespace Controladoras;
 namespace Fases {
     class Floresta : public Fase {
     public:
-        Floresta(Jogo *jooj = NULL, const bool dois = false);
+        Floresta(Jogo *jooj = nullptr, const bool dois = false);
 
         ~Floresta();
 

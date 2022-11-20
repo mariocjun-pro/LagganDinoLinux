@@ -28,7 +28,7 @@ using namespace Fabricas;
 namespace Fases {
     class Montanha : public Fase {
     public:
-        Montanha(Jogo *jooAj = NULL, bool dois = false);
+        Montanha(Jogo *jooAj = nullptr, bool dois = false);
 
         ~Montanha();
 

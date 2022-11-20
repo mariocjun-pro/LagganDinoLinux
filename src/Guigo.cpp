@@ -5,7 +5,7 @@ using namespace Jogadores;
 Guigo::Guigo(Gerenciador_Grafico *g) :
         Jogador(g) {
     velocidade = 700.0f;
-    corpo.inicializa(Vector2f(100.0f, 130.0f), NULL, Vector2f(80.0f, 130.0f));
+    corpo.inicializa(Vector2f(100.0f, 130.0f), nullptr, Vector2f(80.0f, 130.0f));
     corpo.setTextura("../arquivos/texturas/sprites-dinos/vita.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -2.5f), Vector2u(4, 1), Vector2u(24, 1));
 

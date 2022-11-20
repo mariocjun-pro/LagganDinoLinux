@@ -9,7 +9,7 @@ using namespace Auxiliares;
 namespace Inimigos {
     class Andino : public Inimigo {
     public:
-        //Andino(Gerenciador_Grafico* g = NULL, Vector3f f = Vector3f(0.0f, 0.0f, 0.0f));
+        //Andino(Gerenciador_Grafico* g = nullptr, Vector3f f = Vector3f(0.0f, 0.0f, 0.0f));
         Andino(Plataforma *plataforma);
 
         ~Andino();
@@ -18,7 +18,7 @@ namespace Inimigos {
         //void morrer();
 
         void randomiza() {
-            srand(time(NULL));
+            srand(time(nullptr));
 
         }
 

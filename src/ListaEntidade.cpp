@@ -30,7 +30,7 @@ void ListaEntidade::imprimir() {
 }
 
 void ListaEntidade::colidir(Jogador *j, Colisora *colisora) {
-    Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux = NULL;
+    Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux = nullptr;
     Vector2f direcao(0.0f, 0.0f);
     Entidade *jog = static_cast<Entidade *>(j);
 
@@ -71,7 +71,7 @@ void ListaEntidade::colidir(Jogador *j, Colisora *colisora) {
 }
 
 void ListaEntidade::colidir(Jogador *j, Jogador *j2, Colisora *colisora) {
-    Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux = NULL;
+    Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux = nullptr;
     Vector2f direcao(0.0f, 0.0f);
 
     Entidade *jog = static_cast<Entidade *>(j);
@@ -88,7 +88,7 @@ void ListaEntidade::colidir(Jogador *j, Jogador *j2, Colisora *colisora) {
         if (itr->getAtual()->getMorto()) {
             excluir(itr);
             itr = aux;
-            if (aux == NULL)
+            if (aux == nullptr)
                 break;
         }
 
@@ -105,7 +105,7 @@ void ListaEntidade::colidir(Jogador *j, Jogador *j2, Colisora *colisora) {
                         j->setPontos(j->getPontos() + 15);
                         excluir(itr);
                         itr = aux;
-                        if (aux == NULL)
+                        if (aux == nullptr)
                             break;
                     }
                 }
@@ -142,24 +142,24 @@ void ListaEntidade::limpar() {
 }
 
 void ListaEntidade::excluir(Lista<Entidade>::Elemento<Entidade> *no) {
-    Lista<Entidade>::Elemento<Entidade> *aux = NULL;
+    Lista<Entidade>::Elemento<Entidade> *aux = nullptr;
 
     if (no->getProx()) {
         if (no->getAnt()) {
             no->getAnt()->setProx(no->getProx());
             no->getProx()->setAnt(no->getAnt());
         } else {
-            no->getProx()->setAnt(NULL);
+            no->getProx()->setAnt(nullptr);
         }
     } else {
-        no->getAnt()->setProx(NULL);
+        no->getAnt()->setProx(nullptr);
     }
     delete no->getAtual();
     delete no;
 }
 
 void ListaEntidade::gravar(Persistidora *pers) {
-    Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux = NULL;
+    Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux = nullptr;
 
     while (itr) {
         pers->gravar(itr->getAtual()->gravar());

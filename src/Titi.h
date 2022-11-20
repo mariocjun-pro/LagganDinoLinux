@@ -11,7 +11,7 @@ using namespace GerenciadoresEntidades;
 namespace Jogadores {
     class Titi : public Jogador {
     public:
-        Titi(Gerenciador_Grafico *g = NULL);
+        Titi(Gerenciador_Grafico *g = nullptr);
 
         ~Titi();
 

@@ -18,7 +18,7 @@ using namespace GerenciadoresFases;
 namespace Abstratas {
     class Entidade {
     public:
-        Entidade(Gerenciador_Grafico *gerenciador = NULL);
+        Entidade(Gerenciador_Grafico *gerenciador = nullptr);
 
         virtual ~Entidade();
 

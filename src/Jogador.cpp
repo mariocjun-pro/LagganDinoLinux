@@ -4,12 +4,12 @@ using namespace Jogadores;
 
 Jogador::Jogador(Gerenciador_Grafico *gerenciador) :
         Personagem(gerenciador), ataquePronto(true), ladoAtaque(1), pontos(000), pulo(700), vJog(0) {
-    hitbox = NULL;
+    hitbox = nullptr;
     vidas = 10;
     lado = 1;
     aDireita = true;
     hitbox = new Projetil(pGG);
-    hitbox->getCorpoGraf()->inicializa(Vector2f(100.0f, 100.0f), NULL);
+    hitbox->getCorpoGraf()->inicializa(Vector2f(100.0f, 100.0f), nullptr);
     posInicial = Vector2f(0.0f, 0.0f);
 
     podeMatar = false;

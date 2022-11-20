@@ -10,7 +10,7 @@ using namespace Auxiliares;
 namespace Jogadores {
     class Jogador : public Personagem {
     public:
-        Jogador(Gerenciador_Grafico *gerenciador = NULL);
+        Jogador(Gerenciador_Grafico *gerenciador = nullptr);
 
         virtual ~Jogador();
 

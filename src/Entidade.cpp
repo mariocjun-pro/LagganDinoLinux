@@ -8,7 +8,7 @@ Entidade::Entidade(Gerenciador_Grafico *gerenciador) :
         podeMatar(true), podeMorrer(true), empurrao(1.0f), movimento(0.0f, 0.0f), noChao(true), morto(false) {
     id = -1;
     vidas = 10;
-    plat = NULL;
+    plat = nullptr;
     pGG = gerenciador;
 }
 

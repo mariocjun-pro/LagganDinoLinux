@@ -29,7 +29,7 @@ using namespace Fases;
 namespace Fabricas {
     class FabricaFase {
     public:
-        FabricaFase(Jogo *jogo = NULL);
+        FabricaFase(Jogo *jogo = nullptr);
 
         virtual ~FabricaFase();
 

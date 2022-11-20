@@ -3,7 +3,7 @@
 
 GerenciadoresEntidades::Animadora::Animadora(Corpo_Grafico *corpo) {
     pCorpo = corpo;
-    textura = NULL;
+    textura = nullptr;
 
     inicializa(Vector2f(0, 0), Vector2u(0, 0), Vector2u(1, 1));
 }

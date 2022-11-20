@@ -18,7 +18,7 @@ using namespace Fases;
 namespace Controladoras {
     class Menu : public MenuEstado {
     public:
-        Menu(Jogo *jogo = NULL);
+        Menu(Jogo *jogo = nullptr);
 
         ~Menu();
 

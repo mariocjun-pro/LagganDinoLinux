@@ -13,7 +13,7 @@ using namespace GerenciadoresEntidades;
 namespace Inimigos {
     class Atiradino : public Inimigo {
     public:
-        Atiradino(Plataforma *plataforma = NULL);
+        Atiradino(Plataforma *plataforma = nullptr);
 
         virtual ~Atiradino();
 

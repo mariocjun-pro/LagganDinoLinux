@@ -8,7 +8,7 @@ using namespace Personagens;
 namespace Inimigos {
     class Inimigo : public Personagem {
     public:
-        Inimigo(Gerenciador_Grafico *g = NULL);
+        Inimigo(Gerenciador_Grafico *g = nullptr);
 
         virtual ~Inimigo();
 

@@ -13,7 +13,7 @@ using namespace GerenciadoresEntidades;
 namespace GerenciadoresEntidades {
     class Animadora {
     public:
-        Animadora(Corpo_Grafico *corpo = NULL);
+        Animadora(Corpo_Grafico *corpo = nullptr);
 
         ~Animadora();
 

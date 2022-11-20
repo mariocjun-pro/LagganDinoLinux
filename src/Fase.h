@@ -30,7 +30,7 @@ using namespace Estados;
 namespace Fases {
     class Fase : public FaseEstado {
     public:
-        Fase(Jogo *jooj = NULL, bool dois = false);
+        Fase(Jogo *jooj = nullptr, bool dois = false);
 
         virtual ~Fase();
 

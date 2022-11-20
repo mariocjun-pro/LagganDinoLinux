@@ -10,7 +10,7 @@ using namespace Obstaculos;
 namespace Obstaculos {
     class Galho : public Obstaculo {
     public:
-        Galho(Plataforma *plataforma = NULL);
+        Galho(Plataforma *plataforma = nullptr);
 
         ~Galho();
 

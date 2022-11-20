@@ -9,7 +9,7 @@ using namespace Controladoras;
 namespace Controladoras {
     class Fundo {
     public:
-        Fundo(unsigned int qtd = 1, Gerenciador_Grafico *GG = NULL);
+        Fundo(unsigned int qtd = 1, Gerenciador_Grafico *GG = nullptr);
 
         virtual ~Fundo();
 

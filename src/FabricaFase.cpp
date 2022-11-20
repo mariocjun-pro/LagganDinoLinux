@@ -9,8 +9,8 @@ FabricaFase::FabricaFase(Jogo *jogo) {
     doisJogadores = false;
     idFase = 0;
 
-    j1 = NULL;
-    j2 = NULL;
+    j1 = nullptr;
+    j2 = nullptr;
 }
 
 FabricaFase::~FabricaFase() {
@@ -48,16 +48,16 @@ void FabricaFase::carregar() {
     int tipo = 0, id = 0, aux1 = 0, aux2 = 0, numJogadores = 1, i = 0;
     Vector2f pos, tam;
 
-    Entidade *ent = NULL;
-    Inimigo *inim = NULL;
-    Plataforma *plat = NULL;
-    Andino *andi = NULL;
-    Atiradino *atira = NULL;
-    Espinho *esp = NULL;
-    ChefeDino *chefe = NULL;
-    Galho *galho = NULL;
-    Pedra *pedra = NULL;
-    Jogador *jog = NULL;
+    Entidade *ent = nullptr;
+    Inimigo *inim = nullptr;
+    Plataforma *plat = nullptr;
+    Andino *andi = nullptr;
+    Atiradino *atira = nullptr;
+    Espinho *esp = nullptr;
+    ChefeDino *chefe = nullptr;
+    Galho *galho = nullptr;
+    Pedra *pedra = nullptr;
+    Jogador *jog = nullptr;
 
     if (doisJogadores)
         numJogadores = 2;
@@ -114,7 +114,7 @@ void FabricaFase::carregar() {
     }
 
     while (leitor >> id) {
-        inim = NULL;
+        inim = nullptr;
 
         //plataformas
         leitor >> aux1;
@@ -170,6 +170,6 @@ void FabricaFase::limpar() {
     carrega = false;
     doisJogadores = false;
 
-    j1 = NULL;
-    j2 = NULL;
+    j1 = nullptr;
+    j2 = nullptr;
 }

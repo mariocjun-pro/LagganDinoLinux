@@ -31,7 +31,7 @@ using namespace Fases;
 namespace Fabricas {
     class FabricaMontanha : public FabricaFase {
     public:
-        FabricaMontanha(Jogo *jogo = NULL);
+        FabricaMontanha(Jogo *jogo = nullptr);
 
         ~FabricaMontanha();
 

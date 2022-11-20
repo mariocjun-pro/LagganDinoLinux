@@ -6,7 +6,7 @@ Titi::Titi(Gerenciador_Grafico *g) :
         Jogador(g) {
     pulo = 1000.0f;
     vidas = 10;
-    corpo.inicializa(Vector2f(100.0f, 130.0f), NULL, Vector2f(80.0f, 130.0f));
+    corpo.inicializa(Vector2f(100.0f, 130.0f), nullptr, Vector2f(80.0f, 130.0f));
     corpo.setTextura("../arquivos/texturas/sprites-dinos/tard.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -2.5f), Vector2u(4, 1), Vector2u(24, 1));
 

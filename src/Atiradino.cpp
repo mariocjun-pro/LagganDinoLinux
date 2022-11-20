@@ -20,7 +20,7 @@ Atiradino::Atiradino(Plataforma *plataforma) :
     posicaoInicial =
             fronteira.x + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (fronteira.y - fronteira.x)));
 
-    corpo.inicializa(Vector2f(100.0f, 130.0f), NULL);
+    corpo.inicializa(Vector2f(100.0f, 130.0f), nullptr);
     corpo.setTextura("../arquivos/texturas/sprites-dinos/doux.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -2.5f), Vector2u(4, 1), Vector2u(24, 1));
 
@@ -29,7 +29,7 @@ Atiradino::Atiradino(Plataforma *plataforma) :
     totalT = 0;
 
     hitbox = new Projetil(plataforma->getGerenciador());
-    hitbox->getCorpoGraf()->inicializa(Vector2f(100.0f, 100.0f), NULL, Vector2f(30.0f, 30.0f));
+    hitbox->getCorpoGraf()->inicializa(Vector2f(100.0f, 100.0f), nullptr, Vector2f(30.0f, 30.0f));
     hitbox->getCorpoGraf()->setTextura("../arquivos/texturas/efeitos-projetil/sunburn.png");
     hitbox->getCorpoGraf()->inicializaAnimadora(Vector2f(0.0f, 0.0f), Vector2u(8, 8), Vector2u(8, 8));
 
