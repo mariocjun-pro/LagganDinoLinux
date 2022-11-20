@@ -14,7 +14,7 @@ Menu::Menu(Jogo *jogo) :
     pressionar = false;
 
     fundo.setTamanho(Vector2f(1280.0f, 960.0f));
-    fundo.setTextura("../arquivos/texturas/bg-menu/bg.png");
+    fundo.setTextura("../arquivos/texturas/bg-menu/friends.png");
     fundo.setPosicao(pGG->getVisao()->getCenter());
 
     selecionado = 0;

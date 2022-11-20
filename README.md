@@ -9,5 +9,5 @@ sudo apt-get install -y build-essential cmake libsfml-dev libpthread-stubs0-dev
 ### Depois de instalado o SFML, basta rodar o comando:
 
 ```bash
-make
+bash run.sh
 ```

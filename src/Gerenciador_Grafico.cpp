@@ -2,7 +2,7 @@
 using namespace Controladoras;
 
 Gerenciador_Grafico::Gerenciador_Grafico():
-janela(VideoMode(1280, 960), "Dino++", Style::Default),
+janela(VideoMode(1280, 720), "LagganDino", Style::Default),
 visao(Vector2f(0.0f, 0.0f), Vector2f(1280, 960)),
 dT(0)
 {

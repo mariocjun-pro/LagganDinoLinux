@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Nome do projeto
-set(PROJECT_NAME "LaggandoGame")
+set(PROJECT_NAME "LagganDino")
 project(${PROJECT_NAME})
 
 # Adiciona a flag de debug
