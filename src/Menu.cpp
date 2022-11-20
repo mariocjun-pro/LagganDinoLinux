@@ -89,11 +89,13 @@ void Menu::leEntradas() {
 }
 
 void Menu::posicionarTexto() {
-    texto[0].setPosition(pGG->getVisao()->getCenter().x, pGG->getVisao()->getCenter().y - 400);
-    texto[1].setPosition(pGG->getVisao()->getCenter().x, pGG->getVisao()->getCenter().y - 300);
-    texto[2].setPosition(pGG->getVisao()->getCenter().x, pGG->getVisao()->getCenter().y - 200);
-    texto[3].setPosition(pGG->getVisao()->getCenter().x, pGG->getVisao()->getCenter().y - 100);
-    texto[4].setPosition(pGG->getVisao()->getCenter().x, pGG->getVisao()->getCenter().y - 000);
+    // posiciona as opcoes do menu
+    auto get_center = pGG->getVisao()->getCenter();
+    texto[0].setPosition(get_center.x - 500, get_center.y - 200);
+    texto[1].setPosition(get_center.x - 500, get_center.y - 100);
+    texto[2].setPosition(get_center.x - 500, get_center.y + 000);
+    texto[3].setPosition(get_center.x - 500, get_center.y + 100);
+    texto[4].setPosition(get_center.x - 500, get_center.y + 200);
 }
 
 void Menu::carregar(string nome) {
