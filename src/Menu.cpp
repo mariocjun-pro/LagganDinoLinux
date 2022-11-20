@@ -137,25 +137,28 @@ void Menu::exibeRanking() {
     string saux;
     int aux;
     int i, k;
-    if (ranking == true) {
+    if (ranking) {
         if (not lido) {
             rank.clear();
             ifstream leitor("../arquivos/save/Ranking.dino", ios::in);
             while (leitor >> saux >> aux) {
-                rank.push_back(pair<string, int>(saux, aux));
+                rank.emplace_back(saux, aux);
             }
             lido = true;
             textoRank.resize(rank.size());
 
-            for (i = 0; i < rank.size(); i++) {
+            auto pgg_x = pGG->getVisao()->getCenter().x + 100;
+            auto pgg_y = pGG->getVisao()->getCenter().y - 400;
+
+            for (i = 0; i < static_cast<int>(rank.size()); i++) {
                 textoRank[i].setFont(fonte);
                 textoRank[i].setCharacterSize(40);
                 textoRank[i].setOutlineThickness(0.5);
                 textoRank[i].setFillColor(Color::Black);
-                textoRank[i].setPosition(pGG->getVisao()->getCenter().x - 600.0f,
-                                         pGG->getVisao()->getCenter().y - 400.0f + i * 50.0f);
-                textoRank[i].setString(rank[i].first + " " + std::to_string(rank[i].second));
+                textoRank[i].setPosition(pgg_x,pgg_y + static_cast<float>(i) * 50.0f);
+                textoRank[i].setString(rank[i].first + " " + to_string(rank[i].second));
             }
+
             rank.clear();
         }
 
