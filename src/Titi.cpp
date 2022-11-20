@@ -7,10 +7,10 @@ Titi::Titi(Gerenciador_Grafico *g) :
     pulo = 1000.0f;
     vidas = 10;
     corpo.inicializa(Vector2f(100.0f, 130.0f), NULL, Vector2f(80.0f, 130.0f));
-    corpo.setTextura("../Texturas/Dinos/tard.png");
+    corpo.setTextura("../arquivos/texturas/sprites-dinos/tard.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -2.5f), Vector2u(4, 1), Vector2u(24, 1));
 
-    hitbox->getCorpoGraf()->setTextura("../Texturas/Efeitos/magic.png");
+    hitbox->getCorpoGraf()->setTextura("../arquivos/texturas/efeitos-projetil/magic.png");
     hitbox->getCorpoGraf()->inicializaAnimadora(Vector2f(0.0f, 0.0f), Vector2u(9, 9), Vector2u(9, 9));
 
     posInicial = Vector2f((corpo.getPosicao().x / 2.0f) + 70.0f, 710);

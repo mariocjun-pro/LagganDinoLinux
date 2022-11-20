@@ -18,7 +18,7 @@ ChefeDino::ChefeDino(Plataforma *p) :
     velocidade = 350.0f;
 
     corpo.inicializa(Vector2f(200.0f, 260.0f), NULL);
-    corpo.setTextura("../Texturas/Dinos/mort.png");
+    corpo.setTextura("../arquivos/texturas/sprites-dinos/mort.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -2.5f), Vector2u(4, 1), Vector2u(24, 1));
 
     posicaoInicial =
@@ -32,7 +32,7 @@ ChefeDino::ChefeDino(Plataforma *p) :
 
     hitbox = new Projetil(plat->getGerenciador());
     hitbox->getCorpoGraf()->inicializa(Vector2f(100.0f, 100.0f), NULL);
-    hitbox->getCorpoGraf()->setTextura("../Texturas/Efeitos/sunburn.png");
+    hitbox->getCorpoGraf()->setTextura("../arquivos/texturas/efeitos-projetil/sunburn.png");
     hitbox->getCorpoGraf()->inicializaAnimadora(Vector2f(0.0f, 0.0f), Vector2u(8, 8), Vector2u(8, 8));
 
     id = 5;

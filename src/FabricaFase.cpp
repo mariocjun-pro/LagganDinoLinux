@@ -37,9 +37,9 @@ void FabricaFase::carregar() {
     ifstream plats;
 
     if (idFase == 0)
-        plats.open("../Arquivos/PlataformasMontanha.txt", ios::in);
+        plats.open("../arquivos/PlataformasMontanha.txt", ios::in);
     else if (idFase == 1)
-        plats.open("../Arquivos/PlataformasFloresta.txt", ios::in);
+        plats.open("../arquivos/PlataformasFloresta.txt", ios::in);
 
     if (!plats) {
         cerr << "Falha ao abrir o Arquivo";
@@ -62,7 +62,7 @@ void FabricaFase::carregar() {
     if (doisJogadores)
         numJogadores = 2;
 
-    leitor.open("../Arquivos/Jogos/Jogador" + salvo + ".dino", ios::in);
+    leitor.open("../arquivos/save/Jogador" + salvo + ".dino", ios::in);
 
     if (!leitor) {
         cerr << "Falha ao abrir arquivo";
@@ -107,7 +107,7 @@ void FabricaFase::carregar() {
 
     plats.close();
 
-    leitor.open("../Arquivos/Jogos/Objetos" + salvo + ".dino", ios::in);
+    leitor.open("../arquivos/save/Objetos" + salvo + ".dino", ios::in);
 
     if (!leitor) {
         cerr << "Falha ao abrir arquivo";
@@ -116,7 +116,7 @@ void FabricaFase::carregar() {
     while (leitor >> id) {
         inim = NULL;
 
-        //Plataforma
+        //plataformas
         leitor >> aux1;
 
         //Posição

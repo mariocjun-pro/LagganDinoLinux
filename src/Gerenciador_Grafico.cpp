@@ -1,13 +1,13 @@
 #include "Gerenciador_Grafico.h"
-
 using namespace Controladoras;
 
-Gerenciador_Grafico::Gerenciador_Grafico() :
-        janela(VideoMode(1280, 960), "Dino++", Style::Default),
-        visao(Vector2f(0.0f, 0.0f), Vector2f(1280, 960)),
-        dT(0) {
-    instanciaTexto();
-    leitura = false;
+Gerenciador_Grafico::Gerenciador_Grafico():
+janela(VideoMode(1280, 960), "Dino++", Style::Default),
+visao(Vector2f(0.0f, 0.0f), Vector2f(1280, 960)),
+dT(0)
+{
+   instanciaTexto();
+   leitura = false;
 }
 
 Gerenciador_Grafico::~Gerenciador_Grafico() {
@@ -17,18 +17,19 @@ Gerenciador_Grafico::~Gerenciador_Grafico() {
 void Gerenciador_Grafico::leEventos() {
     Event evento;
     while (janela.pollEvent(evento)) {
-        switch (evento.type) {
-            case (Event::Closed):
-                janela.close();
-                break;
-            case (Event::Resized):
-                break;
-            case (Event::TextEntered):
-                caracter = evento.text.unicode;
-                entraString(caracter);
-                break;
-            default:
-                break;
+        switch (evento.type)
+        {
+        case (Event::Closed):
+            janela.close();
+            break;
+        case (Event::Resized):
+            break;
+        case (Event::TextEntered):
+            caracter = evento.text.unicode;
+            entraString(caracter);
+            break;
+        default:
+            break;
         }
     }
 }
@@ -39,7 +40,7 @@ void Gerenciador_Grafico::limpar() {
 }
 
 void Gerenciador_Grafico::instanciaTexto() {
-    fonte.loadFromFile("../Texturas/Fontes/Dinosaur.ttf");
+    fonte.loadFromFile("../arquivos/texturas/fontes-strings/Dinosaur.ttf");
     texto.setFont(fonte);
 
     texto.setCharacterSize(50);
@@ -49,13 +50,13 @@ void Gerenciador_Grafico::instanciaTexto() {
     texto.setOutlineColor(sf::Color::Yellow);
 }
 
-void Gerenciador_Grafico::imprimePontuacao(int p, int v) {
+void Gerenciador_Grafico::imprimePontuacao(int p, int v){
 
     //Desenha pontos
     string s1 = "Pontos: ";
     string s2 = "000";
 
-    if (p > 999)
+    if(p > 999)
         p = 999;
 
     s2 = to_string(p);
@@ -75,7 +76,7 @@ void Gerenciador_Grafico::imprimePontuacao(int p, int v) {
     janela.draw(texto);
 }
 
-void Gerenciador_Grafico::imprimePontuacao(int p, int v, int p2, int v2) {
+void Gerenciador_Grafico::imprimePontuacao(int p, int v, int p2, int v2){
 
     texto.setFillColor(sf::Color::Green);
     texto.setOutlineColor(sf::Color::Yellow);
@@ -84,7 +85,7 @@ void Gerenciador_Grafico::imprimePontuacao(int p, int v, int p2, int v2) {
     string s1 = "Pontos: ";
     string s2 = "000";
 
-    if (p > 999)
+    if(p > 999)
         p = 999;
 
     s2 = to_string(p);
@@ -111,7 +112,7 @@ void Gerenciador_Grafico::imprimePontuacao(int p, int v, int p2, int v2) {
     //Desenha pontos jogador 2
     s1 = "Pontos: ";
 
-    if (p2 > 999)
+    if(p2 > 999)
         p2 = 999;
 
     s2 = to_string(p2);
@@ -134,18 +135,18 @@ void Gerenciador_Grafico::imprimePontuacao(int p, int v, int p2, int v2) {
 }
 
 void Gerenciador_Grafico::entraString(char c) {
-    if (leitura) {
-        if (isalnum(c)) {
+    if(leitura) {
+        if(isalnum(c)) {
             entrada += c;
         }
-        if (c == 8) {
-            if (entrada.size() > 0)
+        if(c == 8) {
+            if(entrada.size() > 0)
                 entrada.erase(entrada.size() - 1);
         }
-        if (entrada.size() > 20) {
+        if(entrada.size() > 20) {
             entrada.clear();
         }
-        if (Keyboard::isKeyPressed(Keyboard::Space))
+        if(Keyboard::isKeyPressed(Keyboard::Space))
             entrada = "SimaoLindoS2";
     }
 }

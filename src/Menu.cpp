@@ -14,12 +14,12 @@ Menu::Menu(Jogo *jogo) :
     pressionar = false;
 
     fundo.setTamanho(Vector2f(1280.0f, 960.0f));
-    fundo.setTextura("../Texturas/Menu/bg.png");
+    fundo.setTextura("../arquivos/texturas/bg-menu/bg.png");
     fundo.setPosicao(pGG->getVisao()->getCenter());
 
     selecionado = 0;
 
-    fonte.loadFromFile("../Texturas/Fontes/Pixel.TTF");
+    fonte.loadFromFile("../arquivos/texturas/fontes-strings/Pixel.TTF");
     int i;
     for (i = 0; i < 5; i++) {
         texto[i].setFont(fonte);
@@ -97,7 +97,7 @@ void Menu::posicionarTexto() {
 }
 
 void Menu::carregar(string nome) {
-    ifstream leitor("../Arquivos/Jogos/Fase" + nome + ".dino", ios::in);
+    ifstream leitor("../arquivos/save/Fase" + nome + ".dino", ios::in);
     int fase;
     int dois;
     leitor >> fase;
@@ -138,7 +138,7 @@ void Menu::exibeRanking() {
     if (ranking == true) {
         if (not lido) {
             rank.clear();
-            ifstream leitor("../Arquivos/Jogos/Ranking.dino", ios::in);
+            ifstream leitor("../arquivos/save/Ranking.dino", ios::in);
             while (leitor >> saux >> aux) {
                 rank.push_back(pair<string, int>(saux, aux));
             }
@@ -203,7 +203,7 @@ void Menu::salvaPontuacao() {
     vector<int> v;
     map<int, string> ranking;
 
-    leitor.open("../Arquivos/Jogos/Ranking.dino", ios::in);
+    leitor.open("../arquivos/save/Ranking.dino", ios::in);
 
     ranking.insert(pair<int, string>(pontos, sleitura));
     v.push_back(pontos);
@@ -216,7 +216,7 @@ void Menu::salvaPontuacao() {
     std::sort(v.begin(), v.end());
     leitor.close();
 
-    gravador.open("../Arquivos/Jogos/Ranking.dino", ios::out | ios::trunc);
+    gravador.open("../arquivos/save/Ranking.dino", ios::out | ios::trunc);
 
     for (int i = v.size() - 1; i >= 0; i--) {
         gravador << ranking.at(v.at(i));

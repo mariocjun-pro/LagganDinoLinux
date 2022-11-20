@@ -11,7 +11,7 @@ Galho::Galho(Plataforma *plataforma) :
 
     corpo.inicializa(Vector2f(150.0f, 100.0f), NULL);
 
-    corpo.setTextura("../Texturas/Obstaculos/galhoss.png");
+    corpo.setTextura("../arquivos/texturas/obstaculos/galhoss.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -50.0f), Vector2u(1, 1), Vector2u(1, 1));
     corpo.atualizaAnimacao(0.0f, false, 0, 0, 1, 0);
 

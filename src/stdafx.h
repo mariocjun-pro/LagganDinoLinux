@@ -31,7 +31,7 @@ using namespace sf;
 //using namespace Estados;
 //using namespace Auxiliares;
 //using namespace GerenciadoresEntidades;
-//using namespace Obstaculos;
+//using namespace obstaculos;
 //using namespace Listas;
 //using namespace GerenciadoresFase;
 //using namespace Controladoras;

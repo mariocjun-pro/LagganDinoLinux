@@ -27,19 +27,19 @@ void Persistidora::criarArquivos() {
     ofstream arquivo;
     string aux;
 
-    arq[0] = ("../Arquivos/Jogos/" + ("Jogador" + nome)) + ".dino";
+    arq[0] = ("../arquivos/save/" + ("Jogador" + nome)) + ".dino";
     arquivo.open(arq[0], ios::out | ios::trunc);
     arquivo.close();
 
-    arq[1] = ("../Arquivos/Jogos/" + ("Objetos" + nome)) + ".dino";
+    arq[1] = ("../arquivos/save/" + ("Objetos" + nome)) + ".dino";
     arquivo.open(arq[1], ios::out | ios::trunc);
     arquivo.close();
 
-    arq[2] = ("../Arquivos/Jogos/" + ("Fase" + nome)) + ".dino";
+    arq[2] = ("../arquivos/save/" + ("Fase" + nome)) + ".dino";
     arquivo.open(arq[2], ios::out | ios::trunc);
     arquivo.close();
 
-    aux = "../Arquivos/Jogos/Salvos.dino";
+    aux = "../arquivos/save/Salvos.dino";
     arquivo.open(aux, ios::app);
     arquivo << nome << endl;
     arquivo.close();

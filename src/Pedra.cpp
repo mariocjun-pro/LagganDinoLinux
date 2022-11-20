@@ -11,7 +11,7 @@ Pedra::Pedra(Plataforma *plataforma) :
 
     corpo.inicializa(Vector2f(100.0f, 150.0f), NULL);
 
-    corpo.setTextura("../Texturas/Obstaculos/Pedra.png");
+    corpo.setTextura("../arquivos/texturas/obstaculos/Pedra.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, 0.0f), Vector2u(1, 1), Vector2u(1, 1));
     corpo.atualizaAnimacao(0.0f, false, 0, 0, 1, 0);
 

@@ -6,10 +6,10 @@ Guigo::Guigo(Gerenciador_Grafico *g) :
         Jogador(g) {
     velocidade = 700.0f;
     corpo.inicializa(Vector2f(100.0f, 130.0f), NULL, Vector2f(80.0f, 130.0f));
-    corpo.setTextura("../Texturas/Dinos/vita.png");
+    corpo.setTextura("../arquivos/texturas/sprites-dinos/vita.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -2.5f), Vector2u(4, 1), Vector2u(24, 1));
 
-    hitbox->getCorpoGraf()->setTextura("../Texturas/Efeitos/sunburn.png");
+    hitbox->getCorpoGraf()->setTextura("../arquivos/texturas/efeitos-projetil/sunburn.png");
     hitbox->getCorpoGraf()->inicializaAnimadora(Vector2f(0.0f, 0.0f), Vector2u(8, 8), Vector2u(8, 8));
 
     posInicial = Vector2f(corpo.getPosicao().x / 2.0f, 710);

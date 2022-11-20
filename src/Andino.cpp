@@ -17,7 +17,7 @@ Andino::Andino(Plataforma *plataforma) :
     velocidade = 200.0f;
 
     corpo.inicializa(Vector2f(100.0f, 130.0f), NULL);
-    corpo.setTextura("../Texturas/Dinos/mort.png");
+    corpo.setTextura("../arquivos/texturas/sprites-dinos/mort.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -2.5f), Vector2u(4, 1), Vector2u(24, 1));
 
     posicaoInicial =
