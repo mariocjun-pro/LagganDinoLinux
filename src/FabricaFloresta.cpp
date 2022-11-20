@@ -217,12 +217,11 @@ void FabricaFloresta::instanciaObstaculos(Plataforma* plat) {
 }
 
 void FabricaFloresta::instanciaFundo() {
-    Fundo* fundo = new Fundo(2, pJogo->getGerenciador());
+    auto *fundo = new Fundo(3, pJogo->getGerenciador());
 
-    fundo->setTextura("../arquivos/texturas/bg-floresta/Nuvens.png", 0);
-    fundo->setTextura("../arquivos/texturas/bg-floresta/Backgroud3.png", 1);
-
-    fundo->setTamanho(Vector2f(1280.0f, 960.0f));
+    fundo->setTextura("../Texturas/Floresta/background_layer_1.png", 0);
+    fundo->setTextura("../Texturas/Floresta/background_layer_2.png", 1);
+    fundo->setTextura("../Texturas/Floresta/background_layer_3.png", 2);
 
     fase->setFundo(fundo);
 }
