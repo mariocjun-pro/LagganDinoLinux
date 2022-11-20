@@ -46,7 +46,7 @@ void PThread::liberarThread() {
 }
 
 void *PThread::executarThread(void *pThread) {
-    PThread *sThread = static_cast<PThread *>(pThread);
+    auto *sThread = static_cast<PThread *>(pThread);
 
     if (not sThread) {
         cerr << "Thread falhou" << endl;

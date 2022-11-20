@@ -9,9 +9,9 @@ project(${PROJECT_NAME})
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Criando a lista de flags para o compilador
-list(APPEND FLAGS "-std=c++11") # C++11
-list(APPEND FLAGS "-Wall")      # Warnings
-list(APPEND FLAGS "-Wextra")    # Warnings extras
+list(APPEND FLAGS "-std=c++11 -w") # C++11
+#list(APPEND FLAGS "-Wall")        # Warnings
+#list(APPEND FLAGS "-Wextra")      # Warnings extras
 list(JOIN FLAGS " " FLAGS)
 
 # Adiciona flags de compilação para o projeto
