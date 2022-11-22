@@ -20,6 +20,7 @@ namespace Inimigos {
 
     protected:
         Vector3f fronteira;
+
         float posicaoInicial;
 
         float danoT;

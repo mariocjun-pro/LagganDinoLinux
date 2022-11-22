@@ -1,8 +1,8 @@
 #include "MenuPause.h"
 #include "Jogo.h"
 
-MenuPause::MenuPause(Jogo *jogo) :
-        Menu(jogo) {
+MenuPause::MenuPause(Jogo *j) :
+        Menu(j) {
     texto[0].setString("Voltar");
     texto[1].setString("Salvar");
     texto[2].setString("Ranking");

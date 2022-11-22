@@ -1,8 +1,8 @@
 #include "MenuPrincipal.h"
 #include "Jogo.h"
 
-MenuPrincipal::MenuPrincipal(Jogo *jogo) :
-        Menu(jogo), fab1(pJogo), fab2(pJogo) {
+MenuPrincipal::MenuPrincipal(Jogo *j) :
+        Menu(j), fab1(pJogo), fab2(pJogo) {
     texto[0].setString("Um Jogador");
     texto[1].setString("Dois Jogadores");
     texto[2].setString("Ranking");

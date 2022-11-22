@@ -17,18 +17,13 @@ using namespace Fases;
 namespace Controladoras {
     class MenuPrincipal : public Menu {
     public:
-        MenuPrincipal(Jogo *jogo);
+        MenuPrincipal(Jogo *j);
 
         ~MenuPrincipal();
 
         void executar();
 
-        void setSelecionado(const int s) { selecionado = s; }
-
     private:
-        Montanha *montanha;
-        Floresta *floresta;
-
         FabricaMontanha fab1;
         FabricaFloresta fab2;
 

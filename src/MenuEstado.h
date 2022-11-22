@@ -11,9 +11,6 @@ namespace Estados {
         MenuEstado();
 
         virtual ~MenuEstado();
-
-    private:
-
     };
 }
 

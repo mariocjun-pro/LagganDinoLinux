@@ -26,7 +26,7 @@ void Vita::executar() {
     if (!ataquePronto)
         totalT += pGG->getDt();
 
-    Keyboard::Key tecla = Keyboard::E;
+    Keyboard::Key tecla = Keyboard::Space;
     if (Keyboard::isKeyPressed(tecla) && ataquePronto) {
         atacando = true;
         totalT -= 0.5f;

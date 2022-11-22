@@ -2,13 +2,13 @@
 
 using namespace Inimigos;
 
-Atiradino::Atiradino(Plataforma *plataforma) :
-        Inimigo(plataforma->getGerenciador()) {
+Atiradino::Atiradino(Plataforma *p) :
+        Inimigo(p->getGerenciador()) {
     float aux, aux2;
 
     vidas = 2;
 
-    plat = plataforma;
+    plat = p;
     movimento.x = 0;
     movimento.y = 0;
     ataquePronto = true;
@@ -28,7 +28,7 @@ Atiradino::Atiradino(Plataforma *plataforma) :
     corpo.getCorpo()->setFillColor(Color::White);
     totalT = 0;
 
-    hitbox = new Projetil(plataforma->getGerenciador());
+    hitbox = new Projetil(p->getGerenciador());
     hitbox->getCorpoGraf()->inicializa(Vector2f(100.0f, 100.0f), nullptr, Vector2f(30.0f, 30.0f));
     hitbox->getCorpoGraf()->setTextura("../arquivos/texturas/efeitos-projetil/sunburn.png");
     hitbox->getCorpoGraf()->inicializaAnimadora(Vector2f(0.0f, 0.0f), Vector2u(8, 8), Vector2u(8, 8));

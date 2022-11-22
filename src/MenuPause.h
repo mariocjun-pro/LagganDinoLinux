@@ -10,14 +10,11 @@ using namespace Estados;
 namespace Controladoras {
     class MenuPause : public Menu {
     public:
-        MenuPause(Jogo *jogo);
+        MenuPause(Jogo *j);
 
         virtual ~MenuPause();
 
         void executar();
-
-    private:
-
     };
 }
 

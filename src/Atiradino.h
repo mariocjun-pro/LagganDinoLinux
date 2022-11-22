@@ -13,7 +13,7 @@ using namespace GerenciadoresEntidades;
 namespace Inimigos {
     class Atiradino : public Inimigo {
     public:
-        Atiradino(Plataforma *plataforma = nullptr);
+        Atiradino(Plataforma *p = nullptr);
 
         virtual ~Atiradino();
 
@@ -26,7 +26,6 @@ namespace Inimigos {
         Projetil *getProjetil() { return hitbox; }
 
     protected:
-
 
     };
 }

@@ -2,10 +2,10 @@
 
 using namespace Inimigos;
 
-Andino::Andino(Plataforma *plataforma) :
-        Inimigo(plataforma->getGerenciador()) {
+Andino::Andino(Plataforma *p) :
+        Inimigo(p->getGerenciador()) {
     float aux, aux2;
-    plat = plataforma;
+    plat = p;
 
     vidas = 2;
     pulo = 280.0f;

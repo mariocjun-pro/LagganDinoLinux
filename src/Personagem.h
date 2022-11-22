@@ -34,7 +34,6 @@ namespace Personagens {
 
         bool ataquePronto;
         Projetil *hitbox;
-
     };
 }
 

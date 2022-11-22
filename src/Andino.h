@@ -9,13 +9,11 @@ using namespace Auxiliares;
 namespace Inimigos {
     class Andino : public Inimigo {
     public:
-        Andino(Plataforma *plataforma);
+        Andino(Plataforma *p);
 
         ~Andino();
 
         void mover();
-
-        void randomiza() { srand(time(nullptr)); }
 
     private:
         float pulo;
