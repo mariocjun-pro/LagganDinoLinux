@@ -3,7 +3,7 @@
 #include "stdafx.h"
 #include "Gerenciador_Grafico.h"
 #include "Corpo_Grafico.h"
-#include "Colisora.h"
+#include "Gerenciador_Colisoes.h"
 
 namespace Auxiliares {
     class Plataforma;

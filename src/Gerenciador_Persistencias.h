@@ -13,11 +13,11 @@ using namespace Jogadores;
 using namespace Inimigos;
 
 namespace Controladoras {
-    class Persistidora {
+    class Gerenciador_Persistencias {
     public:
-        Persistidora();
+        Gerenciador_Persistencias();
 
-        virtual ~Persistidora();
+        virtual ~Gerenciador_Persistencias();
 
         void gravar(pair<Entidade *, int> p);
 

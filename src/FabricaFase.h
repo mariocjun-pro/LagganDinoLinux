@@ -3,9 +3,9 @@
 #include "stdafx.h"
 #include "Entidade.h"
 #include "ListaEntidade.h"
-#include "Guigo.h"
-#include "Titi.h"
-#include "Persistidora.h"
+#include "Vita.h"
+#include "Tard.h"
+#include "Gerenciador_Persistencias.h"
 #include "Andino.h"
 #include "Atiradino.h"
 #include "Espinho.h"
@@ -41,7 +41,7 @@ namespace Fabricas {
 
         void setDoisJogadores(const bool dois) { doisJogadores = dois; }
 
-        void setJogadores(Guigo *jog1, Titi *jog2);
+        void setJogadores(Vita *jog1, Tard *jog2);
 
     protected:
 
@@ -55,8 +55,8 @@ namespace Fabricas {
 
         short idFase;
 
-        Guigo *j1;
-        Titi *j2;
+        Vita *j1;
+        Tard *j2;
 
 
         Fase *fase;

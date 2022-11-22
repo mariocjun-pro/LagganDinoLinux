@@ -8,11 +8,11 @@
 using namespace GerenciadoresEntidades;
 
 namespace Jogadores {
-    class Guigo : public Jogador {
+    class Vita : public Jogador {
     public:
-        Guigo(Gerenciador_Grafico *g = nullptr);
+        Vita(Gerenciador_Grafico *g = nullptr);
 
-        ~Guigo();
+        ~Vita();
 
         void mover();
 

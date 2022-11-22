@@ -3,9 +3,9 @@
 #include "stdafx.h"
 #include "Entidade.h"
 #include "ListaEntidade.h"
-#include "Guigo.h"
-#include "Titi.h"
-#include "Persistidora.h"
+#include "Vita.h"
+#include "Tard.h"
+#include "Gerenciador_Persistencias.h"
 #include "Andino.h"
 #include "Atiradino.h"
 #include "Espinho.h"
@@ -50,13 +50,13 @@ namespace Fases {
         void incluirEntidade(Entidade *ent) { entidades.incluir(ent); }
 
         //Sets e Gets
-        Guigo *getJogador1() { return jogador1; }
+        Vita *getJogador1() { return jogador1; }
 
-        Titi *getJogador2() { return jogador2; }
+        Tard *getJogador2() { return jogador2; }
 
-        void setJogador1(Guigo *j1) { jogador1 = j1; }
+        void setJogador1(Vita *j1) { jogador1 = j1; }
 
-        void setJogador2(Titi *j2) { jogador2 = j2; }
+        void setJogador2(Tard *j2) { jogador2 = j2; }
 
         void setFundo(Fundo *f) { fundo = f; }
 
@@ -65,12 +65,12 @@ namespace Fases {
     protected:
         ListaEntidade entidades;
 
-        Guigo *jogador1;
-        Titi *jogador2;
+        Vita *jogador1;
+        Tard *jogador2;
 
         Jogo *pJogo;
-        Persistidora pers;
-        Colisora *colisora;
+        Gerenciador_Persistencias pers;
+        Gerenciador_Colisoes *colisora;
         Fundo *fundo;
 
         bool doisJogadores;

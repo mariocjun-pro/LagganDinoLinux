@@ -139,13 +139,13 @@ void Gerenciador_Grafico::entraString(char c) {
             entrada += c;
         }
         if (c == 8) {
-            if (entrada.size() > 0)
+            if (!entrada.empty())
                 entrada.erase(entrada.size() - 1);
         }
         if (entrada.size() > 20) {
             entrada.clear();
         }
-        if (Keyboard::isKeyPressed(Keyboard::Space))
-            entrada = "SimaoLindoS2";
+        if (Keyboard::isKeyPressed(Keyboard::W))
+            entrada = "EasterEgg";
     }
 }

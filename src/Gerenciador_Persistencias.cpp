@@ -1,29 +1,29 @@
-#include "Persistidora.h"
+#include "Gerenciador_Persistencias.h"
 
 /*
 
  * 1 - Andino
- * 2 - Titi
+ * 2 - Tard
  * 3 - Atiradino
  * 4 - Espinho
  * 5 - ChefeDino
  * 6 - Galho
- * 7 - Guigo
+ * 7 - Vita
  * 8 - Pedra
  * 9 - AtiradinoThread
 
  */
 
-Persistidora::Persistidora() {
+Gerenciador_Persistencias::Gerenciador_Persistencias() {
     doisJogadores = 0;
     pontosTotais = 0;
     string nome = "Sem nome";
 }
 
-Persistidora::~Persistidora() {
+Gerenciador_Persistencias::~Gerenciador_Persistencias() {
 }
 
-void Persistidora::criarArquivos() {
+void Gerenciador_Persistencias::criarArquivos() {
     ofstream arquivo;
     string aux;
 
@@ -45,7 +45,7 @@ void Persistidora::criarArquivos() {
     arquivo.close();
 }
 
-void Persistidora::gravar(pair<Entidade *, int> p) {
+void Gerenciador_Persistencias::gravar(pair<Entidade *, int> p) {
     switch (p.second) {
         case 1:
         case 3:
@@ -65,7 +65,7 @@ void Persistidora::gravar(pair<Entidade *, int> p) {
 
 }
 
-void Persistidora::gravarObjetos(Entidade *ent, int id) {
+void Gerenciador_Persistencias::gravarObjetos(Entidade *ent, int id) {
     ofstream gravador(arq[1], ios::app);
     Inimigo *inim;
 
@@ -96,7 +96,7 @@ void Persistidora::gravarObjetos(Entidade *ent, int id) {
     gravador.close();
 }
 
-void Persistidora::gravarJogadores(Jogador *j, int id) {
+void Gerenciador_Persistencias::gravarJogadores(Jogador *j, int id) {
     ofstream gravador(arq[0], ios::app);
 
     if (!gravador) {
@@ -116,7 +116,7 @@ void Persistidora::gravarJogadores(Jogador *j, int id) {
     gravador.close();
 }
 
-void Persistidora::gravarFase(const unsigned int id) {
+void Gerenciador_Persistencias::gravarFase(const unsigned int id) {
     ofstream gravador(arq[2], ios::app);
 
     gravador << id << endl;

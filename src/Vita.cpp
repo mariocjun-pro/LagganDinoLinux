@@ -1,8 +1,8 @@
-#include "Guigo.h"
+#include "Vita.h"
 
 using namespace Jogadores;
 
-Guigo::Guigo(Gerenciador_Grafico *g) :
+Vita::Vita(Gerenciador_Grafico *g) :
         Jogador(g) {
     velocidade = 700.0f;
     corpo.inicializa(Vector2f(100.0f, 130.0f), nullptr, Vector2f(80.0f, 130.0f));
@@ -18,12 +18,12 @@ Guigo::Guigo(Gerenciador_Grafico *g) :
     id = 7;
 }
 
-Guigo::~Guigo() {
+Vita::~Vita() {
 
 }
 
-void Guigo::executar() {
-    if (ataquePronto == false)
+void Vita::executar() {
+    if (!ataquePronto)
         totalT += pGG->getDt();
 
     Keyboard::Key tecla = Keyboard::E;
@@ -55,7 +55,7 @@ void Guigo::executar() {
     mover();
 }
 
-void Guigo::mover() {
+void Vita::mover() {
     Vector2u animacao(0, 0);
     float tempoTrocaAnimacao = 0.3f;
     float dT = pGG->getDt();
@@ -71,7 +71,7 @@ void Guigo::mover() {
         lado = -1;
     }
 
-    if (Keyboard::isKeyPressed(Keyboard::Key::Space) && noChao) {
+    if (Keyboard::isKeyPressed(Keyboard::Key::W)) {
         noChao = false;
         movimento.y = -sqrtf(2.0 * 981.0 * pulo);
     }

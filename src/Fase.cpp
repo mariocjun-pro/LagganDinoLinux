@@ -9,7 +9,7 @@ Fase::Fase(Jogo *jooj, bool dois) :
     doisJogadores = dois;
     pJogo = jooj;
     id = -1;
-    colisora = new Colisora();
+    colisora = new Gerenciador_Colisoes();
     fundo = nullptr;
 
     pGG = pJogo->getGerenciador();

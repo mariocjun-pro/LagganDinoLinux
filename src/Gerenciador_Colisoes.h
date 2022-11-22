@@ -14,11 +14,11 @@ namespace Abstratas {
 using namespace Abstratas;
 
 namespace GerenciadoresFases {
-    class Colisora {
+    class Gerenciador_Colisoes {
     public:
-        Colisora();
+        Gerenciador_Colisoes();
 
-        ~Colisora();
+        ~Gerenciador_Colisoes();
 
         bool verificarColisao(Corpo_Grafico *c1, Corpo_Grafico *c2, Vector2f &direcao, float f);
 

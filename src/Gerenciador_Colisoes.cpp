@@ -1,4 +1,4 @@
-#include "Colisora.h"
+#include "Gerenciador_Colisoes.h"
 #include "Corpo_Grafico.h"
 #include "Entidade.h"
 
@@ -6,16 +6,16 @@ using namespace Controladoras;
 using namespace Abstratas;
 using namespace GerenciadoresFases;
 
-Colisora::Colisora() {
+Gerenciador_Colisoes::Gerenciador_Colisoes() {
 
 }
 
-Colisora::~Colisora() {
+Gerenciador_Colisoes::~Gerenciador_Colisoes() {
 }
 
 //Função VerificarColisão adaptada de um vídeo do canal no Youtube Hilze Vonck 
 
-bool Colisora::verificarColisao(Corpo_Grafico *c1, Corpo_Grafico *c2, Vector2f &direcao, float f) {
+bool Gerenciador_Colisoes::verificarColisao(Corpo_Grafico *c1, Corpo_Grafico *c2, Vector2f &direcao, float f) {
 
     Vector2f pos2 = c2->getHitbox()->getPosition();
     Vector2f med2 = c2->getHitbox()->getSize() / 2.0f;
@@ -71,7 +71,7 @@ bool Colisora::verificarColisao(Corpo_Grafico *c1, Corpo_Grafico *c2, Vector2f &
     return false;
 }
 
-void Colisora::colidindo(Entidade *e1, Vector2f direcao) {
+void Gerenciador_Colisoes::colidindo(Entidade *e1, Vector2f direcao) {
     if (direcao.x < 0) //Colidindo na esquerda
         e1->setMovimento(Vector2f(0.0f, e1->getMovimento().y));
 
@@ -91,7 +91,7 @@ void Colisora::colidindo(Entidade *e1, Vector2f direcao) {
 // E1 = quem chama, E2 = jogador;
 
 
-bool Colisora::atacando(Entidade *e1, Entidade *e2, Vector2f &direcao) {
+bool Gerenciador_Colisoes::atacando(Entidade *e1, Entidade *e2, Vector2f &direcao) {
     if (e1->getPodeMatar())
         if (verificarColisao(e1->getCorpoGraf(), e2->getCorpoGraf(), direcao, e1->getEmpurrao()))
             return false;
@@ -99,13 +99,13 @@ bool Colisora::atacando(Entidade *e1, Entidade *e2, Vector2f &direcao) {
     return true;
 }
 
-bool Colisora::colidir(Entidade *e1, Entidade *e2, Vector2f &direcao) {
+bool Gerenciador_Colisoes::colidir(Entidade *e1, Entidade *e2, Vector2f &direcao) {
     if (verificarColisao(e1->getCorpoGraf(), e2->getCorpoGraf(), direcao, e1->getEmpurrao()))
         colidindo(e2, direcao);
 
 }
 
-bool Colisora::ataque(Entidade *e1, Entidade *e2, Vector2f &direcao) {
+bool Gerenciador_Colisoes::ataque(Entidade *e1, Entidade *e2, Vector2f &direcao) {
     if (e1->getPodeMorrer())
         if (verificarColisao(e1->getCorpoGraf(), e2->getCorpoGraf(), direcao, e1->getEmpurrao()))
             return true;

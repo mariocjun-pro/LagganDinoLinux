@@ -1,7 +1,7 @@
 #pragma once
 
 #include "stdafx.h"
-#include "Colisora.h"
+#include "Gerenciador_Colisoes.h"
 
 namespace GerenciadoresEntidades {
     class Animadora;

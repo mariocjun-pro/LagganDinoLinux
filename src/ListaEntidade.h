@@ -4,7 +4,7 @@
 #include "Entidade.h"
 #include "Lista.h"
 #include "Jogador.h"
-#include "Persistidora.h"
+#include "Gerenciador_Persistencias.h"
 
 using namespace Listas;
 using namespace Abstratas;
@@ -22,13 +22,13 @@ namespace Listas {
 
         void imprimir();
 
-        void colidir(Jogador *j, Colisora *colisora);
+        void colidir(Jogador *j, Gerenciador_Colisoes *colisora);
 
-        void colidir(Jogador *j, Jogador *j2, Colisora *colisora);
+        void colidir(Jogador *j, Jogador *j2, Gerenciador_Colisoes *colisora);
 
         void incluir(Entidade *ent);
 
-        void gravar(Persistidora *pers);
+        void gravar(Gerenciador_Persistencias *pers);
 
         void limpar();
 

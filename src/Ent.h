@@ -8,8 +8,6 @@ public:
 
     virtual ~Ent();
 
-
-    //virtual void executar() { };
 protected:
 
 };

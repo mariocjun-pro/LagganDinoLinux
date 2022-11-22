@@ -29,7 +29,7 @@ void ListaEntidade::imprimir() {
     }
 }
 
-void ListaEntidade::colidir(Jogador *j, Colisora *colisora) {
+void ListaEntidade::colidir(Jogador *j, Gerenciador_Colisoes *colisora) {
     Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux = nullptr;
     Vector2f direcao(0.0f, 0.0f);
     Entidade *jog = static_cast<Entidade *>(j);
@@ -70,7 +70,7 @@ void ListaEntidade::colidir(Jogador *j, Colisora *colisora) {
     }
 }
 
-void ListaEntidade::colidir(Jogador *j, Jogador *j2, Colisora *colisora) {
+void ListaEntidade::colidir(Jogador *j, Jogador *j2, Gerenciador_Colisoes *colisora) {
     Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux = nullptr;
     Vector2f direcao(0.0f, 0.0f);
 
@@ -158,7 +158,7 @@ void ListaEntidade::excluir(Lista<Entidade>::Elemento<Entidade> *no) {
     delete no;
 }
 
-void ListaEntidade::gravar(Persistidora *pers) {
+void ListaEntidade::gravar(Gerenciador_Persistencias *pers) {
     Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux = nullptr;
 
     while (itr) {

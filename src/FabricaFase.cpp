@@ -16,14 +16,14 @@ FabricaFase::FabricaFase(Jogo *jogo) {
 FabricaFase::~FabricaFase() {
 }
 
-void FabricaFase::setJogadores(Guigo *jog1, Titi *jog2) {
-    j1 = new Guigo(pJogo->getGerenciador());
+void FabricaFase::setJogadores(Vita *jog1, Tard *jog2) {
+    j1 = new Vita(pJogo->getGerenciador());
     j1->setVidas(jog1->getVidas());
     j1->setPontos(jog1->getPontos());
     j1->setPosicao(Vector2f(j1->getPosicao().x, -1000.0f));
 
     if (doisJogadores) {
-        j2 = new Titi(pJogo->getGerenciador());
+        j2 = new Tard(pJogo->getGerenciador());
         j2->setVidas(jog2->getVidas());
         j2->setPontos(jog2->getPontos());
         j2->setPosicao(Vector2f(j2->getPosicao().x, -1000.0f));
@@ -71,11 +71,11 @@ void FabricaFase::carregar() {
     for (i = 0; i < numJogadores; i++) {
         leitor >> id;
         if (id == 7) {
-            j1 = new Guigo(pJogo->getGerenciador());
+            j1 = new Vita(pJogo->getGerenciador());
             fase->setJogador1(j1);
             jog = reinterpret_cast<Jogador *>(j1);
         } else {
-            j2 = new Titi(pJogo->getGerenciador());
+            j2 = new Tard(pJogo->getGerenciador());
             fase->setJogador2(j2);
             jog = reinterpret_cast<Jogador *>(j2);
         }

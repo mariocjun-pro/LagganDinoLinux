@@ -155,7 +155,7 @@ void Menu::exibeRanking() {
                 textoRank[i].setCharacterSize(40);
                 textoRank[i].setOutlineThickness(0.5);
                 textoRank[i].setFillColor(Color::Black);
-                textoRank[i].setPosition(pgg_x,pgg_y + static_cast<float>(i) * 50.0f);
+                textoRank[i].setPosition(pgg_x, pgg_y + static_cast<float>(i) * 50.0f);
                 textoRank[i].setString(rank[i].first + " " + to_string(rank[i].second));
             }
 

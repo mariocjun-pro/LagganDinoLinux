@@ -9,11 +9,11 @@ using namespace Controladoras;
 using namespace GerenciadoresEntidades;
 
 namespace Jogadores {
-    class Titi : public Jogador {
+    class Tard : public Jogador {
     public:
-        Titi(Gerenciador_Grafico *g = nullptr);
+        Tard(Gerenciador_Grafico *g = nullptr);
 
-        ~Titi();
+        ~Tard();
 
         void mover();
 

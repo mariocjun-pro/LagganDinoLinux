@@ -29,11 +29,11 @@ Fase *FabricaFloresta::criar() {
 void FabricaFloresta::instanciaJogadores() {
 
     if (not j1) {
-        j1 = new Guigo(pJogo->getGerenciador());
+        j1 = new Vita(pJogo->getGerenciador());
     }
     if (not j2) {
         if (doisJogadores) {
-            j2 = new Titi(pJogo->getGerenciador());
+            j2 = new Tard(pJogo->getGerenciador());
         }
     }
     fase->incluirEntidade(static_cast<Entidade *>(j1));

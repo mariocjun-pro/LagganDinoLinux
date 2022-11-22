@@ -1,8 +1,8 @@
-#include "Titi.h"
+#include "Tard.h"
 
 using namespace Jogadores;
 
-Titi::Titi(Gerenciador_Grafico *g) :
+Tard::Tard(Gerenciador_Grafico *g) :
         Jogador(g) {
     pulo = 1000.0f;
     vidas = 10;
@@ -20,11 +20,11 @@ Titi::Titi(Gerenciador_Grafico *g) :
 
 }
 
-Titi::~Titi() {
+Tard::~Tard() {
 
 }
 
-void Titi::executar() {
+void Tard::executar() {
     totalT += pGG->getDt();
 
     if (Keyboard::isKeyPressed(Keyboard::Numpad0) && ataquePronto) {
@@ -56,7 +56,7 @@ void Titi::executar() {
     mover();
 }
 
-void Titi::mover() {
+void Tard::mover() {
     Vector2u animacao(0, 0);
     float dT = pGG->getDt();
     movimento.x = 0;
