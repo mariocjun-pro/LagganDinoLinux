@@ -1,26 +1,26 @@
 #include "Pedra.h"
 
 Pedra::Pedra(Plataforma *plataforma) :
-        Obstaculo(plataforma->getGerenciador()) {
+Obstaculo(plataforma->getGerenciador()), dificuldade_empurrar(0.7F) {
     Vector3f fronteira;
     float posicaoInicial;
 
-    podeMatar = false;
+    podeMatar = obstaculo_danoso;
     podeMorrer = false;
-    empurrao = 0.5f;
+    empurrao = dificuldade_empurrar;
 
-    corpo.inicializa(Vector2f(100.0f, 150.0f), nullptr);
+    corpo.inicializa(Vector2f(100.0F, 150.0F), nullptr);
 
     corpo.setTextura("../arquivos/texturas/obstaculos/Pedra.png");
-    corpo.inicializaAnimadora(Vector2f(0.0f, 0.0f), Vector2u(1, 1), Vector2u(1, 1));
-    corpo.atualizaAnimacao(0.0f, false, 0, 0, 1, 0);
+    corpo.inicializaAnimadora(Vector2f(0.0F, 0.0F), Vector2u(1, 1), Vector2u(1, 1));
+    corpo.atualizaAnimacao(0.0F, false, 0, 0, 1, 0);
 
     float aux, aux2;
 
     plat = plataforma;
 
-    aux = (plat->getTamanho().x / 2.0f) - 50.0f;
-    aux2 = (plat->getTamanho().y / 2.0f) + 50.0f;
+    aux = (plat->getTamanho().x / 2.0F) - 50.0F;
+    aux2 = (plat->getTamanho().y / 2.0F) + 50.0F;
     fronteira = Vector3f(plat->getPosicao().x - aux, plat->getPosicao().x + aux, plat->getPosicao().y - aux2);
 
     posicaoInicial =
@@ -31,14 +31,15 @@ Pedra::Pedra(Plataforma *plataforma) :
     id = 8;
 }
 
-Pedra::~Pedra() {
+Pedra::~Pedra()
+{
 }
 
 void Pedra::executar() {
 
-    movimento.y += 981.0f * pGG->getDt();
+    movimento.y += 981.0F * pGG->getDt();
     corpo.mover(movimento * pGG->getDt());
 
-    if (corpo.getPosicao().y > 1000.0f)
+    if (corpo.getPosicao().y > 1000.0F)
         morto = true;
 }

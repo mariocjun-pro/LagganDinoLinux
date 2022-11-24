@@ -15,7 +15,7 @@ namespace Obstaculos {
         virtual void executar() {}
 
     protected:
-
+        bool obstaculo_danoso;
     };
 }
 

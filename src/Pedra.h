@@ -15,6 +15,8 @@ namespace Obstaculos {
         ~Pedra();
 
         void executar();
+    private:
+        float dificuldade_empurrar;
     };
 }
 

@@ -13,6 +13,8 @@ namespace Obstaculos {
         Galho(Plataforma *plataforma = nullptr);
 
         ~Galho();
+    private:
+        bool obstaculo_destruivel;
     };
 }
 

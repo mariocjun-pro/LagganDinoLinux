@@ -2,16 +2,21 @@
 #include "Jogo.h"
 
 MenuPause::MenuPause(Jogo *j) :
-        Menu(j) {
-    texto[0].setString("Voltar");
-    texto[1].setString("Salvar");
-    texto[2].setString("Ranking");
-    texto[3].setString("Carregar");
-    texto[4].setString("Sair");
+        Menu(j),
+        voltar_str("Voltar"),
+        salvar_str("Salvar"),
+        ranking_str("Ranking"),
+        carregar_str("Carregar"),
+        sair_str("Sair") {
+    texto[0].setString(voltar_str);
+    texto[1].setString(salvar_str);
+    texto[2].setString(ranking_str);
+    texto[3].setString(carregar_str);
+    texto[4].setString(sair_str);
 }
 
-MenuPause::~MenuPause() {
-
+MenuPause::~MenuPause()
+{
 }
 
 void MenuPause::executar() {

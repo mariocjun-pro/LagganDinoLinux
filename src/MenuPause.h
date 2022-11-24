@@ -15,6 +15,12 @@ namespace Controladoras {
         virtual ~MenuPause();
 
         void executar();
+    private:
+        string voltar_str;
+        string salvar_str;
+        string ranking_str;
+        string carregar_str;
+        string sair_str;
     };
 }
 
