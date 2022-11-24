@@ -3,7 +3,7 @@
 using namespace Jogadores;
 
 Jogador::Jogador(Gerenciador_Grafico *gerenciador) :
-        Personagem(gerenciador), ataquePronto(true), ladoAtaque(1), pontos(000), pulo(700), vJog(0) {
+        Personagem(gerenciador), ataquePronto(true), ladoAtaque(1), pontos(0), pulo(700), vJog(0) {
     hitbox = nullptr;
     vidas = 10;
     lado = 1;

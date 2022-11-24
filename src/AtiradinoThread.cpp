@@ -4,7 +4,7 @@ using namespace Inimigos;
 using namespace GerenciadoresEntidades;
 
 AtiradinoThread::AtiradinoThread(Plataforma *p) :
-        Atiradino(p) {
+Atiradino(p) {
     threadFechada = false;
     id = 3;
 }
@@ -15,7 +15,7 @@ AtiradinoThread::~AtiradinoThread() {
 }
 
 void AtiradinoThread::executar() {
-    if (tomaDano == false) {
+    if (!tomaDano) {
         danoT += pGG->getDt();
         if (danoT >= 0.5f) {
             danoT -= 0.5f;
@@ -30,14 +30,13 @@ void AtiradinoThread::executar() {
     iniciarThread();
     juntarThread();
 
-    if (ataquePronto == false)
+    if (!ataquePronto)
         totalT += pGG->getDt();
 
     if (atacando && totalT >= 0.5f) {
         atacando = false;
         totalT = 0.0f;
         ataquePronto = true;
-        //hitbox->getCorpoGraf()->setPosicao(corpo.getPosicao().x + (100.0f * -1), corpo.getPosicao().y);
     }
 
     hitbox->getCorpoGraf()->mover(298.0f * pGG->getDt() * -1, 0.0f);
@@ -66,9 +65,7 @@ void AtiradinoThread::atirar() {
         totalT -= 0.5f;
         hitbox->getCorpoGraf()->setPosicao(corpo.getPosicao().x + (100.0f * -1), corpo.getPosicao().y);
         ataquePronto = false;
-
     }
-
 }
 
 float AtiradinoThread::tempoAtirar = 0.0f;

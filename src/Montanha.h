@@ -32,13 +32,15 @@ namespace Fases {
 
         ~Montanha();
 
+        void trocaFase();
+
         void executar();
 
-        void trocaFase();
+        void setNomeFase(const string &n) { nomeFase = n; }
 
     private:
         FabricaFloresta fab;
-
+        string nomeFase;
     };
 }
 

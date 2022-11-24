@@ -25,8 +25,9 @@ namespace Inimigos {
 
         Projetil *getProjetil() { return hitbox; }
 
-    protected:
-
+        void setVidas(const int v) { vidas = v; }
+    private:
+        int vidas_inimigo;
     };
 }
 

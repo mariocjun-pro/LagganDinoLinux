@@ -19,7 +19,10 @@ namespace Jogadores {
 
         void executar();
 
+        float getPulo_Tard() { return pulo_Tard; }
+
     private:
+        float pulo_Tard;
     };
 }
 

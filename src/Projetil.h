@@ -15,7 +15,10 @@ namespace Auxiliares {
 
         void executar() {}
 
-    private:
+        bool get_podeMatar() { return podeMatar; }
 
+    private:
+        bool projetil_podeMatar;
+        float empurrao_projetil;
     };
 }

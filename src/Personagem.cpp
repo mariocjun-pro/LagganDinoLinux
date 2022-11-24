@@ -3,7 +3,7 @@
 using namespace Personagens;
 
 Personagem::Personagem(Gerenciador_Grafico *g) :
-        Entidade(g) {
+Entidade(g) {
     hitbox = nullptr;
     ataquePronto = false;
     velocidade = 500.0f;

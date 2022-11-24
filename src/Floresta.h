@@ -33,5 +33,9 @@ namespace Fases {
         ~Floresta();
 
         void executar();
+
+        void setNomeFase(const string &n) { nomeFase = n; }
+    private:
+        string nomeFase;
     };
 }

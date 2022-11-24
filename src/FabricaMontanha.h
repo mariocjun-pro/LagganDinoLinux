@@ -38,15 +38,15 @@ namespace Fabricas {
         Fase *criar();
 
     private:
-        void instanciaJogadores();
+        void instanciaJogadoresMontanha();
 
-        void instanciaPlataformas();
+        void instanciaPlataformasMontanha();
 
-        void instanciaInimigos(Plataforma *plat);
+        void instanciaInimigosMontanha(Plataforma *plat);
 
-        void instanciaObstaculos(Plataforma *plat);
+        void instanciaObstaculosMontanha(Plataforma *plat);
 
-        void instanciaFundo();
+        void instanciaFundoMontanha();
     };
 }
 

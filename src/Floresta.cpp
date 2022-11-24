@@ -5,10 +5,10 @@
 using namespace Fases;
 
 Floresta::Floresta(Jogo *jooj, const bool dois) :
-        Fase(jooj, dois) {
+Fase(jooj, dois), nomeFase() {
+
     id = 1;
     srand(time(nullptr));
-
 }
 
 Floresta::~Floresta() {
@@ -16,6 +16,8 @@ Floresta::~Floresta() {
 }
 
 void Floresta::executar() {
+
+    setNomeFase("Floresta");
 
     menuPause();
     fundo->setPosicao(pJogo->getGerenciador()->getVisao()->getCenter());
@@ -49,9 +51,7 @@ void Floresta::executar() {
             menu->setLendoTexto(true);
             menu->setPontos(jogador1->getPontos());
         }
-
     }
-
     reiniciar();
     pontuacao();
 }

@@ -1,7 +1,6 @@
 #include "Gerenciador_Persistencias.h"
 
 /*
-
  * 1 - Andino
  * 2 - Tard
  * 3 - Atiradino
@@ -11,7 +10,6 @@
  * 7 - Vita
  * 8 - Pedra
  * 9 - AtiradinoThread
-
  */
 
 Gerenciador_Persistencias::Gerenciador_Persistencias() {

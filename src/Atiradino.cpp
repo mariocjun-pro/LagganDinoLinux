@@ -3,11 +3,10 @@
 using namespace Inimigos;
 
 Atiradino::Atiradino(Plataforma *p) :
-        Inimigo(p->getGerenciador()) {
+        Inimigo(p->getGerenciador()), vidas_inimigo(2) {
     float aux, aux2;
 
-    vidas = 2;
-
+    vidas = vidas_inimigo;
     plat = p;
     movimento.x = 0;
     movimento.y = 0;

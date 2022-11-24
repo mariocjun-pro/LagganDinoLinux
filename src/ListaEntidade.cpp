@@ -37,9 +37,7 @@ void ListaEntidade::colidir(Jogador *j, Gerenciador_Colisoes *colisora) {
     itr = itr->getProx();
 
     // 0 empurra
-    // 1 n�o empurra
-
-
+    // 1 nao empurra
 
     while (itr) {
         aux = itr->getProx();

@@ -14,7 +14,6 @@ using namespace Controladoras;
 using namespace GerenciadoresEntidades;
 using namespace GerenciadoresFases;
 
-
 namespace Abstratas {
     class Entidade {
     public:
@@ -36,7 +35,7 @@ namespace Abstratas {
 
         void setMovimento(Vector2f mov) { movimento = mov; }
 
-        void setVidas(int v) { vidas = v; }
+        virtual void setVidas(int v) { vidas = v; }
 
         void setMorto() { morto = true; }
 

@@ -21,7 +21,7 @@ namespace Inimigos {
         void funcaoThread();
 
         static float tempoAtirar;
-        bool threadFechada;
 
+        bool threadFechada;
     };
 }

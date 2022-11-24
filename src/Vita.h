@@ -18,6 +18,9 @@ namespace Jogadores {
 
         void executar();
 
+        int getVelocidade_Vita() { return velocidade_Vita; }
+
     private:
+        int velocidade_Vita;
     };
 }

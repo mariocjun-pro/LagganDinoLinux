@@ -1,12 +1,13 @@
 #include "Projetil.h"
 
 Projetil::Projetil(Gerenciador_Grafico *g) :
-        Entidade(g) {
-    podeMatar = true;
+Entidade(g), projetil_podeMatar(true), empurrao_projetil(0.0F) {
+    podeMatar = projetil_podeMatar;
     podeMorrer = false;
-    empurrao = 0.0f;
+    empurrao = empurrao_projetil;
 }
 
-Projetil::~Projetil() {
+Projetil::~Projetil()
+{
 }
 

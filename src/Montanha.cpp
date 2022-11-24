@@ -5,7 +5,7 @@
 using namespace Fases;
 
 Montanha::Montanha(Jogo *jooj, bool dois) :
-        Fase(jooj, dois), fab(pJogo) {
+        Fase(jooj, dois), fab(pJogo), nomeFase() {
     id = 0;
     pGG = pJogo->getGerenciador();
     srand(time(nullptr));
@@ -16,6 +16,8 @@ Montanha::~Montanha() {
 }
 
 void Montanha::executar() {
+    setNomeFase("Montanha");
+
     trocaFase();
     menuPause();
     fundo->setPosicao(pJogo->getGerenciador()->getVisao()->getCenter());

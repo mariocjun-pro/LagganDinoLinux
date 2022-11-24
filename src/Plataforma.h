@@ -12,7 +12,7 @@ using namespace GerenciadoresEntidades;
 namespace Auxiliares {
     class Plataforma : public Entidade {
     public:
-        Plataforma(Vector2f tam = Vector2f(100.0f, 100.0f));
+        Plataforma(Vector2f tam = Vector2f(100.0F, 100.0F));
 
         ~Plataforma();
 

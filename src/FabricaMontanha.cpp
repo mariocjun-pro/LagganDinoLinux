@@ -3,7 +3,7 @@
 using namespace Fabricas;
 
 FabricaMontanha::FabricaMontanha(Jogo *jogo) :
-        FabricaFase(jogo) {
+FabricaFase(jogo) {
     idFase = 0;
 }
 
@@ -16,17 +16,17 @@ Fase *FabricaMontanha::criar() {
     if (carrega) {
         carregar();
     } else {
-        instanciaJogadores();
-        instanciaPlataformas();
+        instanciaJogadoresMontanha();
+        instanciaPlataformasMontanha();
     }
 
-    instanciaFundo();
+    instanciaFundoMontanha();
     limpar();
 
     return fase;
 }
 
-void FabricaMontanha::instanciaJogadores() {
+void FabricaMontanha::instanciaJogadoresMontanha() {
 
     if (not j1) {
         j1 = new Vita(pJogo->getGerenciador());
@@ -42,7 +42,7 @@ void FabricaMontanha::instanciaJogadores() {
     fase->setJogador2(j2);
 }
 
-void FabricaMontanha::instanciaPlataformas() {
+void FabricaMontanha::instanciaPlataformasMontanha() {
     ifstream plats("../arquivos/PlataformasMontanha.txt", ios::in);
     Vector2f pos, tam;
     Plataforma *plat;
@@ -71,12 +71,12 @@ void FabricaMontanha::instanciaPlataformas() {
 
         if (tipo == 1) {
             if (aleatorio == 0) {
-                instanciaInimigos(plat);
-                instanciaObstaculos(plat);
+                instanciaInimigosMontanha(plat);
+                instanciaObstaculosMontanha(plat);
             } else if (aleatorio == 1)
-                instanciaObstaculos(plat);
+                instanciaObstaculosMontanha(plat);
             else if (aleatorio == 2)
-                instanciaInimigos(plat);
+                instanciaInimigosMontanha(plat);
         } else if (tipo == 2) {
             if (aleatorio) {
                 atrT = new AtiradinoThread(plat);
@@ -89,7 +89,7 @@ void FabricaMontanha::instanciaPlataformas() {
     plats.close();
 }
 
-void FabricaMontanha::instanciaInimigos(Plataforma *plat) {
+void FabricaMontanha::instanciaInimigosMontanha(Plataforma *plat) {
     Andino *andi;
     AtiradinoThread *atrT;
 
@@ -116,7 +116,7 @@ void FabricaMontanha::instanciaInimigos(Plataforma *plat) {
     }
 }
 
-void FabricaMontanha::instanciaObstaculos(Plataforma *plat) {
+void FabricaMontanha::instanciaObstaculosMontanha(Plataforma *plat) {
     Espinho *carn;
     Pedra *pedra;
 
@@ -167,7 +167,7 @@ void FabricaMontanha::instanciaObstaculos(Plataforma *plat) {
     }
 }
 
-void FabricaMontanha::instanciaFundo() {
+void FabricaMontanha::instanciaFundoMontanha() {
     auto *fundo = new Fundo(5, pJogo->getGerenciador());
 
     fundo->setTextura("../arquivos/texturas/bg-montanha/parallax-mountain-bg.png", 0);
