@@ -41,8 +41,6 @@ namespace Controladoras {
         //Sets e gets
         void setPressionar(const bool press) { pressionar = press; }
 
-        void setJogo(Jogo *jogo) { pJogo = jogo; }
-
         void setPontos(const int p) { pontos = p; }
 
         void setLendoTexto(const bool l);

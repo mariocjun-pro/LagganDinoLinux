@@ -40,8 +40,8 @@ void Corpo_Grafico::inicializaAnimadora(Vector2f margem, Vector2u quantidadeQuad
     animacao->inicializa(margem, quantidadeQuadros, TotalDeQuadros);
 }
 
-void Corpo_Grafico::atualizaAnimacao(float dT, bool aDireita, unsigned int comecoP, unsigned int quantidadeQuadrosX,
+void Corpo_Grafico::atualizaAnimacao(float dT, bool aDir, unsigned int comecoP, unsigned int qtdQdX,
                                      float troca, unsigned int linha) {
-    animacao->atualizar(dT, aDireita, comecoP, quantidadeQuadrosX, troca, linha);
+    animacao->atualizar(dT, aDir, comecoP, qtdQdX, troca, linha);
 }
 

@@ -34,10 +34,7 @@ namespace Fases {
 
         virtual ~Fase();
 
-        //virtual void instanciaFundo() = 0;
         virtual void executar();
-
-        virtual void gerenciar_colisoes();
 
         virtual void reiniciar();
 
@@ -49,35 +46,32 @@ namespace Fases {
 
         void incluirEntidade(Entidade *ent) { entidades.incluir(ent); }
 
-        //Sets e Gets
-        Vita *getJogador1() { return jogador1; }
-
-        Tard *getJogador2() { return jogador2; }
-
         void setJogador1(Vita *j1) { jogador1 = j1; }
 
         void setJogador2(Tard *j2) { jogador2 = j2; }
 
         void setFundo(Fundo *f) { fundo = f; }
 
-        void setJogo(Jogo *jooj) { pJogo = jooj; }
-
     protected:
         ListaEntidade entidades;
 
         Vita *jogador1;
+
         Tard *jogador2;
 
         Jogo *pJogo;
-        Gerenciador_Persistencias pers;
-        Gerenciador_Colisoes *colisora;
+
+        Gerenciador_Persistencias p;
+
+        Gerenciador_Colisoes *c;
+
+        Gerenciador_Grafico *pGG;
+
         Fundo *fundo;
 
         bool doisJogadores;
 
         unsigned short id;
-
-        Gerenciador_Grafico *pGG;
     };
 }
 

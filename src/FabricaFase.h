@@ -35,31 +35,31 @@ namespace Fabricas {
 
         virtual Fase *criar() = 0;
 
-
-        //Sets e Gets
         void setCarregar(const bool c) { carrega = c; }
 
-        void setDoisJogadores(const bool dois) { doisJogadores = dois; }
+        void set2Jogadores(const bool dois) { doisJogadores = dois; }
 
-        void setJogadores(Vita *jog1, Tard *jog2);
+        void setJogadores(Vita *j1, Tard *j2);
 
     protected:
-
         virtual void carregar();
 
         void limpar();
 
         Jogo *pJogo;
+
         bool carrega;
+
         bool doisJogadores;
 
         short idFase;
 
         Vita *j1;
+
         Tard *j2;
 
-
         Fase *fase;
+
         vector<Plataforma *> plataformas;
     };
 }

@@ -8,9 +8,6 @@ namespace Estados {
         FaseEstado();
 
         virtual ~FaseEstado();
-
-    private:
-
     };
 }
 

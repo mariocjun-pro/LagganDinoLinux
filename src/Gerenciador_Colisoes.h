@@ -29,11 +29,5 @@ namespace GerenciadoresFases {
         bool colidir(Entidade *e1, Entidade *e2, Vector2f &direcao);
 
         bool ataque(Entidade *e1, Entidade *e2, Vector2f &direcao);
-
-
-        //Sets e Gets
-
-    private:
     };
-
 }

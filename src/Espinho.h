@@ -12,9 +12,6 @@ namespace Obstaculos {
         Espinho(Gerenciador_Grafico *g);
 
         ~Espinho();
-
-    private:
-
     };
 }
 

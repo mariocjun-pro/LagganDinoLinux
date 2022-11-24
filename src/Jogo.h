@@ -14,7 +14,6 @@ namespace Controladoras {
 
         ~Jogo();
 
-
         void executar();
 
         void tirarEstado(bool excluir = true) { pilha.tirarEstado(excluir); }

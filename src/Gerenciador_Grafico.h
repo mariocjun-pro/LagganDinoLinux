@@ -31,13 +31,9 @@ namespace Controladoras {
 
         void imprimePontuacao(int p, int v, int p2, int v2);
 
-        const char getCaracter() const { return caracter; }
-
         void setLeitura(const bool l) { leitura = l; }
 
         void entraString(char c);
-
-        void limpaEntradas() { entrada = ""; }
 
         string getEntrada() const { return entrada; }
 

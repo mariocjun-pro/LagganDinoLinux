@@ -18,7 +18,7 @@ using namespace GerenciadoresFases;
 namespace Abstratas {
     class Entidade {
     public:
-        Entidade(Gerenciador_Grafico *gerenciador = nullptr);
+        Entidade(Gerenciador_Grafico *g = nullptr);
 
         virtual ~Entidade();
 
@@ -28,31 +28,33 @@ namespace Abstratas {
 
         virtual void imprimir();
 
-        //Sets e gets
-
-        int getId() { return id; }
-
-        Vector2f getPosicao() { return corpo.getCorpo()->getPosition(); }
+        virtual bool tomarDano();
 
         void setPosicao(const Vector2f pos) { corpo = pos; }
 
-        Vector2f getTamanho() { return corpo.getCorpo()->getSize(); }
+        void setGerenciador(Gerenciador_Grafico *g) { pGG = g; }
+
+        void setMovimento(Vector2f mov) { movimento = mov; }
+
+        void setVidas(int v) { vidas = v; }
+
+        void setMorto() { morto = true; }
+
+        void setChao(bool chao) { noChao = chao; }
+
+        Gerenciador_Grafico *getGerenciador() { return pGG; }
 
         Corpo_Grafico *getCorpoGraf() { return &corpo; }
 
         Plataforma *getPlataforma() { return plat; }
 
-        void setPlataforma(Plataforma *p) { plat = p; }
+        Vector2f getPosicao() { return corpo.getCorpo()->getPosition(); }
 
-        void setGerenciador(Gerenciador_Grafico *gerenciador) { pGG = gerenciador; }
-
-        void setMovimento(Vector2f mov) { movimento = mov; }
+        Vector2f getTamanho() { return corpo.getCorpo()->getSize(); }
 
         Vector2f getMovimento() { return movimento; }
 
-        void setChao(bool chao) { noChao = chao; }
-
-        bool getChao() { return noChao; }
+        bool getMorto() { return morto; }
 
         bool getPodeMorrer() { return podeMorrer; }
 
@@ -61,16 +63,6 @@ namespace Abstratas {
         float getEmpurrao() { return empurrao; }
 
         int getVidas() { return vidas; }
-
-        void setVidas(int v) { vidas = v; }
-
-        virtual bool tomarDano();
-
-        Gerenciador_Grafico *getGerenciador() { return pGG; }
-
-        bool getMorto() { return morto; }
-
-        void setMorto() { morto = true; }
 
         pair<Entidade *, int> gravar() {
             pair<Entidade *, int> p;
@@ -82,21 +74,25 @@ namespace Abstratas {
     protected:
         int id;
 
-        Corpo_Grafico corpo;
-        Gerenciador_Grafico *pGG;
-        Plataforma *plat;
-
-        Vector2f movimento;
-
         int vidas;
+
+        float empurrao;
 
         bool noChao;
 
         bool podeMatar;
+
         bool podeMorrer;
-        float empurrao;
 
         bool morto;
+
+        Gerenciador_Grafico *pGG;
+
+        Corpo_Grafico corpo;
+
+        Plataforma *plat;
+
+        Vector2f movimento;
     };
 
 }

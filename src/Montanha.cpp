@@ -25,13 +25,13 @@ void Montanha::executar() {
     entidades.imprimir();
 
     if (doisJogadores) {
-        entidades.colidir(jogador1, jogador2, colisora);
+        entidades.colidir(jogador1, jogador2, c);
         if (jogador1->getPosicao().y > 2000.0f)
             jogador1->morrer(Vector2f(jogador2->getPosicao().x, -1000));
         if (jogador2->getPosicao().y > 2000.0f)
             jogador2->morrer(Vector2f(jogador1->getPosicao().x, -1000));
     } else {
-        entidades.colidir(jogador1, colisora);
+        entidades.colidir(jogador1, c);
 
         if (jogador1->getPosicao().y > 2000.0f)
             jogador1->morrer();
@@ -45,13 +45,13 @@ void Montanha::executar() {
 void Montanha::trocaFase() {
 
     if (jogador1->getPosicao().x < -200.0f && jogador1->getPosicao().y > 1000.0f) {
-        fab.setDoisJogadores(doisJogadores);
+        fab.set2Jogadores(doisJogadores);
         fab.setJogadores(jogador1, jogador2);
         pJogo->tirarEstado();
         pJogo->colocarEstado(reinterpret_cast<Estado *>(fab.criar()));
         return;
     } else if (jogador1->getPosicao().x > 4500.0f) {
-        fab.setDoisJogadores(doisJogadores);
+        fab.set2Jogadores(doisJogadores);
         fab.setJogadores(jogador1, jogador2);
         pJogo->tirarEstado();
         pJogo->colocarEstado(reinterpret_cast<Estado *>(fab.criar()));
@@ -60,13 +60,13 @@ void Montanha::trocaFase() {
 
     if (doisJogadores) {
         if (jogador2->getPosicao().x < -200.0f && jogador2->getPosicao().y > 1000.0f) {
-            fab.setDoisJogadores(doisJogadores);
+            fab.set2Jogadores(doisJogadores);
             fab.setJogadores(jogador1, jogador2);
             pJogo->tirarEstado();
             pJogo->colocarEstado(reinterpret_cast<Estado *>(fab.criar()));
             return;
         } else if (jogador2->getPosicao().x > 4000.0f) {
-            fab.setDoisJogadores(doisJogadores);
+            fab.set2Jogadores(doisJogadores);
             fab.setJogadores(jogador1, jogador2);
             pJogo->tirarEstado();
             pJogo->colocarEstado(reinterpret_cast<Estado *>(fab.criar()));

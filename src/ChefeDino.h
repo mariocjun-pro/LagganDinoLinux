@@ -23,7 +23,6 @@ namespace Inimigos {
 
         void imprimir();
 
-        //Sets e Gets
         Projetil *getProjetil() { return hitbox; }
 
     private:

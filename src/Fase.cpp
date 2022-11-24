@@ -9,24 +9,20 @@ Fase::Fase(Jogo *jooj, bool dois) :
     doisJogadores = dois;
     pJogo = jooj;
     id = -1;
-    colisora = new Gerenciador_Colisoes();
+    c = new Gerenciador_Colisoes();
     fundo = nullptr;
 
     pGG = pJogo->getGerenciador();
 }
 
 Fase::~Fase() {
-    if (colisora)
-        delete colisora;
+    if (c)
+        delete c;
     if (fundo)
         delete fundo;
 }
 
 void Fase::executar() {
-
-}
-
-void Fase::gerenciar_colisoes() {
 
 }
 
@@ -46,9 +42,9 @@ void Fase::menuPause() {
 }
 
 void Fase::salvar(string nome) {
-    pers.setNome(nome);
-    entidades.gravar(&pers);
-    pers.gravarFase(id);
+    p.setNome(nome);
+    entidades.gravar(&p);
+    p.gravarFase(id);
 }
 
 void Fase::pontuacao() {

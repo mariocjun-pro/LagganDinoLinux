@@ -47,7 +47,6 @@ namespace Fabricas {
         void instanciaObstaculos(Plataforma *plat);
 
         void instanciaFundo();
-
     };
 }
 

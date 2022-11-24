@@ -33,7 +33,5 @@ namespace Fases {
         ~Floresta();
 
         void executar();
-
-    private:
     };
 }

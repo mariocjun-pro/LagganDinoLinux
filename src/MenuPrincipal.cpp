@@ -31,14 +31,14 @@ void MenuPrincipal::executar() {
     leTexto();
     switch (opcao) {
         case 0:
-            fab1.setDoisJogadores(false);
+            fab1.set2Jogadores(false);
             pJogo->colocarEstado(reinterpret_cast<Estado *>(fab1.criar()));
             pressionar = false;
             totalT = 0.0f;
             //Um jogador
             break;
         case 1:
-            fab1.setDoisJogadores(true);
+            fab1.set2Jogadores(true);
             pJogo->colocarEstado(reinterpret_cast<Estado *>(fab1.criar()));
             pressionar = false;
             totalT = 0.0f;

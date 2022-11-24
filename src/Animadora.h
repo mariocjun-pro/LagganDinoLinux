@@ -3,7 +3,6 @@
 #include "stdafx.h"
 #include "Corpo_Grafico.h"
 
-
 namespace GerenciadoresEntidades {
     class Corpo_Grafico;
 }
@@ -30,13 +29,19 @@ namespace GerenciadoresEntidades {
         Corpo_Grafico *pCorpo;
 
         sf::IntRect quadro;
+
         Texture *textura;
 
         int comeco;
+
         Vector2u quadrosAtuais;
+
         Vector2u qtdQuadros;
+
         Vector2f margem;
+
         float tempoTroca;
+        
         float tempoTotal;
     };
 }

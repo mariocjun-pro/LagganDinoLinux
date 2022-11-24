@@ -25,7 +25,7 @@ void Floresta::executar() {
     entidades.imprimir();
 
     if (doisJogadores) {
-        entidades.colidir(jogador1, jogador2, colisora);
+        entidades.colidir(jogador1, jogador2, c);
         if (jogador1->getPosicao().y > 2000.0f)
             jogador1->morrer(Vector2f(jogador2->getPosicao().x, -1000));
         if (jogador2->getPosicao().y > 2000.0f)
@@ -38,7 +38,7 @@ void Floresta::executar() {
             menu->setPontos((jogador1->getPontos()) + (jogador2->getPontos()));
         }
     } else {
-        entidades.colidir(jogador1, colisora);
+        entidades.colidir(jogador1, c);
 
         if (jogador1->getPosicao().y > 2000.0f)
             jogador1->morrer();

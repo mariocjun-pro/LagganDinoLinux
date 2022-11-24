@@ -15,9 +15,6 @@ namespace Obstaculos {
         ~Pedra();
 
         void executar();
-
-    private:
-
     };
 }
 

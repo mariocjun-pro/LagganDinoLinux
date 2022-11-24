@@ -5,7 +5,6 @@
 
 using namespace Controladoras;
 
-
 namespace Controladoras {
     class Fundo {
     public:
@@ -14,10 +13,6 @@ namespace Controladoras {
         virtual ~Fundo();
 
         void imprimir();
-
-        //Sets e Gets
-
-        void setGerenciador(Gerenciador_Grafico *GG) { pGG = GG; }
 
         void setPosicao(const Vector2f pos);
 
@@ -29,13 +24,12 @@ namespace Controladoras {
         void setTamanho(const Vector2f tam);
 
     private:
-
         RectangleShape *corpo;
+
         Texture *textura;
+
         unsigned int qtdFundos;
 
         Gerenciador_Grafico *pGG;
-
-
     };
 }

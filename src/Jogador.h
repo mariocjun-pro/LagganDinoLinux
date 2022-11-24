@@ -24,11 +24,7 @@ namespace Jogadores {
 
         //Sets e Gets
 
-        void setAtacando(const bool atac) { atacando = atac; }
-
         const bool getAtacando() const { return atacando; }
-
-        Corpo_Grafico *getHitbox() { return hitbox->getCorpoGraf(); }
 
         Projetil *getProjetil() { return hitbox; }
 

@@ -109,13 +109,13 @@ void Menu::carregar(string nome) {
     if (fase == 0) {
         FabricaMontanha fab(pJogo);
         fab.setCarregar(true);
-        fab.setDoisJogadores(dois);
+        fab.set2Jogadores(dois);
 
         pJogo->colocarEstado(reinterpret_cast<Estado *>(fab.criar()));
     } else if (fase == 1) {
         FabricaFloresta fab(pJogo);
         fab.setCarregar(true);
-        fab.setDoisJogadores(dois);
+        fab.set2Jogadores(dois);
 
         pJogo->colocarEstado(reinterpret_cast<Estado *>(fab.criar()));
     }

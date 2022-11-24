@@ -7,7 +7,6 @@ namespace GerenciadoresEntidades {
     class Animadora;
 }
 
-
 using namespace GerenciadoresEntidades;
 using namespace GerenciadoresFases;
 
@@ -34,21 +33,12 @@ namespace GerenciadoresEntidades {
 
         void inicializaAnimadora(Vector2f margem, Vector2u quantidadeQuadros, Vector2u TotalDeQuadros);
 
-        void atualizaAnimacao(float dT, bool aDireita, unsigned int comecoP = 0, unsigned int quantidadeQuadrosX = 4,
+        void atualizaAnimacao(float dT, bool aDir, unsigned int comecoP = 0, unsigned int qtdQdX = 4,
                               float troca = 0.3f, unsigned int linha = 0);
-        //Sets e Gets
 
-        RectangleShape *getCorpo() { return corpo; }
-
-        RectangleShape *getHitbox() { return hitbox; }
-
-        Vector2f getPosicao() { return corpo->getPosition(); }
-
-        Vector2f getTamanho() { return corpo->getSize(); }
-
-        Texture *getTextura() { return textura; }
-
-        void setTextura(string arquivo) { textura->loadFromFile(arquivo); }
+        void setTextura(string arquivo) {
+            textura->loadFromFile(arquivo);
+        }
 
         void setPosicao(Vector2f pos) {
             corpo->setPosition(pos);
@@ -60,12 +50,23 @@ namespace GerenciadoresEntidades {
             hitbox->setPosition(x, y);
         }
 
+        RectangleShape *getCorpo() { return corpo; }
+
+        RectangleShape *getHitbox() { return hitbox; }
+
+        Vector2f getPosicao() { return corpo->getPosition(); }
+
+        Texture *getTextura() { return textura; }
+
         Animadora *getAnimadora() { return animacao; }
 
     private:
         RectangleShape *corpo;
+
         Animadora *animacao;
+
         Texture *textura;
+
         RectangleShape *hitbox;
     };
 }

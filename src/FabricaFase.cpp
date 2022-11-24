@@ -16,16 +16,16 @@ FabricaFase::FabricaFase(Jogo *jogo) {
 FabricaFase::~FabricaFase() {
 }
 
-void FabricaFase::setJogadores(Vita *jog1, Tard *jog2) {
+void FabricaFase::setJogadores(Vita *j1, Tard *j2) {
     j1 = new Vita(pJogo->getGerenciador());
-    j1->setVidas(jog1->getVidas());
-    j1->setPontos(jog1->getPontos());
+    j1->setVidas(j1->getVidas());
+    j1->setPontos(j1->getPontos());
     j1->setPosicao(Vector2f(j1->getPosicao().x, -1000.0f));
 
     if (doisJogadores) {
         j2 = new Tard(pJogo->getGerenciador());
-        j2->setVidas(jog2->getVidas());
-        j2->setPontos(jog2->getPontos());
+        j2->setVidas(j2->getVidas());
+        j2->setPontos(j2->getPontos());
         j2->setPosicao(Vector2f(j2->getPosicao().x, -1000.0f));
     }
 }
