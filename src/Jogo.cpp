@@ -1,17 +1,31 @@
 #include "Jogo.h"
+#include "MenuPrincipal.h"
+
+using namespace Controladoras;
+
+Jogo *Jogo::CriarJogo() {
+    if (not jogoUnico) {
+        jogoUnico = new Jogo();
+    }
+
+    return jogoUnico;
+}
 
 Jogo::Jogo() {
-    montanha = new Montanha(this);
-    j1 = montanha->getJogador();
-    srand((unsigned)time(nullptr));
+    srand(time(nullptr));
+
+    pilha.colocarEstado(reinterpret_cast<Estado *>(new MenuPrincipal(this)));
+
 }
 
 Jogo::~Jogo() {
-
 }
 
-
 void Jogo::executar() {
+
+    float dT;
+    Clock clock;
+
     while (GG.getAberto()) {
         dT = clock.restart().asSeconds();
         if (dT > 1.0f / 20.0f)
@@ -22,10 +36,11 @@ void Jogo::executar() {
         GG.limpar();
         GG.leEventos();
 
-        montanha->executar();
-
-        GG.getVisao()->setCenter(Vector2f(j1->getPosicao().x + 1280.0f / 4.0f, 960.0f / 2.0f));
+        if (not pilha.executar())
+            GG.getJanela()->close();
 
         GG.getJanela()->display();
     }
 }
+
+Jogo *Jogo::jogoUnico = nullptr;

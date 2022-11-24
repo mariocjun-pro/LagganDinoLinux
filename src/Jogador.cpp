@@ -1,63 +1,44 @@
 #include "Jogador.h"
 
+using namespace Jogadores;
+
 Jogador::Jogador(Gerenciador_Grafico *gerenciador) :
-        Personagem(gerenciador) {
+        Personagem(gerenciador), ataquePronto(true), ladoAtaque(1), pontos(0), pulo(700), vJog(0) {
+    hitbox = nullptr;
+    vidas = 10;
     lado = 1;
     aDireita = true;
-    hitbox.inicializa(Vector2f(100.0f, 100.0f), NULL);
+    hitbox = new Projetil(pGG);
+    hitbox->getCorpoGraf()->inicializa(Vector2f(100.0f, 100.0f), nullptr);
     posInicial = Vector2f(0.0f, 0.0f);
-    hitbox.getCorpo()->setFillColor(Color::White);
+
+    podeMatar = false;
 }
 
 Jogador::~Jogador() {
 
 }
 
-void Jogador::executar() {
-    totalT += pGG->getDt();
-    if (Keyboard::isKeyPressed(Keyboard::F) && totalT >= 0.5f) {
-        atacando = true;
-        totalT -= 0.5f;
-        hitbox.getCorpo()->setPosition(corpo.getPosicao().x + (100.0f * (float) lado), corpo.getPosicao().y);
-    }
-    if (atacando && totalT >= 0.5f) {
-        atacando = false;
-        totalT -= 0.5f;
-    }
-
-    if (atacando)
-        hitbox.getAnimadora()->atualizarLinhasSequencial(pGG->getDt(), aDireita, Vector2u(8, 8), 0.1f);
-
-    if (corpo.getPosicao().y > 2000.0f)
-        morrer();
-
-    mover();
-}
-
 void Jogador::morrer() {
+    pontos -= 12;
     vidas--;
-    if (vidas > 0) {
-        corpo.getCorpo()->setPosition(posInicial);
+    if (vidas >= 0) {
+        corpo = (posInicial);
     }
 }
 
-__attribute__((unused)) bool Jogador::atacar(Inimigo *inim) {
-
-    if (atacando) {
-        Vector2f direcao(0.0f, 0.0f);
-
-        if (inim->verificarColisao(hitbox.getColisora(), direcao, 0.0f)) {
-            return true;
-        }
+void Jogador::morrer(Vector2f pos) {
+    pontos -= 12;
+    vidas--;
+    if (vidas >= 0) {
+        corpo = (pos);
     }
-    return false;
-
 }
 
 void Jogador::imprimir() {
 
     if (atacando)
-        pGG->desenhar(hitbox.getCorpo());
+        pGG->desenhar(hitbox->getCorpoGraf()->getCorpo());
 
     pGG->desenhar(corpo.getCorpo());
 

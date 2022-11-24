@@ -2,48 +2,38 @@
 
 #include "stdafx.h"
 #include "Entidade.h"
+#include "Projetil.h"
 
-class Personagem
-        : public Entidade {
-public:
-    explicit Personagem(Gerenciador_Grafico *gerenciador = NULL);
+using namespace Abstratas;
+using namespace Auxiliares;
 
-    virtual ~Personagem();
+namespace Personagens {
+    class Personagem : public Entidade {
+    public:
+        Personagem(Gerenciador_Grafico *gerenciador = nullptr);
 
-    virtual void imprimir();
+        virtual ~Personagem();
 
-    virtual void Colidindo(Vector2f direcao);
+        virtual void imprimir();
 
-    virtual void executar();
+        virtual void executar();
 
-    //virtual void morrer() = 0;
-    virtual bool verificarColisao(Colisora *outro, Vector2f &direcao, float f);
+        virtual void animar(Vector2f movimento);
 
-    //Gerenciadoras de colisão
+    protected:
+        float velocidade;
 
-    virtual bool verificarAtacando(Colisora *outro, Vector2f &direcao) { return false; }
-    //Retorna true se está havendo colisao e o outro está sobrevivendo à colisão
+        bool atacando;
+        float totalT;
 
-    virtual bool verificarColisao(Colisora *outro, Vector2f &direcao) {
-        return corpo.getColisora()->verificarColisao(outro, direcao, 0.0f);
-    }
-    //Retorna true se está havendo colisão
+        bool aDireita;
+        short int lado;
 
-    __attribute__((unused)) virtual bool verificarAtaque(Colisora *outro) { return false; }
-    //Retorna true se está havendo colisão e se o jogador pode matar quem esta entidade
+        bool tomaDano;
+        bool ferido;
 
-
-    virtual void animar(Vector2f f);
-
-protected:
-    int vidas;
-    float velocidade;
-    float totalT;
-    bool noChao;
-    short int lado;
-    Vector2f movimento;
-    bool aDireita;
-    bool atacando;
-};
-
+        bool ataquePronto;
+        Projetil *hitbox;
+    };
+}
 

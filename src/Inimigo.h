@@ -3,30 +3,28 @@
 #include "stdafx.h"
 #include "Personagem.h"
 
-class Inimigo
-        : public Personagem {
-public:
-    explicit Inimigo(Gerenciador_Grafico *g = NULL);
+using namespace Personagens;
 
-    virtual ~Inimigo();
+namespace Inimigos {
+    class Inimigo : public Personagem {
+    public:
+        Inimigo(Gerenciador_Grafico *g = nullptr);
 
-    void executar();
+        virtual ~Inimigo();
 
-    virtual void imprimir();
+        virtual void executar();
 
-    //Gerenciadoras de colis�o
+        virtual void imprimir();
 
-    virtual bool verificarAtacando(Colisora *outro, Vector2f &direcao);
-    //Retorna true se está havendo colisao e o outro está sobrevivendo à colisão
+        bool tomarDano();
 
-    virtual bool verificarAtaque(Colisora *outro, Vector2f &direcao) {
-        return corpo.getColisora()->verificarColisao(outro, direcao, 1.0f);
-    }
-    //Retorna true se está havendo colisão e se o jogador pode matar quem esta entidade
+    protected:
+        Vector3f fronteira;
 
-protected:
-    __attribute__((unused)) bool morto;
+        float posicaoInicial;
 
-};
+        float danoT;
+    };
+}
 
 

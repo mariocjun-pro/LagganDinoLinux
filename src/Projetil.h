@@ -3,14 +3,22 @@
 #include "stdafx.h"
 #include "Entidade.h"
 
-class __attribute__((unused)) Projetil
-        : public Entidade {
-public:
-    Projetil();
+using namespace Abstratas;
+using namespace Auxiliares;
 
-    ~Projetil();
+namespace Auxiliares {
+    class Projetil : public Entidade {
+    public:
+        Projetil(Gerenciador_Grafico *g = nullptr);
 
-private:
+        ~Projetil();
 
-};
+        void executar() {}
 
+        bool get_podeMatar() { return podeMatar; }
+
+    private:
+        bool projetil_podeMatar;
+        float empurrao_projetil;
+    };
+}

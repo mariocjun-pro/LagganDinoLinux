@@ -1,64 +1,97 @@
 #pragma once
 
 #include "stdafx.h"
-#include "Ent.h"
 #include "Gerenciador_Grafico.h"
 #include "Corpo_Grafico.h"
-#include "Colisora.h"
+#include "Gerenciador_Colisoes.h"
 
-class Plataforma;
+namespace Auxiliares {
+    class Plataforma;
+}
 
-class Entidade
-        : public Ent {
-public:
-    explicit Entidade(Gerenciador_Grafico *gerenciador = NULL);
+using namespace Auxiliares;
+using namespace Controladoras;
+using namespace GerenciadoresEntidades;
+using namespace GerenciadoresFases;
 
-    virtual ~Entidade();
+namespace Abstratas {
+    class Entidade {
+    public:
+        Entidade(Gerenciador_Grafico *g = nullptr);
 
-    virtual void executar() = 0;
+        virtual ~Entidade();
 
-    virtual void mover() {}
+        virtual void executar() = 0;
 
-    virtual void imprimir();
+        virtual void mover() {}
 
-    virtual void Colidindo(Vector2f direcao) = 0;
+        virtual void imprimir();
 
-    //Sets e gets
+        virtual bool tomarDano();
 
-    Vector2f getPosicao() { return corpo.getCorpo()->getPosition(); }
+        void setPosicao(const Vector2f pos) { corpo = pos; }
 
-    Vector2f getTamanho() { return corpo.getCorpo()->getSize(); }
+        void setGerenciador(Gerenciador_Grafico *g) { pGG = g; }
 
-    Colisora *getColisora() { return corpo.getColisora(); }
+        void setMovimento(Vector2f mov) { movimento = mov; }
 
-    Corpo_Grafico *getCorpoGraf() { return &corpo; }
+        virtual void setVidas(int v) { vidas = v; }
 
-    __attribute__((unused)) Plataforma *getPlataforma() { return plat; }
+        void setMorto() { morto = true; }
 
-    void setPlataforma(Plataforma *p) { plat = p; }
+        void setChao(bool chao) { noChao = chao; }
 
-    //virtual bool verificarColisao(Colisora* outro, Vector2f& direcao) { return corpo.getColisora()->verificarColisao(outro, direcao, f); }
+        Gerenciador_Grafico *getGerenciador() { return pGG; }
 
+        Corpo_Grafico *getCorpoGraf() { return &corpo; }
 
-    //Gerenciadoras de colisão
+        Plataforma *getPlataforma() { return plat; }
 
-    virtual bool verificarAtacando(Colisora *outro, Vector2f &direcao) { return true; }
-    //Retorna true se está havendo colisão e o outro está sobrevivendo à colisão
+        Vector2f getPosicao() { return corpo.getCorpo()->getPosition(); }
 
-    virtual bool verificarColisao(Colisora *outro, Vector2f &direcao) {
-        return corpo.getColisora()->verificarColisao(outro, direcao, 1.0f);
-    }
-    //Retorna true se está havendo colisão
+        Vector2f getTamanho() { return corpo.getCorpo()->getSize(); }
 
-    virtual bool verificarAtaque(Colisora *outro, Vector2f &direcao) { return false; }
-    //Retorna true se está havendo colisão e se o jogador pode matar quem esta entidade
+        Vector2f getMovimento() { return movimento; }
 
-    void setGerenciador(Gerenciador_Grafico *gerenciador) { pGG = gerenciador; }
+        bool getMorto() { return morto; }
 
-protected:
-    Corpo_Grafico corpo;
-    Gerenciador_Grafico *pGG;
-    Plataforma *plat;
-};
+        bool getPodeMorrer() { return podeMorrer; }
 
+        bool getPodeMatar() { return podeMatar; }
 
+        float getEmpurrao() { return empurrao; }
+
+        int getVidas() { return vidas; }
+
+        pair<Entidade *, int> gravar() {
+            pair<Entidade *, int> p;
+            p.first = this;
+            p.second = id;
+            return p;
+        }
+
+    protected:
+        int id;
+
+        int vidas;
+
+        float empurrao;
+
+        bool noChao;
+
+        bool podeMatar;
+
+        bool podeMorrer;
+
+        bool morto;
+
+        Gerenciador_Grafico *pGG;
+
+        Corpo_Grafico corpo;
+
+        Plataforma *plat;
+
+        Vector2f movimento;
+    };
+
+}

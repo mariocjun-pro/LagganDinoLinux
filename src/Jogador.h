@@ -2,33 +2,47 @@
 
 #include "stdafx.h"
 #include "Personagem.h"
-#include "Inimigo.h"
+#include "Projetil.h"
 
-class Jogador
-        : public Personagem {
-public:
-    explicit Jogador(Gerenciador_Grafico *gerenciador = NULL);
+using namespace Personagens;
+using namespace Auxiliares;
 
-    virtual ~Jogador();
+namespace Jogadores {
+    class Jogador : public Personagem {
+    public:
+        Jogador(Gerenciador_Grafico *gerenciador = nullptr);
 
-    virtual void morrer();
+        virtual ~Jogador();
 
-    __attribute__((unused)) bool atacar(Inimigo *inim);
+        void morrer();
 
-    void imprimir();
+        void morrer(Vector2f pos);
 
-    void executar();
+        void imprimir();
 
-    //Sets e Gets
+        virtual void executar() = 0;
 
-    bool getAtacando() const { return atacando; }
+        //Sets e Gets
 
-    Corpo_Grafico *getHitbox() { return &hitbox; }
+        const bool getAtacando() const { return atacando; }
 
-protected:
-    Vector2f posInicial;
-    Corpo_Grafico hitbox;
+        Projetil *getProjetil() { return hitbox; }
 
-};
+        void setPontos(const int p) { pontos = p; }
 
+        int getPontos() const { return pontos; }
+
+    protected:
+        Vector2f posInicial;
+        Projetil *hitbox;
+        bool ataquePronto;
+        short ladoAtaque;
+
+        int pontos;
+        float pulo;
+
+        //Auxiliares
+        float vJog;
+    };
+}
 

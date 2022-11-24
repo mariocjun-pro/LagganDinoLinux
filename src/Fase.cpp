@@ -1,23 +1,59 @@
 #include "Fase.h"
-#include "Jogo.h"
+#include "MenuPause.h"
 
-Fase::Fase(Jogo *jooj) :
-        Ent() {
+using namespace Fases;
+
+Fase::Fase(Jogo *jooj, bool dois) :
+        jogador1(nullptr), jogador2(nullptr) {
+    Plataforma::setContIdPlat(0);
+    doisJogadores = dois;
     pJogo = jooj;
+    id = -1;
+    c = new Gerenciador_Colisoes();
+    fundo = nullptr;
+
+    pGG = pJogo->getGerenciador();
 }
 
 Fase::~Fase() {
+    if (c)
+        delete c;
+    if (fundo)
+        delete fundo;
 }
 
 void Fase::executar() {
 
 }
 
-__attribute__((unused)) void Fase::gerenciar_colisoes() {
-
+void Fase::reiniciar() {
+    if (doisJogadores) {
+        if (jogador2->getVidas() <= 0)
+            pJogo->tirarEstado();
+    }
+    if (jogador1->getVidas() <= 0)
+        pJogo->tirarEstado();
 }
 
-__attribute__((unused)) void Fase::reiniciar() {
-
+void Fase::menuPause() {
+    if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+        pJogo->colocarEstado(reinterpret_cast<Estado *>(new MenuPause(pJogo)));
+    }
 }
 
+void Fase::salvar(string nome) {
+    p.setNome(nome);
+    entidades.gravar(&p);
+    p.gravarFase(id);
+}
+
+void Fase::pontuacao() {
+    if (doisJogadores) {
+        pGG->imprimePontuacao(jogador1->getPontos(), jogador1->getVidas(), jogador2->getPontos(), jogador2->getVidas());
+        pGG->getVisao()->setCenter(
+                Vector2f((jogador1->getPosicao().x + jogador2->getPosicao().x) / 2.0f, 960.0f / 2.0f));
+    } else {
+        pGG->imprimePontuacao(jogador1->getPontos(), jogador1->getVidas());
+        pGG->getVisao()->setCenter(Vector2f(jogador1->getPosicao().x + 1280.0f / 4.0f, 960.0f / 2.0f));
+    }
+}

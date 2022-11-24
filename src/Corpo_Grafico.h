@@ -1,42 +1,73 @@
 #pragma once
 
 #include "stdafx.h"
-#include "Animadora.h"
-#include "Colisora.h"
+#include "Gerenciador_Colisoes.h"
 
-class Corpo_Grafico {
-public:
-    Corpo_Grafico();
+namespace GerenciadoresEntidades {
+    class Animadora;
+}
 
-    virtual ~Corpo_Grafico();
+using namespace GerenciadoresEntidades;
+using namespace GerenciadoresFases;
 
-    void inicializa(Vector2f tam, Texture *tex);
+namespace GerenciadoresEntidades {
+    class Corpo_Grafico {
+    public:
+        Corpo_Grafico();
 
-    //Sets e Gets
+        virtual ~Corpo_Grafico();
 
-    RectangleShape *getCorpo() { return corpo; }
+        void inicializa(Vector2f tam, Texture *tex, Vector2f margemHitbox = Vector2f(0.0f, 0.0f));
 
-    Colisora *getColisora() { return colisor; }
+        void operator=(const Vector2f pos) { setPosicao(pos); }
 
-    Vector2f getPosicao() { return corpo->getPosition(); }
+        void mover(Vector2f incr) {
+            corpo->move(incr);
+            hitbox->move(incr);
+        }
 
-    __attribute__((unused)) Vector2f getTamanho() { return corpo->getSize(); }
+        void mover(float x, float y) {
+            corpo->move(x, y);
+            hitbox->move(x, y);
+        }
 
-    Texture *getTextura() { return textura; }
+        void inicializaAnimadora(Vector2f margem, Vector2u quantidadeQuadros, Vector2u TotalDeQuadros);
 
-    void setTextura(const string &arquivo) { if (textura->loadFromFile(arquivo)) cout << "pass"; }
+        void atualizaAnimacao(float dT, bool aDir, unsigned int comecoP = 0, unsigned int qtdQdX = 4,
+                              float troca = 0.3f, unsigned int linha = 0);
 
-    void inicializaAnimadora(Vector2f margem, Vector2u quantidadeQuadros, Vector2u TotalDeQuadros);
+        void setTextura(string arquivo) {
+            textura->loadFromFile(arquivo);
+        }
 
-    void atualizaAnimacao(float dT, bool aDireita, unsigned int comecoP = 0, unsigned int quantidadeQuadrosX = 4,
-                          float troca = 0.3f, unsigned int linha = 0);
+        void setPosicao(Vector2f pos) {
+            corpo->setPosition(pos);
+            hitbox->setPosition(pos);
+        }
 
-    Animadora *getAnimadora() { return animacao; }
+        void setPosicao(float x, float y) {
+            corpo->setPosition(x, y);
+            hitbox->setPosition(x, y);
+        }
 
-private:
-    RectangleShape *corpo;
-    Animadora *animacao;
-    Colisora *colisor;
-    Texture *textura;
-};
+        RectangleShape *getCorpo() { return corpo; }
+
+        RectangleShape *getHitbox() { return hitbox; }
+
+        Vector2f getPosicao() { return corpo->getPosition(); }
+
+        Texture *getTextura() { return textura; }
+
+        Animadora *getAnimadora() { return animacao; }
+
+    private:
+        RectangleShape *corpo;
+
+        Animadora *animacao;
+
+        Texture *textura;
+
+        RectangleShape *hitbox;
+    };
+}
 

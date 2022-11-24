@@ -1,12 +1,23 @@
 #include "Andino.h"
 
-Andino::Andino(Gerenciador_Grafico *g, Vector3f f) :
-        Inimigo(g), fronteira(f), pulo(300) {
-    noChao = true;
+using namespace Inimigos;
+
+Andino::Andino(Plataforma *p) :
+        Inimigo(p->getGerenciador()) {
+    float aux, aux2;
+    plat = p;
+
+    vidas = 2;
+    pulo = 280.0f;
+
+    aux = (plat->getTamanho().x / 2.0f) - 50.0f;
+    aux2 = (plat->getTamanho().y / 2.0f) + 50.0f;
+    fronteira = Vector3f(plat->getPosicao().x - aux, plat->getPosicao().x + aux, plat->getPosicao().y - aux2);
+
     velocidade = 200.0f;
 
-    corpo.inicializa(Vector2f(100.0f, 130.0f), NULL);
-    corpo.setTextura("../assets//sprite//mort.png");
+    corpo.inicializa(Vector2f(100.0f, 130.0f), nullptr);
+    corpo.setTextura("../arquivos/texturas/sprites-dinos/mort.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -2.5f), Vector2u(4, 1), Vector2u(24, 1));
 
     posicaoInicial =
@@ -14,9 +25,11 @@ Andino::Andino(Gerenciador_Grafico *g, Vector3f f) :
     if (rand() % 2)
         lado = 1;
 
-    corpo.getCorpo()->setPosition(Vector2f(posicaoInicial, fronteira.z));
+    corpo = Vector2f(posicaoInicial, fronteira.z);
     corpo.getCorpo()->setFillColor(Color::White);
     totalT = 0;
+
+    id = 1;
 }
 
 Andino::~Andino() {
@@ -30,7 +43,7 @@ void Andino::mover() {
     totalT += dT;
     movimento.x = velocidade * lado;
 
-    chancePulo = rand() % 1000;
+    chancePulo = rand() % 700;
 
     if (!chancePulo && noChao) {
         noChao = false;
@@ -40,18 +53,14 @@ void Andino::mover() {
 
     movimento.y += 981.0 * dT;
 
-    float tempoTroca = 0.1f;
+    float tempoTroca = 0.2f;
 
-    if ((corpo.getCorpo()->getPosition().x < fronteira.x || corpo.getCorpo()->getPosition().x > fronteira.y)
-        && totalT >= tempoTroca) {
+    if ((corpo.getCorpo()->getPosition().x < fronteira.x || corpo.getCorpo()->getPosition().x > fronteira.y) &&
+        totalT >= tempoTroca) {
         lado *= -1;
         totalT -= tempoTroca;
     }
 
-    corpo.getCorpo()->move(movimento * dT);
-    animar(movimento);
-}
 
-/*void Andino::morrer() {
-    morto = true;
-}*/
+    corpo.mover(movimento * dT);
+}

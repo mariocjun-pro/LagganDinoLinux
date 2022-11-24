@@ -1,27 +1,34 @@
 #include "Corpo_Grafico.h"
+#include "Animadora.h"
+
+using namespace GerenciadoresEntidades;
 
 Corpo_Grafico::Corpo_Grafico() {
-    corpo = NULL;
-    animacao = NULL;
-    colisor = NULL;
-    textura = NULL;
+    corpo = nullptr;
+    animacao = nullptr;
+    textura = nullptr;
 }
 
 Corpo_Grafico::~Corpo_Grafico() {
     delete corpo;
     delete animacao;
-    delete colisor;
     delete textura;
 }
 
-void Corpo_Grafico::inicializa(Vector2f tam, Texture *tex) {
+void Corpo_Grafico::inicializa(Vector2f tam, Texture *tex, Vector2f margemHitbox) {
     corpo = new RectangleShape(tam);
     corpo->setOrigin(tam / 2.0f);
     corpo->setFillColor(Color::White);
 
+    if (margemHitbox == Vector2f(0.0f, 0.0f))
+        margemHitbox = tam;
+
+    hitbox = new RectangleShape(margemHitbox);
+    hitbox->setOrigin(margemHitbox / 2.0f);
+    hitbox->setPosition(corpo->getPosition());
+
     corpo->setTexture(tex);
 
-    colisor = new Colisora(corpo);
     textura = new Texture();
     animacao = new Animadora(this);
 
@@ -33,8 +40,8 @@ void Corpo_Grafico::inicializaAnimadora(Vector2f margem, Vector2u quantidadeQuad
     animacao->inicializa(margem, quantidadeQuadros, TotalDeQuadros);
 }
 
-void Corpo_Grafico::atualizaAnimacao(float dT, bool aDireita, unsigned int comecoP, unsigned int quantidadeQuadrosX,
+void Corpo_Grafico::atualizaAnimacao(float dT, bool aDir, unsigned int comecoP, unsigned int qtdQdX,
                                      float troca, unsigned int linha) {
-    animacao->atualizar(dT, aDireita, comecoP, quantidadeQuadrosX, troca, linha);
+    animacao->atualizar(dT, aDir, comecoP, qtdQdX, troca, linha);
 }
 

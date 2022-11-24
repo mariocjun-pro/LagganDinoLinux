@@ -1,6 +1,7 @@
 #include "ListaEntidade.h"
 #include "Jogador.h"
 
+
 ListaEntidade::ListaEntidade() {
 
 }
@@ -16,6 +17,7 @@ void ListaEntidade::executar() {
         itr->getAtual()->executar();
         itr = itr->getProx();
     }
+
 }
 
 void ListaEntidade::imprimir() {
@@ -27,29 +29,105 @@ void ListaEntidade::imprimir() {
     }
 }
 
-void ListaEntidade::colidir(Jogador *jog) {
-    Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux = NULL;
+void ListaEntidade::colidir(Jogador *j, Gerenciador_Colisoes *colisora) {
+    Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux = nullptr;
     Vector2f direcao(0.0f, 0.0f);
+    Entidade *jog = static_cast<Entidade *>(j);
 
     itr = itr->getProx();
+
+    // 0 empurra
+    // 1 nao empurra
+
+    while (itr) {
+        aux = itr->getProx();
+
+        if (itr->getAtual()->getMorto()) {
+            excluir(itr);
+            itr = aux;
+        }
+
+        if (colisora->atacando(itr->getAtual(), jog, direcao)) {
+            if (itr->getAtual()->getPlataforma()) {
+                colisora->colidir(reinterpret_cast<Entidade *>(itr->getAtual()->getPlataforma()), itr->getAtual(),
+                                  direcao);
+            }
+            colisora->colidir(itr->getAtual(), jog, direcao);
+            if (j->getAtacando())
+                if (colisora->ataque(itr->getAtual(), static_cast<Entidade *>(j->getProjetil()), direcao)) {
+                    if (itr->getAtual()->tomarDano()) {
+                        j->setPontos(j->getPontos() + 15);
+                        excluir(itr);
+                    }
+                }
+
+            itr = aux;
+        } else {
+            j->morrer();
+        }
+    }
+}
+
+void ListaEntidade::colidir(Jogador *j, Jogador *j2, Gerenciador_Colisoes *colisora) {
+    Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux = nullptr;
+    Vector2f direcao(0.0f, 0.0f);
+
+    Entidade *jog = static_cast<Entidade *>(j);
+    Entidade *jog2 = static_cast<Entidade *>(j2);
+
+    itr = itr->getProx()->getProx();
 
     // 0 empurra
     // 1 n�o empurra
 
     while (itr) {
         aux = itr->getProx();
-        if (itr->getAtual()->verificarAtacando(jog->getColisora(), direcao)) {
-            if (itr->getAtual()->verificarColisao(jog->getColisora(), direcao))
-                jog->Colidindo(direcao);
-            if (jog->getAtacando()) {
-                if (itr->getAtual()->verificarAtaque(jog->getHitbox()->getColisora(), direcao)) {
-                    excluir(itr);
-                }
-            }
+
+        if (itr->getAtual()->getMorto()) {
+            excluir(itr);
             itr = aux;
-        } else {
-            jog->morrer();
+            if (aux == nullptr)
+                break;
         }
+
+        if (colisora->atacando(itr->getAtual(), jog, direcao)) {
+            if (itr->getAtual()->getPlataforma()) {
+                colisora->colidir(reinterpret_cast<Entidade *>(itr->getAtual()->getPlataforma()), itr->getAtual(),
+                                  direcao);
+            }
+
+            colisora->colidir(itr->getAtual(), jog, direcao);
+            if (j->getAtacando())
+                if (colisora->ataque(itr->getAtual(), static_cast<Entidade *>(j->getProjetil()), direcao)) {
+                    if (itr->getAtual()->tomarDano()) {
+                        j->setPontos(j->getPontos() + 15);
+                        excluir(itr);
+                        itr = aux;
+                        if (aux == nullptr)
+                            break;
+                    }
+                }
+        } else {
+            j->morrer(Vector2f(j2->getPosicao().x, -1000));
+        }
+
+        if (colisora->atacando(itr->getAtual(), jog2, direcao)) {
+            if (itr->getAtual()->getPlataforma())
+                colisora->colidir(reinterpret_cast<Entidade *>(itr->getAtual()->getPlataforma()), itr->getAtual(),
+                                  direcao);
+
+            colisora->colidir(itr->getAtual(), jog2, direcao);
+            if (j2->getAtacando())
+                if (colisora->ataque(itr->getAtual(), static_cast<Entidade *>(j2->getProjetil()), direcao)) {
+                    if (itr->getAtual()->tomarDano()) {
+                        j2->setPontos(j->getPontos() + 15);
+                        excluir(itr);
+                    }
+                }
+        } else {
+            j2->morrer(Vector2f(j->getPosicao().x, -1000));
+        }
+        itr = aux;
     }
 }
 
@@ -62,32 +140,28 @@ void ListaEntidade::limpar() {
 }
 
 void ListaEntidade::excluir(Lista<Entidade>::Elemento<Entidade> *no) {
+    Lista<Entidade>::Elemento<Entidade> *aux = nullptr;
 
     if (no->getProx()) {
         if (no->getAnt()) {
             no->getAnt()->setProx(no->getProx());
             no->getProx()->setAnt(no->getAnt());
         } else {
-            no->getProx()->setAnt(NULL);
+            no->getProx()->setAnt(nullptr);
         }
     } else {
-        no->getAnt()->setProx(NULL);
+        no->getAnt()->setProx(nullptr);
     }
     delete no->getAtual();
     delete no;
 }
 
-/*void ListaEntidade::excluir(int id) {
-    Lista<Entidade>::Elemento<Entidade>* itr = LEs.getPrimeiro(), *aux = NULL;
+void ListaEntidade::gravar(Gerenciador_Persistencias *pers) {
+    Lista<Entidade>::Elemento<Entidade> *itr = LEs.getPrimeiro(), *aux = nullptr;
 
-    while(itr) {
-        if(itr->getAtual()->getId() == id) {
-            aux = itr->getProx();
-            itr = itr->getAnt();
-            delete (itr->getProx());
-            itr->setProx(aux);
-        }
+    while (itr) {
+        pers->gravar(itr->getAtual()->gravar());
         itr = itr->getProx();
     }
-}*/
+}
 

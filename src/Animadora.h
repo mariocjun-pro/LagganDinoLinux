@@ -1,33 +1,48 @@
 #pragma once
 
 #include "stdafx.h"
+#include "Corpo_Grafico.h"
 
-class Corpo_Grafico;
+namespace GerenciadoresEntidades {
+    class Corpo_Grafico;
+}
 
-class Animadora {
-public:
-    explicit Animadora(Corpo_Grafico *corpo = NULL);
+using namespace GerenciadoresEntidades;
 
-    ~Animadora();
+namespace GerenciadoresEntidades {
+    class Animadora {
+    public:
+        Animadora(Corpo_Grafico *corpo = nullptr);
 
-    void inicializa(Vector2f margemErro, Vector2u quantidadeQuadros, Vector2u TotalDeQuadros);
+        ~Animadora();
 
-    void atualizar(float dT, bool aDireita, unsigned int comecoP, unsigned int quantidadeQuadrosX, float troca,
-                   unsigned int linha);
+        void inicializa(Vector2f margemErro, Vector2u quantidadeQuadros, Vector2u TotalDeQuadros);
 
-    void atualizarLinhasSequencial(float dT, bool aDireita, Vector2u quantidadeQuadros, float troca);
+        void atualizar(float dT, bool aDireita, unsigned int comecoP, unsigned int quantidadeQuadrosX, float troca,
+                       unsigned int linha);
 
-private:
-    Corpo_Grafico *pCorpo;
+        void
+        atualizarLinhasSequencial(float dT, bool aDireita, Vector2u quantidadeQuadros, unsigned int quadrosUltimaLinha,
+                                  float troca);
 
-    sf::IntRect quadro;
-    Texture *textura;
+    private:
+        Corpo_Grafico *pCorpo;
 
-    int comeco{};
-    Vector2u quadrosAtuais;
-    Vector2u qtdQuadros;
-    Vector2f margem;
-    float tempoTroca{};
-    float tempoTotal{};
-};
+        sf::IntRect quadro;
+
+        Texture *textura;
+
+        int comeco;
+
+        Vector2u quadrosAtuais;
+
+        Vector2u qtdQuadros;
+
+        Vector2f margem;
+
+        float tempoTroca;
+        
+        float tempoTotal;
+    };
+}
 

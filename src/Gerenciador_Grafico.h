@@ -2,38 +2,54 @@
 
 #include "stdafx.h"
 
-class Gerenciador_Grafico {
-public:
-    Gerenciador_Grafico();
+namespace Controladoras {
+    class Gerenciador_Grafico {
+    public:
+        Gerenciador_Grafico();
 
-    virtual ~Gerenciador_Grafico();
+        virtual ~Gerenciador_Grafico();
 
-    RenderWindow *getJanela() { return &janela; }
+        RenderWindow *getJanela() { return &janela; }
 
-    bool getAberto() const { return janela.isOpen(); }
+        bool getAberto() const { return janela.isOpen(); }
 
-    void limpar();
+        View *getVisao() { return &visao; }
 
-    void leEventos();
+        void setDt(float delta) { dT = delta; }
 
-    void desenhar(RectangleShape *elem) { janela.draw(*elem); }
+        const float getDt() const { return dT; }
 
-    View *getVisao() { return &visao; }
+        void limpar();
 
-    void setDt(float delta) { dT = delta; }
+        void leEventos();
 
-    float getDt() const { return dT; }
+        void desenhar(RectangleShape *elem) { janela.draw(*elem); }
 
-private:
-    RenderWindow janela;
-    View visao;
-    float dT;
+        void instanciaTexto();
 
-    __attribute__((unused)) float AJ;
-    __attribute__((unused)) float LJ;
-    __attribute__((unused)) float LP;
-    __attribute__((unused)) float AP;
+        void imprimePontuacao(int p, int v);
 
-};
+        void imprimePontuacao(int p, int v, int p2, int v2);
+
+        void setLeitura(const bool l) { leitura = l; }
+
+        void entraString(char c);
+
+        string getEntrada() const { return entrada; }
+
+    private:
+        RenderWindow janela;
+        View visao;
+        float dT;
+
+        Font fonte;
+        Text texto;
+
+        char caracter;
+        string entrada;
+
+        bool leitura;
+    };
+}
 
 

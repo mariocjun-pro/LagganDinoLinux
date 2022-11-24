@@ -2,25 +2,20 @@
 
 #include "stdafx.h"
 #include "Inimigo.h"
+#include "Plataforma.h"
 
-class Andino
-        : public Inimigo {
-public:
-    explicit Andino(Gerenciador_Grafico *g = NULL, Vector3f f = Vector3f(0.0f, 0.0f, 0.0f));
+using namespace Auxiliares;
 
-    ~Andino();
+namespace Inimigos {
+    class Andino : public Inimigo {
+    public:
+        Andino(Plataforma *p);
 
-    void mover();
-    //void morrer();
+        ~Andino();
 
-    static __attribute__((unused)) void randomiza() {
-        srand(time(NULL));
+        void mover();
 
-    }
-
-private:
-    Vector3f fronteira;
-    float pulo;
-    float posicaoInicial;
-};
-
+    private:
+        float pulo;
+    };
+}

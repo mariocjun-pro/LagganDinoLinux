@@ -4,30 +4,29 @@
 #include "Entidade.h"
 #include "Corpo_Grafico.h"
 
-class Plataforma
-        : public Entidade {
-public:
-    explicit Plataforma(Vector2f tam = Vector2f(100.0f, 100.0f), Texture *tex = NULL);
+using namespace Auxiliares;
+using namespace Abstratas;
+using namespace GerenciadoresEntidades;
 
-    ~Plataforma();
 
-    void executar() { corpo.atualizaAnimacao(0.1, true, 0, 0, 0, 0); };
+namespace Auxiliares {
+    class Plataforma : public Entidade {
+    public:
+        Plataforma(Vector2f tam = Vector2f(100.0F, 100.0F));
 
-    void Colidindo(Vector2f direcao) {};
+        ~Plataforma();
 
-    //Gerenciadoras de colisão
-    bool verificarAtacando(Colisora *outro, Vector2f &direcao)
-    //Retorna true se está havendo colisao e o outro está sobrevivendo à colisão
-    { return true; }
+        void executar() { corpo.atualizaAnimacao(0.1, true, 0, 0, 0, 0); }
 
-    bool verificarColisao(Colisora *outro, Vector2f &direcao);
-    //Retorna true se está havendo colisão
+        //Sets e Gets
+        void setTextura(string tex) { corpo.setTextura(tex); }
 
-    bool verificarAtaque(Colisora *outro, Vector2f &direcao)
-    //Retorna true se está havendo colisão e se o jogador pode matar quem esta entidade
-    { return false; }
+        const int getIdPlataforma() const { return idPlataforma; }
 
-private:
+        static void setContIdPlat(const int cont) { contIdPlataforma = cont; }
 
-};
-
+        static int contIdPlataforma;
+    private:
+        int idPlataforma;
+    };
+}
