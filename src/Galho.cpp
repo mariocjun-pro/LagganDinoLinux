@@ -16,9 +16,10 @@ Obstaculo(plataforma->getGerenciador()), obstaculo_destruivel(true) {
     corpo.atualizaAnimacao(0.0F, false, 0, 0, 1, 0);
 
     float aux;
-    aux = (plat->getTamanho().x / 2.0F) - 50.0F;
 
     plat = plataforma;
+
+    aux = (plat->getTamanho().x / 2.0F) - 50.0F;
 
     fronteira = Vector3f(plat->getPosicao().x - aux, plat->getPosicao().x + aux, plat->getPosicao().y + 70.0F);
 
