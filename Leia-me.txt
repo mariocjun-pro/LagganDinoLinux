@@ -1,0 +1,12 @@
+O jogo LagganDino foi criado para rodar especificamente
+ no sistema operacional Linux.
+Para rodar o jogo, é necessário instalar os seguintes
+ pacotes com o comando em um terminal (SFML, Cmake, Make, Threads):
+
+sudo apt-get install -y build-essential cmake libsfml-dev libpthread-stubs0-dev
+
+Depois de instalados os pacotes, basta executar
+ o comando abaixo dentro da pasta que se encontra o
+  arquivo "run.sh" para compilar o jogo:
+
+bash run.sh
